@@ -83,16 +83,7 @@
                                     </div>
                                 </div>
 
-                                @*<div class="form-group">
-                                    <label class="control-label col-md-3">
-                                        Form No
-                                    </label>
-                                    <div class="col-md-4">
-                                        @Html.TextBoxFor(model => model.FormNo, new { @class = "form-control" })
-
-                                    </div>
-                                </div>*@
-
+                                
                                 <h3 class="block">Provide your Personal details</h3>
                                 <div class="form-group">
                                     <label class="control-label col-md-3">
@@ -187,7 +178,7 @@
                                         Nationality
                                     </label>
                                     <div class="col-md-4">
-                                        @Html.TextBoxFor(model => model.Nationality, new { @class = "form-control" })
+                                        @Html.TextBoxFor(model => model.Nationality, new {  @Value = "Bangladeshi", @class = "form-control" })
                                     </div>
                                 </div>
 

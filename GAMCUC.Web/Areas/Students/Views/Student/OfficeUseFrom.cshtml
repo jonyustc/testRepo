@@ -50,17 +50,6 @@
                                     </div>
                                 </div>
 
-                                
-
-                                @*<div class="form-group">
-                                    <label class="control-label col-md-3">
-                                        ID No
-                                    </label>
-                                    <div class="col-md-4">
-                                        @Html.TextBoxFor(model => model.StdID, new { @class = "form-control",@id="myNumber" })
-                                    </div>
-                                </div>*@
-
                                 <div class="form-group">
                                     <label class="control-label col-md-3">
                                         Registration No
@@ -83,8 +72,9 @@
                                         Endorsement
                                     </label>
                                     <div class="col-md-4">
-                                        @Html.DropDownList("OriginalDocumentId", ViewBag.EndorsementList as IEnumerable<SelectListItem>, new { @class = "mt-multiselect form-control form-filter input-sm", multiple = "multiple" })
-                                        @*@Html.ValidationMessageFor(model => model.OriginalDocumentId, null, new { @class = "required" })*@
+                                        @Html.DropDownList("OriginalDocumentId", ViewBag.EndorsementList as IEnumerable<SelectListItem>, new { @class = "mt-multiselect btn btn-default", multiple = "multiple", data_width = "100%" })
+                                     
+                                        @Html.ValidationMessageFor(model => model.OriginalDocumentId, null, new { @class = "required" })
                                     </div>
                                 </div>
                             </div>
@@ -109,40 +99,14 @@
 
     <script type="text/javascript">
 
-        $('#OriginalDocumentId').validate({
-            rules: {
-                mySelect: "required needsSelection",
-                input1: "required isPercent",
-                input2: "required",
-                input3: "required"
-            },
-            ignore: ':hidden:not("#OriginalDocumentId")', //Tells it to check the hidden select
-            errorClass: 'invalid'
-        });
-
+        
 
         $('#OriginalDocumentId').multiselect({
             includeSelectAllOption: true
         });
 
 
-
-
-        $('#OriginalDocumentId').validate({
-            ignore: [],
-            rules: {
-                FacilityList: {
-                    required: true
-                }
-            },
-            messages: {
-                FacilityList: {
-                    required: 'One selection required.'
-                }
-            }
-        });
-
     </script>
 
-@*@Scripts.Render("~/bundles/jqueryval")*@
+@Scripts.Render("~/bundles/jqueryval")
 }

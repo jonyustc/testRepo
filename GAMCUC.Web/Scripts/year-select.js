@@ -117,7 +117,7 @@
     }
 
     $.fn.yearselect.defaults = {
-        start: 1970,
+        start: 2010,
         end: new Date().getFullYear(),
         step: 1,
         order: 'asc',

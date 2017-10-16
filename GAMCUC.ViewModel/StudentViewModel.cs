@@ -180,8 +180,11 @@ namespace GAMCUC.ViewModel
     {
         public int Id { get; set; }
         public decimal InitialPayment { get; set; }
+
         public int CourseId { get; set; }
         public string CourseName { get; set; }
+
+        [Required(ErrorMessage = "Course Fee Required")]
         public decimal CourseFee { get; set; }
         public int PaymentScheduleId { get; set; }
         public string PaymentSchedule { get; set; }
@@ -191,11 +194,9 @@ namespace GAMCUC.ViewModel
         public string ExamRollNo { get; set; }
         public Guid StudentId { get; set; }
 
-        //[Required(ErrorMessage = "Endorsement Required")]
-        //public int OrgId { get; set; }
 
-        //[Required(ErrorMessage = "Endorsement Required")]
-        public int OriginalDocumentId { get; set; }
+        [Required(ErrorMessage = "At least One Required")]
+        public List<int> OriginalDocumentId { get; set; }
         public string DocumentName { get; set; }
     }
 
