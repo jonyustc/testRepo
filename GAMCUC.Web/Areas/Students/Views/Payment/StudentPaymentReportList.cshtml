@@ -1,0 +1,56 @@
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "PaymentReportsList";
+    Layout = null;
+}
+
+
+<div class="portlet light bordered">
+    <div class="portlet-title">
+        <h5 class="portlet-title">
+            Due Report
+            <span class="pull-right">@Html.ActionLink("Print", "StudentDuePrint", new { courseId = ViewBag.cId, semesterId = ViewBag.sId }, new { @class = "btn btn-info btn-sm", target = "_blank" })</span>
+        </h5>
+
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    @foreach (System.Data.DataColumn col in Model.Columns)
+                    {
+                        <th>@col.ColumnName</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (System.Data.DataRow row in Model.Rows)
+                {
+                    <tr>
+                        @foreach (System.Data.DataColumn col in Model.Columns)
+                        {
+                            <td>@row[col.ColumnName]</td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

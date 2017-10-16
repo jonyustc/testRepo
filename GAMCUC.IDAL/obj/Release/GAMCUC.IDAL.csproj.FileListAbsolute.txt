@@ -1,0 +1,7 @@
+D:\.net Preject\GAMCUC\GAMCUC.IDAL\bin\Release\GAMCUC.IDAL.dll
+D:\.net Preject\GAMCUC\GAMCUC.IDAL\bin\Release\GAMCUC.IDAL.pdb
+D:\.net Preject\GAMCUC\GAMCUC.IDAL\bin\Release\GAMCUC.ViewModel.dll
+D:\.net Preject\GAMCUC\GAMCUC.IDAL\bin\Release\GAMCUC.ViewModel.pdb
+D:\.net Preject\GAMCUC\GAMCUC.IDAL\obj\Release\GAMCUC.IDAL.csprojResolveAssemblyReference.cache
+D:\.net Preject\GAMCUC\GAMCUC.IDAL\obj\Release\GAMCUC.IDAL.dll
+D:\.net Preject\GAMCUC\GAMCUC.IDAL\obj\Release\GAMCUC.IDAL.pdb

@@ -1,0 +1,202 @@
+﻿@model GAMCUC.ViewModel.StudentProfileViewModel
+@{
+    ViewBag.Title = "PersonalinfoEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="page-content">
+    <!-- BEGIN PAGE HEADER-->
+    <!-- BEGIN PAGE BAR -->
+    <div class="page-bar">
+        <h2>Student Edit</h2>
+
+    </div>
+    <div class="portlet light bordered">
+        <div class="portlet-body form">
+            <!-- BEGIN FORM-->
+            @using (Html.BeginForm("PersonalinfoEdit", "Student", new { area = "Students" }, FormMethod.Post, new
+    {
+        enctype = "multipart/form-data"
+    }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+
+                    <div class="form-body">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label class="control-label col-md-3">Attach Photo:</label>
+                                <div class="col-md-8">
+                                    <img src="~/uploads/@Html.DisplayFor(model => model.Picture)" height="90" width="150" id="ImgPrv" />
+                                    @Html.HiddenFor(model=>model.Picture)
+                                    @*@Html.TextBoxFor(model => model.Picture, new { id = "IMGTxt", placeholder = "Image Path", readOnly = "true" })*@
+                                    @Html.TextBoxFor(model => model.image, new { @class = "file-styled", type = "file", id = "text-box", onchange = "ShowImagePreview(this);" })
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3">
+                                Student Name Bangla
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.StdNameBangla, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.StdNameBangla, null, new { @class = "errorstyle" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3">
+                                English
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.StdNameEnglish, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.StdNameEnglish, null, new { @class = "errorstyle" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3">
+                                Father Name Bangla
+                            </label>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.StdFatherNameBangla, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3">
+                                English
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.StdFatherNameEnglish, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.StdFatherNameEnglish, null, new { @class = "errorstyle" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3">
+                                Mother Name Bangla
+                            </label>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.StdMotherNameBangla, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3">
+                                English
+                            </label>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.StdMotherNameEnglish, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Date of Birth</label>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.DateOfBirth, new { @class = "form-control form-control-inline input-medium date-picker" })
+                                
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3">
+                                Present Address
+                            </label>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.PresentAddress, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3">
+                                Phone No:(Personal)
+                            </label>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3">
+                                Permanent Address
+                            </label>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.PermanentAddress, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <h3 class="form-section">Update Registraton No and Exam Roll No</h3>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">
+                                Registration No
+                            </label>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.RegistrationNo, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3">
+                                Exam Roll No
+                            </label>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.ExamRollNo, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-9">
+
+                                <input type="submit" id="update" class="btn green button-submit" name="Update" value="Update" />
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            }
+            <!-- END FORM-->
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+
+    function ShowImagePreview(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var ext = input.value.substr(input.value.lastIndexOf('.') + 1).toLowerCase();
+                if (input.files[0].size < 1048576) {
+                    $("#ImgPrv").prop('src', e.target.result)
+                   .width(100)
+                   .height(100);
+                    $("#IMGTxt").val(input.value);
+                }
+                else if (!(ext == "jpeg" || ext == "jpg" || ext == "png")) {
+                    alert("Invalid image file, must select a *.jpeg, *.jpg, or *.png file.");
+                }
+                else {
+                    alert("File is too large, must select file under 1 MB. File  Size: " + (input.files[0].size / 1048576).toFixed(1) + " MB");
+                }
+
+
+
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+</script>
+

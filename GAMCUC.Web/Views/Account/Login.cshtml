@@ -1,0 +1,99 @@
+﻿@model GAMCUC.Web.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Log in";
+    Layout = null;
+}
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - MMTrading</title>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+
+    @Styles.Render("~/Content/mandatory/css")
+    @Styles.Render("~/Content/login-plugins/css")
+    @Styles.Render("~/Content/global/css")
+    @Styles.Render("~/Content/login-style/css")
+    <link href="~/images/logo.png" rel="shortcut icon" type="image/x-icon" />
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body class="login">
+
+    <!-- BEGIN LOGO -->
+    @*<div class="logo">
+            <a href="#">
+                <img src="~/images/b&w-logo.png" width="139" height="150" alt="" />
+            </a>
+        </div>*@
+    <!-- END LOGO -->
+    <!-- BEGIN LOGIN -->
+    <div class="content">
+        <!-- BEGIN LOGIN FORM -->
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "login-form", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <h3 class="form-title font-green">Sign In</h3>
+            <div class="alert alert-danger display-hide">
+                <button class="close" data-close="alert"></button>
+                <span> @Html.ValidationSummary(true) </span>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.UserName, new { @class = "control-label visible-ie8 visible-ie9" })
+
+                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control form-control-solid placeholder-no-fix" })
+                @Html.ValidationMessageFor(m => m.UserName)
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password, new { @class = "control-label visible-ie8 visible-ie9" })
+
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control form-control-solid placeholder-no-fix" })
+                @Html.ValidationMessageFor(m => m.Password)
+
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn green uppercase">Login</button>
+                <label class="rememberme check mt-checkbox mt-checkbox-outline">
+                    @Html.CheckBoxFor(m => m.RememberMe) Remember
+                    <span></span>
+                </label>
+
+            </div>
+
+
+        }
+
+
+    </div>
+    <div class="copyright"> @DateTime.Now.Year © GAM Chartered College. </div>
+
+    <!--[if lt IE 9]>
+    @Scripts.Render("~/bundles/IEScript")
+    <![endif]-->
+    @Scripts.Render("~/bundles/core/js")
+    @Scripts.Render("~/bundles/login-plugins/js")
+    @Scripts.Render("~/bundles/global/js")
+    @Scripts.Render("~/bundles/login/js")
+    <script>
+        @Scripts.Render("~/bundles/jqueryval")
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

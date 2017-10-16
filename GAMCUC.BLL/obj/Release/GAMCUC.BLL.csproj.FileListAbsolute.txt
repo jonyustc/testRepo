@@ -1,0 +1,16 @@
+D:\.net Preject\GAMCUC\GAMCUC.BLL\bin\Release\GAMCUC.BLL.dll
+D:\.net Preject\GAMCUC\GAMCUC.BLL\bin\Release\GAMCUC.BLL.pdb
+D:\.net Preject\GAMCUC\GAMCUC.BLL\bin\Release\GAMCUC.DAL.dll
+D:\.net Preject\GAMCUC\GAMCUC.BLL\bin\Release\GAMCUC.IDAL.dll
+D:\.net Preject\GAMCUC\GAMCUC.BLL\bin\Release\GAMCUC.ViewModel.dll
+D:\.net Preject\GAMCUC\GAMCUC.BLL\bin\Release\GAMCUC.DataModel.dll
+D:\.net Preject\GAMCUC\GAMCUC.BLL\bin\Release\EntityFramework.dll
+D:\.net Preject\GAMCUC\GAMCUC.BLL\bin\Release\VIT.DataLogicLayer.dll
+D:\.net Preject\GAMCUC\GAMCUC.BLL\bin\Release\GAMCUC.DAL.pdb
+D:\.net Preject\GAMCUC\GAMCUC.BLL\bin\Release\GAMCUC.IDAL.pdb
+D:\.net Preject\GAMCUC\GAMCUC.BLL\bin\Release\GAMCUC.ViewModel.pdb
+D:\.net Preject\GAMCUC\GAMCUC.BLL\bin\Release\GAMCUC.DataModel.pdb
+D:\.net Preject\GAMCUC\GAMCUC.BLL\bin\Release\EntityFramework.xml
+D:\.net Preject\GAMCUC\GAMCUC.BLL\obj\Release\GAMCUC.BLL.csprojResolveAssemblyReference.cache
+D:\.net Preject\GAMCUC\GAMCUC.BLL\obj\Release\GAMCUC.BLL.dll
+D:\.net Preject\GAMCUC\GAMCUC.BLL\obj\Release\GAMCUC.BLL.pdb

@@ -1,0 +1,52 @@
+﻿@model GAMCUC.ViewModel.StudentDetailsViewModel
+@{
+    ViewBag.Title = "StudentDetailsForPayment";
+    Layout = null;
+}
+
+
+<style>
+
+    .mb-none > tbody > tr > td,
+    .mb-none > tbody > tr > th,
+    .mb-none > tfoot > tr > td,
+    .mb-none > tfoot > tr > th,
+    .mb-none > thead > tr > td,
+    .mb-none > thead > tr > th {
+        padding: 8px;
+        line-height: 0;
+        vertical-align: top;
+        border-top: 0;
+    }
+
+</style>
+
+<div class="col-md-10 mt-md mb-xs">
+    <div class="table-responsive">
+        <table class="table mb-none" style="border:0">
+            <tbody>
+                <tr>
+                    
+                    <th> Name </th>
+                    <td>@Model.StdNameEnglish </td>
+                    <th> ID No: </th>
+                    <td> @Model.StdID </td>
+                </tr>
+
+                <tr>
+                    <th> Course </th>
+                    <td> @Model.CourseName </td>
+                </tr>
+                <tr>
+                    <th> Session </th>
+                    <td> @Model.AcademicSession </td>
+                </tr>
+
+            </tbody>
+        </table>
+       
+    </div>
+</div>
+
+
+

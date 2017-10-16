@@ -1,0 +1,67 @@
+﻿@media print {
+    * {
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+
+
+    /*@page {
+        size: portrait;
+        margin: 0 !important;
+    }*/
+
+    @page {
+        size: 21cm 29.7cm;
+        margin: 0 !important;
+    }
+
+    .invoice {
+        margin-bottom: 30px;
+    }
+
+   /*.duplicate .p-Hide
+    {
+        display:none;
+    }*/
+
+    .duplicate {
+        display: block !important;
+    }
+
+    .invoice .duplicate {
+        page-break-inside: avoid;
+    }
+
+    .invoice-heading h2 {
+        font-size: 24px;
+        font-weight: 500;
+        margin-top: 2px;
+    }
+
+    .page-content-white .page-title {
+        display: none;
+        margin: 0;
+    }
+
+
+    .invoice-sl {
+        display: inline;
+        position: absolute;
+        top: 45px;
+        background: #ddd !important;
+        padding: 2px 45px 2px 5px;
+    }
+
+    .invoice-date {
+        display: inline;
+        position: relative;
+        top: 70px;
+        background: #ddd !important;
+        padding: 2px 57px 2px 5px;
+    }
+
+    .invoice-stdName, .std-info {
+        background: #ddd !important;
+        padding: 2px 10px 2px 5px;
+    }
+}

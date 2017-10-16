@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - MMTrading</title>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+
+    @Styles.Render("~/Content/mandatory/css")
+    @Styles.Render("~/Content/global/css")
+    @Styles.Render("~/Content/page-plugin/css")
+    @Styles.Render("~/Content/page-style/css")
+    @Styles.Render("~/Content/layout/css")
+    <link href="~/Content/Custom.css" rel="stylesheet" />
+    <link href="~/images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+
+    <div class="page-wrapper">
+        <!-- BEGIN HEADER -->
+        <div class="page-header navbar navbar-fixed-top">
+            <!-- BEGIN HEADER INNER -->
+            <div class="page-header-inner ">
+                <!-- BEGIN LOGO -->
+                <div class="page-logo">
+                    <a href="">
+                        @*<img src="@Url.Content("~/Content/")assets/layouts/layout/img/mmTradingLogo.png" alt="logo" class="logo-default" />*@
+                    </a>
+                    <div class="menu-toggler sidebar-toggler">
+                        <span></span>
+                    </div>
+                </div>
+                <!-- END LOGO -->
+                <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span></span>
+                </a>
+
+                <div class="top-menu">
+
+                    @Html.Partial("_LoginPartial")
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="clearfix"> </div>
+
+        <div class="page-container">
+            <!-- BEGIN SIDEBAR -->
+            <div class="page-sidebar-wrapper">
+
+                <div class="page-sidebar navbar-collapse collapse">
+
+                    <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
+
+                        <li class="sidebar-toggler-wrapper hide">
+                            <div class="sidebar-toggler">
+                                <span></span>
+                            </div>
+                        </li>
+
+                        <li class="nav-item  ">
+                            <a href="@Url.Action("Index", "Home", new { area = "" })" class="nav-link nav-toggle">
+                                <i class="glyphicon glyphicon-signal"></i>
+                                <span class="title">Dashboard</span>
+                            </a>
+                            
+                        </li>
+
+                        <li class="nav-item  ">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="glyphicon glyphicon-user"></i>
+                                <span class="title">Student</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item  ">
+                                    <a href="@Url.Action("PersonalInfo", "Student", new { area = "Students" })" class="nav-link nav-toggle">
+                                        <span class="title">Student Admission</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item  ">
+                                    <a href="@Url.Action("StudentList", "Student", new { area = "Students" })" class="nav-link nav-toggle">
+                                        <span class="title">Student Details</span>
+                                    </a>
+
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-item  ">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="glyphicon glyphicon-euro"></i>
+                                <span class="title">Student Payment</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item  ">
+                                    <a href="@Url.Action("StudentPayment", "Payment", new { area = "Students" })" class="nav-link nav-toggle">
+                                        <span class="title">Add Payment</span>
+                                    </a>
+
+                                </li>
+                                <li class="nav-item  ">
+                                    <a href="@Url.Action("StudentPaymentReport", "Payment", new { area = "Students" })" class="nav-link nav-toggle">
+                                        <span class="title">Payment Report</span>
+                                    </a>
+
+                                </li>
+                                
+
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- END SIDEBAR -->
+            </div>
+            <!-- END SIDEBAR -->
+            <!-- BEGIN CONTENT -->
+            <div class="page-content-wrapper">
+                <!-- BEGIN CONTENT BODY -->
+                @RenderBody()
+
+                <!-- END CONTENT BODY -->
+            </div>
+            <!-- END CONTENT -->
+
+        </div>
+        <!-- END CONTAINER -->
+        <!-- BEGIN FOOTER -->
+        <div class="page-footer">
+            <div class="page-footer-inner">
+                &copy; @DateTime.Now.Year - GAM Chartered University College
+
+            </div>
+            <div class="scroll-to-top">
+                <i class="icon-arrow-up"></i>
+            </div>
+        </div>
+        <!-- END FOOTER -->
+    </div>
+
+    <!--[if lt IE 9]>
+     @Scripts.Render("~/bundles/IEScript")
+     <![endif]-->
+    @*<script src="~/Scripts/jquery.js"></script>*@
+    @Scripts.Render("~/bundles/core/js")
+    @Scripts.Render("~/bundles/page-plugin/js")
+    @Scripts.Render("~/bundles/global/js")
+    @Scripts.Render("~/bundles/page-scripts/js")
+    @Scripts.Render("~/bundles/layout/js")
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

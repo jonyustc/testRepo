@@ -1,0 +1,199 @@
+﻿@model GAMCUC.ViewModel.StudentDetailsViewModel
+
+@{
+    ViewBag.Title = "StudentDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-content">
+    <!-- BEGIN PAGE HEADER-->
+    <!-- BEGIN PAGE BAR -->
+    <div class="page-bar">
+        <h2>Student Details</h2>
+
+    </div>
+    <div class="portlet light bordered">
+        <div class="portlet-body form">
+            <!-- BEGIN FORM-->
+            <div class="form-horizontal" role="form">
+                <div class="form-body">
+
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="form-section">
+                                    Person Info
+                                    <span class="pull-right">
+                                        @Html.ActionLink("Edit", "PersonalInfoEdit", new { id = Model.Id }, new { @class = "btn red btn-outline sbold" })
+                                        @Html.ActionLink("Print", "StudentFullProfilePrint", new { id = Model.Id }, new { @class = "btn bg-slate-700", target = "_blank" })
+                                    </span>
+                                </h3>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Name:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> @Model.StdNameEnglish </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Father Name:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> @Model.StdFatherNameEnglish </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+                    <!--/row-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Gender:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> @Model.Gender </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Date of Birth:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> @Model.DateOfBirth </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+                    <!--/row-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Email:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> @Model.Email </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Phone:</label>
+                                <div class="col-md-9">
+                                    <p class="form-control-static"> @Model.Phone </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Present Address:</label>
+                                <div class="col-md-8">
+                                    <p class="form-control-static"> @Model.PresentAddress </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-4">Permanent Address:</label>
+                                <div class="col-md-8">
+                                    <p class="form-control-static"> @Model.PermanentAddress </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="form-section">
+                                    Academic Records
+                                    <span class="pull-right">
+                                        @Html.ActionLink("Edit", "AcademicRecordEdit", new { id = Model.Id }, new { @class = "btn red btn-outline sbold" })
+                                    </span>
+                                </h3>
+
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-striped table-bordered table-hover" id="datatable_reviews">
+                        <thead>
+                            <tr role="row" class="heading">
+                                <th width="10%"> Name of Exam </th>
+                                <th width="10%"> Group/Subject </th>
+                                <th width="10%"> Board/University </th>
+                                <th width="10%"> Year of Passing </th>
+                                <th width="10%"> Roll of Exam </th>
+                                <th width="10%"> Class/Division Grade </th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model.AcademicRecords)
+                            {
+                            <tr role="row" class="filter">
+                                <td>
+                                    @item.ExamName
+                                </td>
+                                <td>
+                                    @item.GroupName
+                                </td>
+
+                                <td>
+                                    @item.BoardName
+                                </td>
+
+                                <td>
+                                    @item.YearOfPassing
+                                </td>
+                                <td>
+                                    @item.RollOfExam
+                                </td>
+                                <td>
+                                    @item.Grade
+
+                                </td>
+                            </tr>
+                            }
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+            </div>
+            <!-- END FORM-->
+        </div>
+    </div>
+</div>
+
+@*<div class="modal fade" id="basicModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>*@
+
+
+
+
+
+
+

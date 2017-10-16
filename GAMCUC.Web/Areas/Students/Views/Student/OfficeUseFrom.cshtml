@@ -1,0 +1,133 @@
+﻿@model GAMCUC.ViewModel.InitialPaymentDetailViewModel
+@{
+    ViewBag.Title = "OfficeUseFrom";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-content">
+    <!-- BEGIN PAGE HEADER-->
+    <!-- BEGIN PAGE BAR -->
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a href="index.html">Student</a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <span>Admission</span>
+            </li>
+        </ul>
+
+    </div>
+    <!-- END PAGE BAR -->
+    <!-- BEGIN PAGE TITLE-->
+    <h1 class="page-title">
+        Student Admission Form
+
+    </h1>
+    <!-- END PAGE TITLE-->
+    <!-- END PAGE HEADER-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                </div>
+                <div class="portlet-body form">
+                    @using (Html.BeginForm("OfficeUseFrom", "Student", new { area = "Students" }, FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-horizontal">
+
+                            <div class="form-body">
+
+                                <h3 class="block">Office use only</h3>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        Total Course Fees
+                                    </label>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.CourseFee, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                
+
+                                @*<div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        ID No
+                                    </label>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.StdID, new { @class = "form-control",@id="myNumber" })
+                                    </div>
+                                </div>*@
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        Registration No
+                                    </label>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.RegistrationNo, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        Exam Roll No
+                                    </label>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.ExamRollNo, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        Endorsement
+                                    </label>
+                                    <div class="col-md-4">
+                                        @Html.DropDownList("OriginalDocumentId", ViewBag.EndorsementList as IEnumerable<SelectListItem>, new { @class = "mt-multiselect form-control form-filter input-sm", multiple = "multiple", required = "required" })
+                                        @*@Html.ValidationMessageFor(model => model.OriginalDocumentId, null, new { @class = "required" })*@
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <div class="row">
+                                    <div class="col-md-offset-3 col-md-9">
+                                        <input type="submit" id="Next" class="btn green button-submit" name="Next" value="Next" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+
+    <script type="text/javascript">
+        $('#OriginalDocumentId').multiselect({
+            includeSelectAllOption: true
+        });
+
+
+        $('#OriginalDocumentId').validate({
+            ignore: [],
+            rules: {
+                FacilityList: {
+                    required: true
+                }
+            },
+            messages: {
+                FacilityList: {
+                    required: 'One selection required.'
+                }
+            }
+        });
+
+    </script>
+
+@Scripts.Render("~/bundles/jqueryval")
+}

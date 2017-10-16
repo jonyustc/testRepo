@@ -1,0 +1,9 @@
+D:\.net Preject\GAMCUC\GAMCUC.ViewModel\bin\Release\GAMCUC.ViewModel.dll.config
+D:\.net Preject\GAMCUC\GAMCUC.ViewModel\bin\Release\GAMCUC.ViewModel.dll
+D:\.net Preject\GAMCUC\GAMCUC.ViewModel\bin\Release\GAMCUC.ViewModel.pdb
+D:\.net Preject\GAMCUC\GAMCUC.ViewModel\bin\Release\EntityFramework.dll
+D:\.net Preject\GAMCUC\GAMCUC.ViewModel\bin\Release\EntityFramework.SqlServer.dll
+D:\.net Preject\GAMCUC\GAMCUC.ViewModel\bin\Release\EntityFramework.xml
+D:\.net Preject\GAMCUC\GAMCUC.ViewModel\bin\Release\EntityFramework.SqlServer.xml
+D:\.net Preject\GAMCUC\GAMCUC.ViewModel\obj\Release\GAMCUC.ViewModel.dll
+D:\.net Preject\GAMCUC\GAMCUC.ViewModel\obj\Release\GAMCUC.ViewModel.pdb

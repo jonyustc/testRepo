@@ -1,0 +1,192 @@
+﻿
+
+.btn-group .dropdown-menu {
+    min-width: 125px;
+}
+
+span.error {
+    display: block;
+    visibility: hidden;
+    color: red;
+    font-size: 90%;
+}
+
+.required {
+    color: #e02222;
+    font-size: 12px;
+    padding-left: 2px;
+}
+
+
+/*css for table*/
+.container td {
+    vertical-align: top;
+}
+
+.tablecontainer table {
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 1px solid #BFAEAE;
+    border-right: 1px solid #BFAEAE;
+}
+
+.payment {
+}
+
+.tablecontainer .table {
+    margin-bottom: 0 !important;
+}
+
+.tablecontainer th {
+    border-bottom: 2px solid #BFAEAE !important;
+}
+
+.tablecontainer th, .tablecontainer td {
+    text-align: left;
+    border-left: 1px solid #BFAEAE;
+    padding: 5px;
+    border-bottom: 1px solid #BFAEAE;
+}
+
+.ui-widget {
+    font-size: 12px !important;
+}
+
+.invoice .invoice-logo {
+    margin-bottom: 0;
+}
+
+.page-content-white .page-title {
+    margin: 10px 0;
+    font-size: 24px;
+}
+
+hr {
+    margin: 0;
+}
+
+.label-success-outline {
+    font-size: 15px;
+    color: #006699;
+    background-color: transparent;
+    border: 2px solid #006699;
+    font-weight: bold;
+}
+
+label.error {
+    color: red;
+    font-style: italic;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.modal {
+    display: block !important; /* I added this to see the modal, you don't need this */
+}
+
+/* Important part */
+.modal-dialog {
+    overflow-y: initial !important;
+}
+
+.OrgDoc {
+    display: inline-block !important;
+}
+
+/*Begin Invoice part */
+
+.invoice {
+    margin: 0 auto;
+    border: 2px solid;
+    width: 794px;
+}
+
+.duplicate {
+    display: none;
+}
+
+.invoice-heading {
+    text-align: center;
+}
+
+    .invoice-heading h2, .invoice-heading p, .std-info p, .invoice table, .invoice .invoice-block .amounts {
+        margin: 0;
+    }
+
+    .invoice-heading h2 {
+        font-size: 24px;
+        font-weight: 500;
+        margin-top: 2px;
+    }
+
+    .invoice-heading p {
+        font-size: 11px;
+        font-weight: 700;
+    }
+
+.invoice-sl {
+    display: inline;
+    position: absolute;
+    top: 45px;
+    background: #ddd;
+    padding: 2px 45px 2px 5px;
+}
+
+.invoice-date {
+    display: inline;
+    position: relative;
+    top: 70px;
+    background: #ddd;
+    padding: 2px 57px 2px 5px;
+}
+
+.invoice-stdName, .std-info {
+    background: #ddd;
+    padding: 2px 10px 2px 5px;
+    margin: 0 0px 5px 0;
+}
+
+.invoice table > tbody > tr > td, .invoice .table > thead > tr > th {
+    padding: 1px 8px;
+}
+
+.authorize-student {
+    text-align: center;
+    border-top: 1px solid #000;
+    margin-top: 60px;
+    font-weight: bold;
+    float: left;
+    width: 25%;
+    margin-left: 20px;
+    margin-bottom: 40px;
+}
+
+.authorize {
+    text-align: center;
+    border-top: 1px solid #000;
+    margin-top: 60px;
+    font-weight: bold;
+    float: right;
+    width: 30%;
+    margin-right: 20px;
+    margin-bottom: 40px;
+}
+
+.invoice .invoice-block {
+    position: relative;
+}
+
+.printed-by {
+    text-align: left;
+    margin: 0 0px 5px 12px;
+    padding: 0;
+    /* width: 63%; */
+    position: absolute;
+    font-size: 12px;
+    left: 10px;
+    top: 160px;
+}
+
+
+
+/* End Invoice part */

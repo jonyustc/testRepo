@@ -1,0 +1,1606 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GaMCucDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AcademicRecords">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExamId" Type="int" />
+          <Property Name="GroupId" Type="int" />
+          <Property Name="BoardId" Type="int" />
+          <Property Name="YearOfPassing" Type="int" />
+          <Property Name="RollOfExam" Type="nvarchar" MaxLength="20" />
+          <Property Name="Grade" Type="nvarchar" MaxLength="10" />
+          <Property Name="StudentId" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="AcademicSessions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Session" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="AcrBoard">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BoardName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="AcrExam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExamName" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="AcrGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Administrators">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ApplicationUserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BankName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Branch" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseName" Type="nvarchar" MaxLength="20" />
+          <Property Name="CourseFee" Type="decimal" Precision="16" Scale="2" />
+        </EntityType>
+        <EntityType Name="Guardians">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Occupation" Type="nvarchar" MaxLength="10" />
+          <Property Name="Relation" Type="nvarchar" MaxLength="10" />
+          <Property Name="Address" Type="nvarchar" MaxLength="30" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" />
+          <Property Name="StudentId" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="InitialPaymentDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseId" Type="int" />
+          <Property Name="CourseFee" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="StudentId" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Months">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MonthName" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="OriginalDocuments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DocumentName" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="PaymentDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentTypeID" Type="int" />
+          <Property Name="Fees" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="PayAmount" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="PaymentsId" Type="uniqueidentifier" />
+          <Property Name="PayMonth" Type="int" />
+        </EntityType>
+        <EntityType Name="PaymentMethod">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MethodName" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Payments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="AutoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="InvoiceNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="StudentId" Type="uniqueidentifier" />
+          <Property Name="GrandTotal" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="Discount" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="PaidAmount" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="Due" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="PaymentDate" Type="datetime" />
+          <Property Name="PaymentMethodId" Type="int" />
+          <Property Name="BankId" Type="int" />
+          <Property Name="CheckNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="CheckDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PaymentSchedule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Schedule" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="PaymentTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentType" Type="nvarchar" MaxLength="20" />
+          <Property Name="Amount" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Semester">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SemesterName" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="StudentOriginalDocuments">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="StudentId" />
+            <PropertyRef Name="OriginalDocumentId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OriginalDocumentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="StdID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StdNameBangla" Type="nvarchar" MaxLength="20" />
+          <Property Name="StdNameEnglish" Type="nvarchar" MaxLength="20" />
+          <Property Name="StdFatherNameBangla" Type="nvarchar" MaxLength="20" />
+          <Property Name="StdFatherNameEnglish" Type="nvarchar" MaxLength="20" />
+          <Property Name="StdMotherNameBangla" Type="nvarchar" MaxLength="20" />
+          <Property Name="StdMotherNameEnglish" Type="nvarchar" MaxLength="20" />
+          <Property Name="PermanentAddress" Type="nvarchar" MaxLength="150" />
+          <Property Name="PresentAddress" Type="nvarchar" MaxLength="150" />
+          <Property Name="Picture" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateOfBirth" Type="datetime" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="20" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="AdmissionDate" Type="date" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="Religion" Type="nvarchar" MaxLength="15" />
+          <Property Name="Nationality" Type="nvarchar" MaxLength="15" />
+          <Property Name="RegistrationNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="ExamRollNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="IsSuspended" Type="bit" />
+          <Property Name="SuspendedDesc" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="FormNo" Type="int" Nullable="false" />
+          <Property Name="AcademicSessionId" Type="uniqueidentifier" />
+          <Property Name="CourseId" Type="int" />
+          <Property Name="SemesterId" Type="int" />
+        </EntityType>
+        <Association Name="FK_AcademicRecords_AcrBoard">
+          <End Role="AcrBoard" Type="Self.AcrBoard" Multiplicity="0..1" />
+          <End Role="AcademicRecords" Type="Self.AcademicRecords" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcrBoard">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AcademicRecords">
+              <PropertyRef Name="BoardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AcademicRecords_AcrExam">
+          <End Role="AcrExam" Type="Self.AcrExam" Multiplicity="0..1" />
+          <End Role="AcademicRecords" Type="Self.AcademicRecords" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcrExam">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AcademicRecords">
+              <PropertyRef Name="ExamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AcademicRecords_AcrGroup">
+          <End Role="AcrGroup" Type="Self.AcrGroup" Multiplicity="0..1" />
+          <End Role="AcademicRecords" Type="Self.AcademicRecords" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcrGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AcademicRecords">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AcademicRecords_Students">
+          <End Role="Students" Type="Self.Students" Multiplicity="0..1" />
+          <End Role="AcademicRecords" Type="Self.AcademicRecords" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AcademicRecords">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Administrators_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Administrators" Type="Self.Administrators" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Administrators">
+              <PropertyRef Name="ApplicationUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Guardians_Students">
+          <End Role="Students" Type="Self.Students" Multiplicity="0..1" />
+          <End Role="Guardians" Type="Self.Guardians" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Guardians">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InitialPaymentDetails_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="InitialPaymentDetails" Type="Self.InitialPaymentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InitialPaymentDetails">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InitialPaymentDetails_Students">
+          <End Role="Students" Type="Self.Students" Multiplicity="0..1" />
+          <End Role="InitialPaymentDetails" Type="Self.InitialPaymentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InitialPaymentDetails">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentDetails_Payments">
+          <End Role="Payments" Type="Self.Payments" Multiplicity="0..1" />
+          <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="PaymentsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentDetails_PaymentTypes">
+          <End Role="PaymentTypes" Type="Self.PaymentTypes" Multiplicity="0..1" />
+          <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="PaymentTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payments_PaymentMethod">
+          <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="0..1" />
+          <End Role="Payments" Type="Self.Payments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethod">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Payments">
+              <PropertyRef Name="PaymentMethodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payments_Students">
+          <End Role="Students" Type="Self.Students" Multiplicity="0..1" />
+          <End Role="Payments" Type="Self.Payments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Payments">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentOriginalDocuments_OriginalDocuments">
+          <End Role="OriginalDocuments" Type="Self.OriginalDocuments" Multiplicity="1" />
+          <End Role="StudentOriginalDocuments" Type="Self.StudentOriginalDocuments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OriginalDocuments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentOriginalDocuments">
+              <PropertyRef Name="OriginalDocumentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentOriginalDocuments_Students">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="StudentOriginalDocuments" Type="Self.StudentOriginalDocuments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentOriginalDocuments">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_AcademicSessions">
+          <End Role="AcademicSessions" Type="Self.AcademicSessions" Multiplicity="0..1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcademicSessions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="AcademicSessionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_Semester">
+          <End Role="Semester" Type="Self.Semester" Multiplicity="0..1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semester">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="SemesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GaMCucDbModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AcademicRecords" EntityType="Self.AcademicRecords" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AcademicSessions" EntityType="Self.AcademicSessions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AcrBoard" EntityType="Self.AcrBoard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AcrExam" EntityType="Self.AcrExam" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AcrGroup" EntityType="Self.AcrGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Administrators" EntityType="Self.Administrators" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Guardians" EntityType="Self.Guardians" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InitialPaymentDetails" EntityType="Self.InitialPaymentDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Months" EntityType="Self.Months" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OriginalDocuments" EntityType="Self.OriginalDocuments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentDetails" EntityType="Self.PaymentDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payments" EntityType="Self.Payments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentSchedule" EntityType="Self.PaymentSchedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentTypes" EntityType="Self.PaymentTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Semester" EntityType="Self.Semester" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentOriginalDocuments" EntityType="Self.StudentOriginalDocuments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AcademicRecords_AcrBoard" Association="Self.FK_AcademicRecords_AcrBoard">
+            <End Role="AcrBoard" EntitySet="AcrBoard" />
+            <End Role="AcademicRecords" EntitySet="AcademicRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AcademicRecords_AcrExam" Association="Self.FK_AcademicRecords_AcrExam">
+            <End Role="AcrExam" EntitySet="AcrExam" />
+            <End Role="AcademicRecords" EntitySet="AcademicRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AcademicRecords_AcrGroup" Association="Self.FK_AcademicRecords_AcrGroup">
+            <End Role="AcrGroup" EntitySet="AcrGroup" />
+            <End Role="AcademicRecords" EntitySet="AcademicRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AcademicRecords_Students" Association="Self.FK_AcademicRecords_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="AcademicRecords" EntitySet="AcademicRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Administrators_AspNetUsers" Association="Self.FK_Administrators_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Administrators" EntitySet="Administrators" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Guardians_Students" Association="Self.FK_Guardians_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Guardians" EntitySet="Guardians" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InitialPaymentDetails_Course" Association="Self.FK_InitialPaymentDetails_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="InitialPaymentDetails" EntitySet="InitialPaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InitialPaymentDetails_Students" Association="Self.FK_InitialPaymentDetails_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="InitialPaymentDetails" EntitySet="InitialPaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentDetails_Payments" Association="Self.FK_PaymentDetails_Payments">
+            <End Role="Payments" EntitySet="Payments" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentDetails_PaymentTypes" Association="Self.FK_PaymentDetails_PaymentTypes">
+            <End Role="PaymentTypes" EntitySet="PaymentTypes" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payments_PaymentMethod" Association="Self.FK_Payments_PaymentMethod">
+            <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+            <End Role="Payments" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payments_Students" Association="Self.FK_Payments_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Payments" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentOriginalDocuments_OriginalDocuments" Association="Self.FK_StudentOriginalDocuments_OriginalDocuments">
+            <End Role="OriginalDocuments" EntitySet="OriginalDocuments" />
+            <End Role="StudentOriginalDocuments" EntitySet="StudentOriginalDocuments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentOriginalDocuments_Students" Association="Self.FK_StudentOriginalDocuments_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="StudentOriginalDocuments" EntitySet="StudentOriginalDocuments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_AcademicSessions" Association="Self.FK_Students_AcademicSessions">
+            <End Role="AcademicSessions" EntitySet="AcademicSessions" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Course" Association="Self.FK_Students_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Semester" Association="Self.FK_Students_Semester">
+            <End Role="Semester" EntitySet="Semester" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GaMCucDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="GaMCucDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="GaMCucDbModel.C__MigrationHistory" />
+          <EntitySet Name="AcademicRecords" EntityType="GaMCucDbModel.AcademicRecord" />
+          <EntitySet Name="AcademicSessions" EntityType="GaMCucDbModel.AcademicSession" />
+          <EntitySet Name="AcrBoards" EntityType="GaMCucDbModel.AcrBoard" />
+          <EntitySet Name="AcrExams" EntityType="GaMCucDbModel.AcrExam" />
+          <EntitySet Name="AcrGroups" EntityType="GaMCucDbModel.AcrGroup" />
+          <EntitySet Name="Administrators" EntityType="GaMCucDbModel.Administrator" />
+          <EntitySet Name="AspNetRoles" EntityType="GaMCucDbModel.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="GaMCucDbModel.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="GaMCucDbModel.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="GaMCucDbModel.AspNetUser" />
+          <EntitySet Name="Banks" EntityType="GaMCucDbModel.Bank" />
+          <EntitySet Name="Courses" EntityType="GaMCucDbModel.Course" />
+          <EntitySet Name="Guardians" EntityType="GaMCucDbModel.Guardian" />
+          <EntitySet Name="InitialPaymentDetails" EntityType="GaMCucDbModel.InitialPaymentDetail" />
+          <EntitySet Name="Months" EntityType="GaMCucDbModel.Month" />
+          <EntitySet Name="OriginalDocuments" EntityType="GaMCucDbModel.OriginalDocument" />
+          <EntitySet Name="PaymentDetails" EntityType="GaMCucDbModel.PaymentDetail" />
+          <EntitySet Name="PaymentMethods" EntityType="GaMCucDbModel.PaymentMethod" />
+          <EntitySet Name="Payments" EntityType="GaMCucDbModel.Payment" />
+          <EntitySet Name="PaymentSchedules" EntityType="GaMCucDbModel.PaymentSchedule" />
+          <EntitySet Name="PaymentTypes" EntityType="GaMCucDbModel.PaymentType" />
+          <EntitySet Name="Semesters" EntityType="GaMCucDbModel.Semester" />
+          <EntitySet Name="StudentOriginalDocuments" EntityType="GaMCucDbModel.StudentOriginalDocument" />
+          <EntitySet Name="Students" EntityType="GaMCucDbModel.Student" />
+          <AssociationSet Name="FK_AcademicRecords_AcrBoard" Association="GaMCucDbModel.FK_AcademicRecords_AcrBoard">
+            <End Role="AcrBoard" EntitySet="AcrBoards" />
+            <End Role="AcademicRecord" EntitySet="AcademicRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AcademicRecords_AcrExam" Association="GaMCucDbModel.FK_AcademicRecords_AcrExam">
+            <End Role="AcrExam" EntitySet="AcrExams" />
+            <End Role="AcademicRecord" EntitySet="AcademicRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AcademicRecords_AcrGroup" Association="GaMCucDbModel.FK_AcademicRecords_AcrGroup">
+            <End Role="AcrGroup" EntitySet="AcrGroups" />
+            <End Role="AcademicRecord" EntitySet="AcademicRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AcademicRecords_Students" Association="GaMCucDbModel.FK_AcademicRecords_Students">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="AcademicRecord" EntitySet="AcademicRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_AcademicSessions" Association="GaMCucDbModel.FK_Students_AcademicSessions">
+            <End Role="AcademicSession" EntitySet="AcademicSessions" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Administrators_AspNetUsers" Association="GaMCucDbModel.FK_Administrators_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="Administrator" EntitySet="Administrators" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="GaMCucDbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="GaMCucDbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InitialPaymentDetails_Course" Association="GaMCucDbModel.FK_InitialPaymentDetails_Course">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="InitialPaymentDetail" EntitySet="InitialPaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Course" Association="GaMCucDbModel.FK_Students_Course">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Guardians_Students" Association="GaMCucDbModel.FK_Guardians_Students">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Guardian" EntitySet="Guardians" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InitialPaymentDetails_Students" Association="GaMCucDbModel.FK_InitialPaymentDetails_Students">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="InitialPaymentDetail" EntitySet="InitialPaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentOriginalDocuments_OriginalDocuments" Association="GaMCucDbModel.FK_StudentOriginalDocuments_OriginalDocuments">
+            <End Role="OriginalDocument" EntitySet="OriginalDocuments" />
+            <End Role="StudentOriginalDocument" EntitySet="StudentOriginalDocuments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentDetails_Payments" Association="GaMCucDbModel.FK_PaymentDetails_Payments">
+            <End Role="Payment" EntitySet="Payments" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentDetails_PaymentTypes" Association="GaMCucDbModel.FK_PaymentDetails_PaymentTypes">
+            <End Role="PaymentType" EntitySet="PaymentTypes" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payments_PaymentMethod" Association="GaMCucDbModel.FK_Payments_PaymentMethod">
+            <End Role="PaymentMethod" EntitySet="PaymentMethods" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payments_Students" Association="GaMCucDbModel.FK_Payments_Students">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Semester" Association="GaMCucDbModel.FK_Students_Semester">
+            <End Role="Semester" EntitySet="Semesters" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentOriginalDocuments_Students" Association="GaMCucDbModel.FK_StudentOriginalDocuments_Students">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="StudentOriginalDocument" EntitySet="StudentOriginalDocuments" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="GaMCucDbModel.AspNetUserRoles">
+            <End Role="AspNetRole" EntitySet="AspNetRoles" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AcademicRecord">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExamId" Type="Int32" />
+          <Property Name="GroupId" Type="Int32" />
+          <Property Name="BoardId" Type="Int32" />
+          <Property Name="YearOfPassing" Type="Int32" />
+          <Property Name="RollOfExam" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Grade" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="StudentId" Type="Guid" />
+          <NavigationProperty Name="AcrBoard" Relationship="GaMCucDbModel.FK_AcademicRecords_AcrBoard" FromRole="AcademicRecord" ToRole="AcrBoard" />
+          <NavigationProperty Name="AcrExam" Relationship="GaMCucDbModel.FK_AcademicRecords_AcrExam" FromRole="AcademicRecord" ToRole="AcrExam" />
+          <NavigationProperty Name="AcrGroup" Relationship="GaMCucDbModel.FK_AcademicRecords_AcrGroup" FromRole="AcademicRecord" ToRole="AcrGroup" />
+          <NavigationProperty Name="Student" Relationship="GaMCucDbModel.FK_AcademicRecords_Students" FromRole="AcademicRecord" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="AcademicSession">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Session" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Students" Relationship="GaMCucDbModel.FK_Students_AcademicSessions" FromRole="AcademicSession" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="AcrBoard">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BoardName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AcademicRecords" Relationship="GaMCucDbModel.FK_AcademicRecords_AcrBoard" FromRole="AcrBoard" ToRole="AcademicRecord" />
+        </EntityType>
+        <EntityType Name="AcrExam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExamName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AcademicRecords" Relationship="GaMCucDbModel.FK_AcademicRecords_AcrExam" FromRole="AcrExam" ToRole="AcademicRecord" />
+        </EntityType>
+        <EntityType Name="AcrGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AcademicRecords" Relationship="GaMCucDbModel.FK_AcademicRecords_AcrGroup" FromRole="AcrGroup" ToRole="AcademicRecord" />
+        </EntityType>
+        <EntityType Name="Administrator">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ApplicationUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="GaMCucDbModel.FK_Administrators_AspNetUsers" FromRole="Administrator" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="GaMCucDbModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="GaMCucDbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="GaMCucDbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Administrators" Relationship="GaMCucDbModel.FK_Administrators_AspNetUsers" FromRole="AspNetUser" ToRole="Administrator" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="GaMCucDbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="GaMCucDbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+          <NavigationProperty Name="AspNetRoles" Relationship="GaMCucDbModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+        </EntityType>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CourseFee" Type="Decimal" Precision="16" Scale="2" />
+          <NavigationProperty Name="InitialPaymentDetails" Relationship="GaMCucDbModel.FK_InitialPaymentDetails_Course" FromRole="Course" ToRole="InitialPaymentDetail" />
+          <NavigationProperty Name="Students" Relationship="GaMCucDbModel.FK_Students_Course" FromRole="Course" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Guardian">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Occupation" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Relation" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="StudentId" Type="Guid" />
+          <NavigationProperty Name="Student" Relationship="GaMCucDbModel.FK_Guardians_Students" FromRole="Guardian" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="InitialPaymentDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseId" Type="Int32" />
+          <Property Name="CourseFee" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="StudentId" Type="Guid" />
+          <NavigationProperty Name="Course" Relationship="GaMCucDbModel.FK_InitialPaymentDetails_Course" FromRole="InitialPaymentDetail" ToRole="Course" />
+          <NavigationProperty Name="Student" Relationship="GaMCucDbModel.FK_InitialPaymentDetails_Students" FromRole="InitialPaymentDetail" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Month">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MonthName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="OriginalDocument">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DocumentName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="StudentOriginalDocuments" Relationship="GaMCucDbModel.FK_StudentOriginalDocuments_OriginalDocuments" FromRole="OriginalDocument" ToRole="StudentOriginalDocument" />
+        </EntityType>
+        <EntityType Name="PaymentDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentTypeID" Type="Int32" />
+          <Property Name="Fees" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="PayAmount" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="PaymentsId" Type="Guid" />
+          <Property Name="PayMonth" Type="Int32" />
+          <NavigationProperty Name="Payment" Relationship="GaMCucDbModel.FK_PaymentDetails_Payments" FromRole="PaymentDetail" ToRole="Payment" />
+          <NavigationProperty Name="PaymentType" Relationship="GaMCucDbModel.FK_PaymentDetails_PaymentTypes" FromRole="PaymentDetail" ToRole="PaymentType" />
+        </EntityType>
+        <EntityType Name="PaymentMethod">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MethodName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Payments" Relationship="GaMCucDbModel.FK_Payments_PaymentMethod" FromRole="PaymentMethod" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="AutoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="InvoiceNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentId" Type="Guid" />
+          <Property Name="GrandTotal" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="Discount" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="PaidAmount" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="Due" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+          <Property Name="PaymentMethodId" Type="Int32" />
+          <Property Name="BankId" Type="Int32" />
+          <Property Name="CheckNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CheckDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="PaymentDetails" Relationship="GaMCucDbModel.FK_PaymentDetails_Payments" FromRole="Payment" ToRole="PaymentDetail" />
+          <NavigationProperty Name="PaymentMethod" Relationship="GaMCucDbModel.FK_Payments_PaymentMethod" FromRole="Payment" ToRole="PaymentMethod" />
+          <NavigationProperty Name="Student" Relationship="GaMCucDbModel.FK_Payments_Students" FromRole="Payment" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="PaymentSchedule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Schedule" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PaymentType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentType1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="PaymentDetails" Relationship="GaMCucDbModel.FK_PaymentDetails_PaymentTypes" FromRole="PaymentType" ToRole="PaymentDetail" />
+        </EntityType>
+        <EntityType Name="Semester">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SemesterName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Students" Relationship="GaMCucDbModel.FK_Students_Semester" FromRole="Semester" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="StudentOriginalDocument">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="StudentId" />
+            <PropertyRef Name="OriginalDocumentId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="Guid" Nullable="false" />
+          <Property Name="OriginalDocumentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OriginalDocument" Relationship="GaMCucDbModel.FK_StudentOriginalDocuments_OriginalDocuments" FromRole="StudentOriginalDocument" ToRole="OriginalDocument" />
+          <NavigationProperty Name="Student" Relationship="GaMCucDbModel.FK_StudentOriginalDocuments_Students" FromRole="StudentOriginalDocument" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="StdID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StdNameBangla" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StdNameEnglish" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StdFatherNameBangla" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StdFatherNameEnglish" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StdMotherNameBangla" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StdMotherNameEnglish" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PermanentAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PresentAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Picture" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AdmissionDate" Type="DateTime" Precision="0" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="Religion" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Nationality" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="RegistrationNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ExamRollNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IsSuspended" Type="Boolean" />
+          <Property Name="SuspendedDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="FormNo" Type="Int32" Nullable="false" />
+          <Property Name="AcademicSessionId" Type="Guid" />
+          <Property Name="CourseId" Type="Int32" />
+          <Property Name="SemesterId" Type="Int32" />
+          <NavigationProperty Name="AcademicRecords" Relationship="GaMCucDbModel.FK_AcademicRecords_Students" FromRole="Student" ToRole="AcademicRecord" />
+          <NavigationProperty Name="AcademicSession" Relationship="GaMCucDbModel.FK_Students_AcademicSessions" FromRole="Student" ToRole="AcademicSession" />
+          <NavigationProperty Name="Course" Relationship="GaMCucDbModel.FK_Students_Course" FromRole="Student" ToRole="Course" />
+          <NavigationProperty Name="Guardians" Relationship="GaMCucDbModel.FK_Guardians_Students" FromRole="Student" ToRole="Guardian" />
+          <NavigationProperty Name="InitialPaymentDetails" Relationship="GaMCucDbModel.FK_InitialPaymentDetails_Students" FromRole="Student" ToRole="InitialPaymentDetail" />
+          <NavigationProperty Name="Payments" Relationship="GaMCucDbModel.FK_Payments_Students" FromRole="Student" ToRole="Payment" />
+          <NavigationProperty Name="Semester" Relationship="GaMCucDbModel.FK_Students_Semester" FromRole="Student" ToRole="Semester" />
+          <NavigationProperty Name="StudentOriginalDocuments" Relationship="GaMCucDbModel.FK_StudentOriginalDocuments_Students" FromRole="Student" ToRole="StudentOriginalDocument" />
+        </EntityType>
+        <Association Name="FK_AcademicRecords_AcrBoard">
+          <End Type="GaMCucDbModel.AcrBoard" Role="AcrBoard" Multiplicity="0..1" />
+          <End Type="GaMCucDbModel.AcademicRecord" Role="AcademicRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcrBoard">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AcademicRecord">
+              <PropertyRef Name="BoardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AcademicRecords_AcrExam">
+          <End Type="GaMCucDbModel.AcrExam" Role="AcrExam" Multiplicity="0..1" />
+          <End Type="GaMCucDbModel.AcademicRecord" Role="AcademicRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcrExam">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AcademicRecord">
+              <PropertyRef Name="ExamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AcademicRecords_AcrGroup">
+          <End Type="GaMCucDbModel.AcrGroup" Role="AcrGroup" Multiplicity="0..1" />
+          <End Type="GaMCucDbModel.AcademicRecord" Role="AcademicRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcrGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AcademicRecord">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AcademicRecords_Students">
+          <End Type="GaMCucDbModel.Student" Role="Student" Multiplicity="0..1" />
+          <End Type="GaMCucDbModel.AcademicRecord" Role="AcademicRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AcademicRecord">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_AcademicSessions">
+          <End Type="GaMCucDbModel.AcademicSession" Role="AcademicSession" Multiplicity="0..1" />
+          <End Type="GaMCucDbModel.Student" Role="Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcademicSession">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="AcademicSessionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Administrators_AspNetUsers">
+          <End Type="GaMCucDbModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="GaMCucDbModel.Administrator" Role="Administrator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Administrator">
+              <PropertyRef Name="ApplicationUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="GaMCucDbModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="GaMCucDbModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaim">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="GaMCucDbModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="GaMCucDbModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogin">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InitialPaymentDetails_Course">
+          <End Type="GaMCucDbModel.Course" Role="Course" Multiplicity="0..1" />
+          <End Type="GaMCucDbModel.InitialPaymentDetail" Role="InitialPaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InitialPaymentDetail">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_Course">
+          <End Type="GaMCucDbModel.Course" Role="Course" Multiplicity="0..1" />
+          <End Type="GaMCucDbModel.Student" Role="Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Guardians_Students">
+          <End Type="GaMCucDbModel.Student" Role="Student" Multiplicity="0..1" />
+          <End Type="GaMCucDbModel.Guardian" Role="Guardian" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Guardian">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InitialPaymentDetails_Students">
+          <End Type="GaMCucDbModel.Student" Role="Student" Multiplicity="0..1" />
+          <End Type="GaMCucDbModel.InitialPaymentDetail" Role="InitialPaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InitialPaymentDetail">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentOriginalDocuments_OriginalDocuments">
+          <End Type="GaMCucDbModel.OriginalDocument" Role="OriginalDocument" Multiplicity="1" />
+          <End Type="GaMCucDbModel.StudentOriginalDocument" Role="StudentOriginalDocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OriginalDocument">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentOriginalDocument">
+              <PropertyRef Name="OriginalDocumentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentDetails_Payments">
+          <End Type="GaMCucDbModel.Payment" Role="Payment" Multiplicity="0..1" />
+          <End Type="GaMCucDbModel.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PaymentDetail">
+              <PropertyRef Name="PaymentsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentDetails_PaymentTypes">
+          <End Type="GaMCucDbModel.PaymentType" Role="PaymentType" Multiplicity="0..1" />
+          <End Type="GaMCucDbModel.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PaymentDetail">
+              <PropertyRef Name="PaymentTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payments_PaymentMethod">
+          <End Type="GaMCucDbModel.PaymentMethod" Role="PaymentMethod" Multiplicity="0..1" />
+          <End Type="GaMCucDbModel.Payment" Role="Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethod">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="PaymentMethodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payments_Students">
+          <End Type="GaMCucDbModel.Student" Role="Student" Multiplicity="0..1" />
+          <End Type="GaMCucDbModel.Payment" Role="Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_Semester">
+          <End Type="GaMCucDbModel.Semester" Role="Semester" Multiplicity="0..1" />
+          <End Type="GaMCucDbModel.Student" Role="Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Semester">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="SemesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentOriginalDocuments_Students">
+          <End Type="GaMCucDbModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="GaMCucDbModel.StudentOriginalDocument" Role="StudentOriginalDocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StudentOriginalDocument">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="GaMCucDbModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+          <End Type="GaMCucDbModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GaMCucDbModelStoreContainer" CdmEntityContainer="GaMCucDbEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="GaMCucDbModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AcademicRecords">
+            <EntityTypeMapping TypeName="GaMCucDbModel.AcademicRecord">
+              <MappingFragment StoreEntitySet="AcademicRecords">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="RollOfExam" ColumnName="RollOfExam" />
+                <ScalarProperty Name="YearOfPassing" ColumnName="YearOfPassing" />
+                <ScalarProperty Name="BoardId" ColumnName="BoardId" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="ExamId" ColumnName="ExamId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AcademicSessions">
+            <EntityTypeMapping TypeName="GaMCucDbModel.AcademicSession">
+              <MappingFragment StoreEntitySet="AcademicSessions">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Session" ColumnName="Session" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AcrBoards">
+            <EntityTypeMapping TypeName="GaMCucDbModel.AcrBoard">
+              <MappingFragment StoreEntitySet="AcrBoard">
+                <ScalarProperty Name="BoardName" ColumnName="BoardName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AcrExams">
+            <EntityTypeMapping TypeName="GaMCucDbModel.AcrExam">
+              <MappingFragment StoreEntitySet="AcrExam">
+                <ScalarProperty Name="ExamName" ColumnName="ExamName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AcrGroups">
+            <EntityTypeMapping TypeName="GaMCucDbModel.AcrGroup">
+              <MappingFragment StoreEntitySet="AcrGroup">
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Administrators">
+            <EntityTypeMapping TypeName="GaMCucDbModel.Administrator">
+              <MappingFragment StoreEntitySet="Administrators">
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="ApplicationUserId" ColumnName="ApplicationUserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="GaMCucDbModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="GaMCucDbModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="GaMCucDbModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="GaMCucDbModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Banks">
+            <EntityTypeMapping TypeName="GaMCucDbModel.Bank">
+              <MappingFragment StoreEntitySet="Bank">
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="GaMCucDbModel.Course">
+              <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="CourseFee" ColumnName="CourseFee" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Guardians">
+            <EntityTypeMapping TypeName="GaMCucDbModel.Guardian">
+              <MappingFragment StoreEntitySet="Guardians">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Relation" ColumnName="Relation" />
+                <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InitialPaymentDetails">
+            <EntityTypeMapping TypeName="GaMCucDbModel.InitialPaymentDetail">
+              <MappingFragment StoreEntitySet="InitialPaymentDetails">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="CourseFee" ColumnName="CourseFee" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Months">
+            <EntityTypeMapping TypeName="GaMCucDbModel.Month">
+              <MappingFragment StoreEntitySet="Months">
+                <ScalarProperty Name="MonthName" ColumnName="MonthName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OriginalDocuments">
+            <EntityTypeMapping TypeName="GaMCucDbModel.OriginalDocument">
+              <MappingFragment StoreEntitySet="OriginalDocuments">
+                <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentDetails">
+            <EntityTypeMapping TypeName="GaMCucDbModel.PaymentDetail">
+              <MappingFragment StoreEntitySet="PaymentDetails">
+                <ScalarProperty Name="PayMonth" ColumnName="PayMonth" />
+                <ScalarProperty Name="PaymentsId" ColumnName="PaymentsId" />
+                <ScalarProperty Name="PayAmount" ColumnName="PayAmount" />
+                <ScalarProperty Name="Fees" ColumnName="Fees" />
+                <ScalarProperty Name="PaymentTypeID" ColumnName="PaymentTypeID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentMethods">
+            <EntityTypeMapping TypeName="GaMCucDbModel.PaymentMethod">
+              <MappingFragment StoreEntitySet="PaymentMethod">
+                <ScalarProperty Name="MethodName" ColumnName="MethodName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="GaMCucDbModel.Payment">
+              <MappingFragment StoreEntitySet="Payments">
+                <ScalarProperty Name="CheckDate" ColumnName="CheckDate" />
+                <ScalarProperty Name="CheckNo" ColumnName="CheckNo" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="PaymentMethodId" ColumnName="PaymentMethodId" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="Due" ColumnName="Due" />
+                <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AutoId" ColumnName="AutoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentSchedules">
+            <EntityTypeMapping TypeName="GaMCucDbModel.PaymentSchedule">
+              <MappingFragment StoreEntitySet="PaymentSchedule">
+                <ScalarProperty Name="Schedule" ColumnName="Schedule" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentTypes">
+            <EntityTypeMapping TypeName="GaMCucDbModel.PaymentType">
+              <MappingFragment StoreEntitySet="PaymentTypes">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="PaymentType1" ColumnName="PaymentType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Semesters">
+            <EntityTypeMapping TypeName="GaMCucDbModel.Semester">
+              <MappingFragment StoreEntitySet="Semester">
+                <ScalarProperty Name="SemesterName" ColumnName="SemesterName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentOriginalDocuments">
+            <EntityTypeMapping TypeName="GaMCucDbModel.StudentOriginalDocument">
+              <MappingFragment StoreEntitySet="StudentOriginalDocuments">
+                <ScalarProperty Name="OriginalDocumentId" ColumnName="OriginalDocumentId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="GaMCucDbModel.Student">
+              <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="SemesterId" ColumnName="SemesterId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="AcademicSessionId" ColumnName="AcademicSessionId" />
+                <ScalarProperty Name="FormNo" ColumnName="FormNo" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SuspendedDesc" ColumnName="SuspendedDesc" />
+                <ScalarProperty Name="IsSuspended" ColumnName="IsSuspended" />
+                <ScalarProperty Name="ExamRollNo" ColumnName="ExamRollNo" />
+                <ScalarProperty Name="RegistrationNo" ColumnName="RegistrationNo" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="Religion" ColumnName="Religion" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="AdmissionDate" ColumnName="AdmissionDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="PresentAddress" ColumnName="PresentAddress" />
+                <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
+                <ScalarProperty Name="StdMotherNameEnglish" ColumnName="StdMotherNameEnglish" />
+                <ScalarProperty Name="StdMotherNameBangla" ColumnName="StdMotherNameBangla" />
+                <ScalarProperty Name="StdFatherNameEnglish" ColumnName="StdFatherNameEnglish" />
+                <ScalarProperty Name="StdFatherNameBangla" ColumnName="StdFatherNameBangla" />
+                <ScalarProperty Name="StdNameEnglish" ColumnName="StdNameEnglish" />
+                <ScalarProperty Name="StdNameBangla" ColumnName="StdNameBangla" />
+                <ScalarProperty Name="StdID" ColumnName="StdID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="GaMCucDbModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUser">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

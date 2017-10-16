@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "StdPaymentDetailsShow";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-content">
+    <div class="page-bar">
+        <h2 class="page-title">Payment History</h2>
+    </div>
+    <br />
+    <!-- BEGIN PAGE TITLE-->
+ 
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light bordered">
+
+                <div class="portlet-body">
+                    <div class="row">
+                        <h3 class="page-title">
+                            Student Profile
+                        </h3>
+                        @Html.Action("StudentDetailsForPayment", "Payment", new { StdId = TempData["std_id"], area = "Students" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="Partial"></div>
+    
+
+</div>
+
+
+
+@section scripts{
+
+    <script>
+
+    $(document).ready(function () {
+
+        $('#Partial').html("");
+        var std_id = '@TempData["std_id"]';
+            $.ajax({
+                type: "POST",
+                data: { stdId: std_id },
+               url: '@Url.Action("StdViewPayment", "Payment", new {area="Students" })',
+                success: function (result) {
+                    $('#Partial').html(result);
+                }
+            });
+
+    });
+
+    </script>
+
+}

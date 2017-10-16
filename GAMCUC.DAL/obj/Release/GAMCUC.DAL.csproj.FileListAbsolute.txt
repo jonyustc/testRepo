@@ -1,0 +1,17 @@
+D:\.net Preject\GAMCUC\GAMCUC.DAL\bin\Release\GAMCUC.DAL.dll.config
+D:\.net Preject\GAMCUC\GAMCUC.DAL\bin\Release\GAMCUC.DAL.dll
+D:\.net Preject\GAMCUC\GAMCUC.DAL\bin\Release\GAMCUC.DAL.pdb
+D:\.net Preject\GAMCUC\GAMCUC.DAL\bin\Release\EntityFramework.dll
+D:\.net Preject\GAMCUC\GAMCUC.DAL\bin\Release\EntityFramework.SqlServer.dll
+D:\.net Preject\GAMCUC\GAMCUC.DAL\bin\Release\GAMCUC.DataModel.dll
+D:\.net Preject\GAMCUC\GAMCUC.DAL\bin\Release\GAMCUC.IDAL.dll
+D:\.net Preject\GAMCUC\GAMCUC.DAL\bin\Release\GAMCUC.ViewModel.dll
+D:\.net Preject\GAMCUC\GAMCUC.DAL\bin\Release\VIT.DataLogicLayer.dll
+D:\.net Preject\GAMCUC\GAMCUC.DAL\bin\Release\GAMCUC.DataModel.pdb
+D:\.net Preject\GAMCUC\GAMCUC.DAL\bin\Release\GAMCUC.IDAL.pdb
+D:\.net Preject\GAMCUC\GAMCUC.DAL\bin\Release\GAMCUC.ViewModel.pdb
+D:\.net Preject\GAMCUC\GAMCUC.DAL\bin\Release\EntityFramework.xml
+D:\.net Preject\GAMCUC\GAMCUC.DAL\bin\Release\EntityFramework.SqlServer.xml
+D:\.net Preject\GAMCUC\GAMCUC.DAL\obj\Release\GAMCUC.DAL.csprojResolveAssemblyReference.cache
+D:\.net Preject\GAMCUC\GAMCUC.DAL\obj\Release\GAMCUC.DAL.dll
+D:\.net Preject\GAMCUC\GAMCUC.DAL\obj\Release\GAMCUC.DAL.pdb

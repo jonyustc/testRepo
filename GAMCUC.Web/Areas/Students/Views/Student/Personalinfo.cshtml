@@ -1,0 +1,326 @@
+﻿@model GAMCUC.ViewModel.StudentProfileViewModel
+@{
+    ViewBag.Title = "Admission";
+}
+
+<style>
+    #isSuspendedExplain {
+        display: none;
+    }
+</style>
+
+<div class="page-content">
+
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a href="index.html">Student</a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <span>Admission</span>
+            </li>
+        </ul>
+
+    </div>
+    <h1 class="page-title">
+        Student Admission
+    </h1>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light bordered">
+
+                <div class="portlet-body form">
+                    @using (Html.BeginForm("Personalinfo", "Student", new { area = "Students" }, FormMethod.Post, new
+                    {
+                        enctype = "multipart/form-data"
+                    }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-horizontal">
+
+                            <div class="form-body">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Attach Photo:</label>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.image, new { @class = "file-styled", type = "file", id = "text-box", onchange = "ShowImagePreview(this);" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Preview Photo:</label>
+                                    <div class="col-md-4">
+                                        <img src="@Url.Content("~/Content/")assets/images/placeholder-small.png" id="ImgPrv" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        Admission in
+                                        <span class="required"> * </span>
+                                    </label>
+                                    <div class="col-md-4">
+                                        @Html.DropDownList("CourseId", ViewBag.CourseList as IEnumerable<SelectListItem>, "Select", new { @class = "form-control form-filter input-sm" })
+                                        @Html.ValidationMessageFor(model => model.CourseId, null, new { @class = "required" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        Semester in
+                                        <span class="required"> * </span>
+                                    </label>
+                                    <div class="col-md-4">
+                                        @Html.DropDownList("SemesterId", ViewBag.SemesterList as IEnumerable<SelectListItem>, "Select", new { @class = "form-control form-filter input-sm" })
+                                        @Html.ValidationMessageFor(model => model.SemesterId, null, new { @class = "required" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        Academic Session
+                                        <span class="required"> * </span>
+                                    </label>
+                                    <div class="col-md-4">
+                                        @Html.DropDownList("AcademicSessionId", ViewBag.AcademicSessionList as IEnumerable<SelectListItem>, "Select", new { @class = "form-control form-filter input-sm" })
+                                        @Html.ValidationMessageFor(model => model.AcademicSessionId, null, new { @class = "required" })
+                                    </div>
+                                </div>
+
+                                @*<div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        Form No
+                                    </label>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.FormNo, new { @class = "form-control" })
+
+                                    </div>
+                                </div>*@
+
+                                <h3 class="block">Provide your Personal details</h3>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        Student Name Bangla
+                                        <span class="required"> * </span>
+                                    </label>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.StdNameBangla, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.StdNameBangla, null, new { @class = "required" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        English
+                                        <span class="required"> * </span>
+                                    </label>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.StdNameEnglish, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.StdNameEnglish, null, new { @class = "required" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        Father Name Bangla
+                                    </label>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.StdFatherNameBangla, new { @class = "form-control" })
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        English
+                                        <span class="required"> * </span>
+                                    </label>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.StdFatherNameEnglish, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.StdFatherNameEnglish, null, new { @class = "required" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        Mother Name Bangla
+                                    </label>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.StdMotherNameBangla, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        English
+                                    </label>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.StdMotherNameEnglish, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Date of Birth</label>
+                                    <div class="col-md-3">
+                                        @Html.TextBoxFor(model => model.DateOfBirth, new { @class = "form-control form-control-inline input-medium date-picker" })
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        Gender
+                                    </label>
+                                    <div class="col-md-4">
+                                        <div class="radio-list">
+                                            <label>
+                                                @Html.RadioButtonFor(model => model.Gender, "Male", new { id = "m" })
+                                                Male
+                                            </label>
+                                            <label>
+                                                @Html.RadioButtonFor(model => model.Gender, "Female", new { id = "f" })
+                                                Female
+                                            </label>
+                                        </div>
+                                        <div id="form_gender_error"> </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        Nationality
+                                    </label>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.Nationality, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        Religion
+                                    </label>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.Religion, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        Present Address
+                                    </label>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.PresentAddress, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        Phone No:(Personal)
+                                    </label>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        Permanent Address
+                                    </label>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.PermanentAddress, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">
+                                        Email
+                                    </label>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-7">Do you ever been suspended or expelled from any School/College/University--</label>
+                                    <div class="mt-radio-inline col-md-6 col-md-offset-3">
+                                        <label class="mt-radio">
+                                            @Html.RadioButtonFor(model => model.IsSuspended, false, new { id = "sn", @checked = "checked" })
+                                            No
+                                            <span></span>
+                                        </label>
+                                        <label class="mt-radio">
+                                            @Html.RadioButtonFor(model => model.IsSuspended, true, new { id = "sy" })
+                                            Yes
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" id="isSuspendedExplain">
+                                    <label class="control-label col-md-3">Yes then explain why</label>
+                                    <div class="col-md-4">
+                                        @Html.TextAreaFor(model => model.SuspendedDesc, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <div class="row">
+                                    <div class="col-md-offset-3 col-md-9">
+
+                                        <input type="submit" id="Next" class="btn green button-submit" name="Next" value="Next" />
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+    <script>
+
+        $(document).ready(function () {
+
+            $("#isSuspendedExplain").hide();
+
+            $("input[name='IsSuspended']").change(function () {
+                $("#isSuspendedExplain").toggle();
+            });
+
+
+
+
+        });
+
+        function ShowImagePreview(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var ext = input.value.substr(input.value.lastIndexOf('.') + 1).toLowerCase();
+                    if (input.files[0].size < 1048576) {
+                        $("#ImgPrv").prop('src', e.target.result)
+                       .width(100)
+                       .height(100);
+                        $("#IMGTxt").val(input.value);
+                    }
+                    else if (!(ext == "jpeg" || ext == "jpg" || ext == "png")) {
+                        alert("Invalid image file, must select a *.jpeg, *.jpg, or *.png file.");
+                    }
+                    else {
+                        alert("File is too large, must select file under 1 MB. File  Size: " + (input.files[0].size / 1048576).toFixed(1) + " MB");
+                    }
+
+
+
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+
+    </script>
+    @Scripts.Render("~/bundles/jqueryval")
+}

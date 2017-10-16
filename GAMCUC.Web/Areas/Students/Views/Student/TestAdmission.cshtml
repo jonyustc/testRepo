@@ -1,0 +1,618 @@
+﻿@{
+    ViewBag.Title = "Admission";
+}
+
+
+<div class="page-content">
+    <!-- BEGIN PAGE HEADER-->
+    <!-- BEGIN PAGE BAR -->
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a href="index.html">Student</a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <span>Admission</span>
+            </li>
+        </ul>
+
+    </div>
+    <!-- END PAGE BAR -->
+    <!-- BEGIN PAGE TITLE-->
+    <h1 class="page-title">
+        Student Admission Form
+
+    </h1>
+    <!-- END PAGE TITLE-->
+    <!-- END PAGE HEADER-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light bordered" id="form_wizard_1">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class=" icon-layers font-red"></i>
+                        <span class="caption-subject font-red bold uppercase">
+                            Form Wizard -
+                            <span class="step-title"> Step 1 of 4 </span>
+                        </span>
+                    </div>
+                    <div class="actions">
+                        <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                            <i class="icon-cloud-upload"></i>
+                        </a>
+                        <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                            <i class="icon-wrench"></i>
+                        </a>
+                        <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                            <i class="icon-trash"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    <form class="form-horizontal" action="#" id="submit_form" method="POST">
+                        <div class="form-wizard">
+                            <div class="form-body">
+                                <ul class="nav nav-pills nav-justified steps">
+                                    <li>
+                                        <a href="#tab1" data-toggle="tab" class="step">
+                                            <span class="number"> 1 </span>
+                                            <span class="desc">
+                                                <i class="fa fa-check"></i> Account Setup
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab2" data-toggle="tab" class="step">
+                                            <span class="number"> 2 </span>
+                                            <span class="desc">
+                                                <i class="fa fa-check"></i> Profile Setup
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab3" data-toggle="tab" class="step active">
+                                            <span class="number"> 3 </span>
+                                            <span class="desc">
+                                                <i class="fa fa-check"></i> Billing Setup
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab4" data-toggle="tab" class="step">
+                                            <span class="number"> 4 </span>
+                                            <span class="desc">
+                                                <i class="fa fa-check"></i> Office Use
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab5" data-toggle="tab" class="step">
+                                            <span class="number"> 5 </span>
+                                            <span class="desc">
+                                                <i class="fa fa-check"></i> Confirm
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div id="bar" class="progress progress-striped" role="progressbar">
+                                    <div class="progress-bar progress-bar-success"> </div>
+                                </div>
+                                <div class="tab-content">
+                                    <div class="alert alert-danger display-none">
+                                        <button class="close" data-dismiss="alert"></button> You have some form errors. Please check below.
+                                    </div>
+                                    <div class="alert alert-success display-none">
+                                        <button class="close" data-dismiss="alert"></button> Your form validation is successful!
+                                    </div>
+                                    <div class="tab-pane active" id="tab1">
+                                        <h3 class="block">Provide your account details</h3>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">
+                                                Student Name Bangla
+                                                <span class="required"> * </span>
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" id="stdNameBangla" name="stdNameBangla" />
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">
+                                                English
+                                                <span class="required"> * </span>
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" id="stdNameEnglish" name="stdNameEnglish" />
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">
+                                                Father Name Bangla
+                                                <span class="required"> * </span>
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" id="FtNameBangla" name="FtNameBangla" />
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">
+                                                English
+                                                <span class="required"> * </span>
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" id="FtNameEnglish" name="FtNameEnglish" />
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">
+                                                Mother Name Bangla
+                                                <span class="required"> * </span>
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" id="MtNameBangla" name="MtNameBangla" />
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">
+                                                English
+                                                <span class="required"> * </span>
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" id="MtNameEnglish" name="MtNameEnglish" />
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Date of Birth</label>
+                                            <div class="col-md-3">
+                                                <input class="form-control form-control-inline input-medium date-picker" id="dob" name="dob" size="16" type="text" value="" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">
+                                                Gender
+                                                <span class="required"> * </span>
+                                            </label>
+                                            <div class="col-md-4">
+                                                <div class="radio-list">
+                                                    <label>
+                                                        <input type="radio" name="gender" id="gender" value="M" data-title="Male" /> Male
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" name="gender" id="gender" value="F" data-title="Female" /> Female
+                                                    </label>
+                                                </div>
+                                                <div id="form_gender_error"> </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">
+                                                Nationality
+                                                <span class="required"> * </span>
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" id="nationality" name="nationality" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">
+                                                Religion
+                                                <span class="required"> * </span>
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" id="religion" name="religion" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">
+                                                Present Address
+                                                <span class="required"> * </span>
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" id="presentAddress" name="presentAddress" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">
+                                                Phone No:(Personal)
+                                                <span class="required"> * </span>
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" id="phone" name="phone" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">
+                                                Permanent Address
+                                                <span class="required"> * </span>
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" id="permanentAddress" name="permanentAddress" />
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">
+                                                Email
+                                                <span class="required"> * </span>
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" id="email" name="email" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Do you ever been suspended or expelled from any School/College/University--</label>
+                                            <div class="mt-radio-inline">
+                                                <label class="mt-radio">
+                                                    <input type="radio" name="optionsRadios" id="optionsRadios4" value="option1" checked=""> No
+                                                    <span></span>
+                                                </label>
+                                                <label class="mt-radio">
+                                                    <input type="radio" name="optionsRadios" id="optionsRadios5" value="option2"> Yes
+                                                    <span></span>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" id="suspendedExplain">
+                                            <label>Yes then explain why</label>
+                                            <textarea class="form-control" name="explain" id="explain" rows="3"></textarea>
+                                        </div>
+
+                                    </div>
+                                    <div class="tab-pane" id="tab2">
+                                        <h3 class="block">Academic Records</h3>
+                                        @*Partial View*@
+                                        <div class="table-container AcademicRecord"></div>
+                                        @*End Partial View*@
+                                    </div>
+                                    <div class="tab-pane" id="tab3">
+                                        <h3 class="block">Guardian Information</h3>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">
+                                                Name
+                                                <span class="required"> * </span>
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" name="card_name" />
+                                                <span class="help-block"> </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">
+                                                Occupation
+                                                <span class="required"> * </span>
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" name="card_number" />
+                                                <span class="help-block"> </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">
+                                                Relation
+                                                <span class="required"> * </span>
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" placeholder="" class="form-control" name="card_cvc" />
+                                                <span class="help-block"> </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">
+                                                Address
+                                                <span class="required"> * </span>
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" placeholder="" class="form-control" name="card_cvc" />
+                                                <span class="help-block"> </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">
+                                                Phone
+                                                <span class="required"> * </span>
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" placeholder="" class="form-control" name="card_cvc" />
+                                                <span class="help-block"> </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="tab4">
+                                        <h3 class="block">Office Use Only</h3>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">
+                                                Total Course Fees
+                                                <span class="required"> * </span>
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" name="card_name" />
+                                                <span class="help-block"> </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">
+                                                Payment System
+                                                <span class="required"> * </span>
+                                            </label>
+                                            <div class="col-md-4">
+                                                <select name="product_review_status" class="form-control form-filter input-sm">
+                                                    <option value="">Select...</option>
+                                                    <option value="pending">Pending</option>
+                                                    <option value="approved">Approved</option>
+                                                    <option value="rejected">Rejected</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">
+                                                ID No
+                                                <span class="required"> * </span>
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" placeholder="" class="form-control" name="card_cvc" />
+                                                <span class="help-block"> </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">
+                                                Registration No
+                                                <span class="required"> * </span>
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" placeholder="" class="form-control" name="card_cvc" />
+                                                <span class="help-block"> </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">
+                                                Exam Roll No
+                                                <span class="required"> * </span>
+                                            </label>
+                                            <div class="col-md-4">
+                                                <input type="text" placeholder="" class="form-control" name="card_cvc" />
+                                                <span class="help-block"> </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Original Documents occupied by College(Endorsement)--
+                                                <span class="required"> * </span>
+                                            </label>
+                                            <div class="table-container">
+                                                <table class="table table-striped table-bordered table-hover" id="datatable_reviews">
+                                                    <tbody>
+
+                                                        <tr role="row" class="filter">
+                                                            <td>
+                                                                <label class="mt-checkbox mt-checkbox-outline">
+                                                                    SSC Certificate
+                                                                    <input type="checkbox" name="OriginalDocumentId[]" value="1" data-title="SSC Certificate" />
+                                                                    @*<input type="checkbox" value="1" name="test">*@
+                                                                    <span></span>
+                                                                </label>
+                                                            </td>
+                                                            <td>
+                                                                <label class="mt-checkbox mt-checkbox-outline">
+                                                                    SSC Marks-sheet
+                                                                    <input type="checkbox" name="OriginalDocumentId[]" value="2" data-title=" SSC Marks-sheet" />
+                                                                    @*<input type="checkbox" value="1" name="test">*@
+                                                                    <span></span>
+                                                                </label>
+                                                            </td>
+                                                            <td>
+                                                                <label class="mt-checkbox mt-checkbox-outline">
+                                                                    SSC Registration Card
+                                                                    <input type="checkbox" value="1" name="test">
+                                                                    <span></span>
+                                                                </label>
+                                                            </td>
+
+                                                            <td>
+                                                                <label class="mt-checkbox mt-checkbox-outline">
+                                                                    Testimonial
+                                                                    <input type="checkbox" value="1" name="test">
+                                                                    <span></span>
+                                                                </label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr role="row" class="filter">
+                                                            <td>
+                                                                <label class="mt-checkbox mt-checkbox-outline">
+                                                                    HSC Certificate
+                                                                    <input type="checkbox" value="1" name="test">
+                                                                    <span></span>
+                                                                </label>
+                                                            </td>
+                                                            <td>
+                                                                <label class="mt-checkbox mt-checkbox-outline">
+                                                                    HSC Marks-sheet
+                                                                    <input type="checkbox" value="1" name="test">
+                                                                    <span></span>
+                                                                </label>
+                                                            </td>
+                                                            <td>
+                                                                <label class="mt-checkbox mt-checkbox-outline">
+                                                                    HSC Registration Card
+                                                                    <input type="checkbox" value="1" name="test">
+                                                                    <span></span>
+                                                                </label>
+                                                            </td>
+
+                                                            <td>
+                                                                <label class="mt-checkbox mt-checkbox-outline">
+                                                                    Testimonial
+                                                                    <input type="checkbox" value="1" name="test">
+                                                                    <span></span>
+                                                                </label>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="tab-pane" id="tab5">
+                                        <h3 class="block">Confirm your account</h3>
+                                        <h4 class="form-section">Account</h4>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Username:</label>
+                                            <div class="col-md-4">
+                                                <p class="form-control-static" data-display="stdNameBangla"> </p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Email:</label>
+                                            <div class="col-md-4">
+                                                <p class="form-control-static" data-display="email"> </p>
+                                            </div>
+                                        </div>
+                                        <h4 class="form-section">Profile</h4>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Fullname:</label>
+                                            <div class="col-md-4">
+                                                <p class="form-control-static" data-display="stdNameEnglish"> </p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Gender:</label>
+                                            <div class="col-md-4">
+                                                <p class="form-control-static" data-display="gender"> </p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Phone:</label>
+                                            <div class="col-md-4">
+                                                <p class="form-control-static" data-display="phone"> </p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Address:</label>
+                                            <div class="col-md-4">
+                                                <p class="form-control-static" data-display="presentAddress"> </p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">City/Town:</label>
+                                            <div class="col-md-4">
+                                                <p class="form-control-static" data-display="permanentAddress"> </p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Country:</label>
+                                            <div class="col-md-4">
+                                                <p class="form-control-static" data-display="religion"> </p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Remarks:</label>
+                                            <div class="col-md-4">
+                                                <p class="form-control-static" data-display="nationality"> </p>
+                                            </div>
+                                        </div>
+                                        <h4 class="form-section">Academic Records</h4>
+                                        <table class="table table-striped table-bordered table-hover" id="AcademicRecords">
+                                            <thead>
+                                                <tr role="row" class="heading">
+                                                    <th width="5%"> Name of Exam </th>
+                                                    <th width="10%"> Group/Subject </th>
+                                                    <th width="10%"> Board/University </th>
+                                                    <th width="20%"> Year of Passing </th>
+                                                    <th width="10%"> Roll of Exam </th>
+                                                    <th width="10%"> Class/Division Grade </th>
+                                                </tr>
+
+                                            </thead>
+                                            <tbody>
+
+                                                <tr role="row" class="filter">
+                                                    <td><p class="form-control-static" data-display="payment[]"></p></td>
+                                                    <td>
+                                                        <p class="form-control-static" data-display="group"></p>
+                                                    </td>
+
+                                                    <td>
+                                                        <p class="form-control-static" data-display="board"></p>
+                                                    </td>
+
+                                                    <td>
+                                                        <p class="form-control-static" data-display="passing_year"></p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="form-control-static" data-display="roll_exam"></p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="form-control-static" data-display="grade"></p>
+                                                    </td>
+
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <div class="row">
+                                    <div class="col-md-offset-3 col-md-9">
+                                        <a href="javascript:;" class="btn default button-previous">
+                                            <i class="fa fa-angle-left"></i> Back
+                                        </a>
+                                        <a href="javascript:;" class="btn btn-outline green button-next">
+                                            Continue
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                        <input type="submit" id="add-student" class="btn green button-submit" name="add-student" value="Submit" />
+                                        @*<a href="javascript:;" class="btn green button-submit">
+                                                Submit
+                                                <i class="fa fa-check"></i>
+                                            </a>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+    <script src="~/Content/assets/pages/scripts/form-wizard.js"></script>
+
+    <script>
+
+    $(document).ready(function () {
+
+         //Load Academic Records Table
+        $(".AcademicRecord").load("@Url.Action("_Exam", "Student", new { area="Students" })");
+
+    });
+
+    </script>
+
+}

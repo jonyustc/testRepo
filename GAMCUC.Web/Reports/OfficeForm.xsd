@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="OfficeForm" targetNamespace="http://tempuri.org/OfficeForm.xsd" xmlns:mstns="http://tempuri.org/OfficeForm.xsd" xmlns="http://tempuri.org/OfficeForm.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="OfficeForm" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="OfficeForm" msprop:Generator_UserDSName="OfficeForm">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="OfficeForm" msprop:Generator_TableClassName="OfficeFormDataTable" msprop:Generator_TableVarName="tableOfficeForm" msprop:Generator_TablePropName="_OfficeForm" msprop:Generator_RowDeletingName="OfficeFormRowDeleting" msprop:Generator_RowChangingName="OfficeFormRowChanging" msprop:Generator_RowEvHandlerName="OfficeFormRowChangeEventHandler" msprop:Generator_RowDeletedName="OfficeFormRowDeleted" msprop:Generator_UserTableName="OfficeForm" msprop:Generator_RowChangedName="OfficeFormRowChanged" msprop:Generator_RowEvArgName="OfficeFormRowChangeEvent" msprop:Generator_RowClassName="OfficeFormRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="InitialPayment" msprop:Generator_ColumnVarNameInTable="columnInitialPayment" msprop:Generator_ColumnPropNameInRow="InitialPayment" msprop:Generator_ColumnPropNameInTable="InitialPaymentColumn" msprop:Generator_UserColumnName="InitialPayment" type="xs:string" minOccurs="0" />
+              <xs:element name="CourseFee" msprop:Generator_ColumnVarNameInTable="columnCourseFee" msprop:Generator_ColumnPropNameInRow="CourseFee" msprop:Generator_ColumnPropNameInTable="CourseFeeColumn" msprop:Generator_UserColumnName="CourseFee" type="xs:string" minOccurs="0" />
+              <xs:element name="StdID" msprop:Generator_ColumnVarNameInTable="columnStdID" msprop:Generator_ColumnPropNameInRow="StdID" msprop:Generator_ColumnPropNameInTable="StdIDColumn" msprop:Generator_UserColumnName="StdID" type="xs:string" minOccurs="0" />
+              <xs:element name="RegistrationNo" msprop:Generator_ColumnVarNameInTable="columnRegistrationNo" msprop:Generator_ColumnPropNameInRow="RegistrationNo" msprop:Generator_ColumnPropNameInTable="RegistrationNoColumn" msprop:Generator_UserColumnName="RegistrationNo" type="xs:string" minOccurs="0" />
+              <xs:element name="ExamRollNo" msprop:Generator_ColumnVarNameInTable="columnExamRollNo" msprop:Generator_ColumnPropNameInRow="ExamRollNo" msprop:Generator_ColumnPropNameInTable="ExamRollNoColumn" msprop:Generator_UserColumnName="ExamRollNo" type="xs:string" minOccurs="0" />
+              <xs:element name="PaymentSchedule" msprop:Generator_ColumnVarNameInTable="columnPaymentSchedule" msprop:Generator_ColumnPropNameInRow="PaymentSchedule" msprop:Generator_ColumnPropNameInTable="PaymentScheduleColumn" msprop:Generator_UserColumnName="PaymentSchedule" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

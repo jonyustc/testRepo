@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="OrgDoc" targetNamespace="http://tempuri.org/OrgDoc.xsd" xmlns:mstns="http://tempuri.org/OrgDoc.xsd" xmlns="http://tempuri.org/OrgDoc.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="OrgDoc" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="OrgDoc" msprop:Generator_UserDSName="OrgDoc">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="OrgDoc" msprop:Generator_TableClassName="OrgDocDataTable" msprop:Generator_TableVarName="tableOrgDoc" msprop:Generator_RowChangedName="OrgDocRowChanged" msprop:Generator_TablePropName="_OrgDoc" msprop:Generator_RowDeletingName="OrgDocRowDeleting" msprop:Generator_RowChangingName="OrgDocRowChanging" msprop:Generator_RowEvHandlerName="OrgDocRowChangeEventHandler" msprop:Generator_RowDeletedName="OrgDocRowDeleted" msprop:Generator_RowClassName="OrgDocRow" msprop:Generator_UserTableName="OrgDoc" msprop:Generator_RowEvArgName="OrgDocRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DocumentName" msprop:Generator_ColumnVarNameInTable="columnDocumentName" msprop:Generator_ColumnPropNameInRow="DocumentName" msprop:Generator_ColumnPropNameInTable="DocumentNameColumn" msprop:Generator_UserColumnName="DocumentName" type="xs:string" minOccurs="0" />
+              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
