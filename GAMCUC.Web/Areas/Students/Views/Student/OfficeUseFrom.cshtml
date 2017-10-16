@@ -83,7 +83,7 @@
                                         Endorsement
                                     </label>
                                     <div class="col-md-4">
-                                        @Html.DropDownList("OriginalDocumentId", ViewBag.EndorsementList as IEnumerable<SelectListItem>, new { @class = "mt-multiselect form-control form-filter input-sm", multiple = "multiple", required = "required" })
+                                        @Html.DropDownList("OriginalDocumentId", ViewBag.EndorsementList as IEnumerable<SelectListItem>, new { @class = "mt-multiselect form-control form-filter input-sm", multiple = "multiple" })
                                         @*@Html.ValidationMessageFor(model => model.OriginalDocumentId, null, new { @class = "required" })*@
                                     </div>
                                 </div>
@@ -108,9 +108,24 @@
 
 
     <script type="text/javascript">
+
+        $('#OriginalDocumentId').validate({
+            rules: {
+                mySelect: "required needsSelection",
+                input1: "required isPercent",
+                input2: "required",
+                input3: "required"
+            },
+            ignore: ':hidden:not("#OriginalDocumentId")', //Tells it to check the hidden select
+            errorClass: 'invalid'
+        });
+
+
         $('#OriginalDocumentId').multiselect({
             includeSelectAllOption: true
         });
+
+
 
 
         $('#OriginalDocumentId').validate({
@@ -129,5 +144,5 @@
 
     </script>
 
-@Scripts.Render("~/bundles/jqueryval")
+@*@Scripts.Render("~/bundles/jqueryval")*@
 }
