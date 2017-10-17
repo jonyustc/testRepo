@@ -12,7 +12,7 @@
   <xs:element name="admissionForm" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="admissionForm" msprop:Generator_UserDSName="admissionForm">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="PersonalProfile" msprop:Generator_TableClassName="PersonalProfileDataTable" msprop:Generator_TableVarName="tablePersonalProfile" msprop:Generator_RowChangedName="PersonalProfileRowChanged" msprop:Generator_TablePropName="PersonalProfile" msprop:Generator_RowDeletingName="PersonalProfileRowDeleting" msprop:Generator_RowChangingName="PersonalProfileRowChanging" msprop:Generator_RowEvHandlerName="PersonalProfileRowChangeEventHandler" msprop:Generator_RowDeletedName="PersonalProfileRowDeleted" msprop:Generator_RowClassName="PersonalProfileRow" msprop:Generator_UserTableName="PersonalProfile" msprop:Generator_RowEvArgName="PersonalProfileRowChangeEvent">
+        <xs:element name="PersonalProfile" msprop:Generator_TableClassName="PersonalProfileDataTable" msprop:Generator_TableVarName="tablePersonalProfile" msprop:Generator_TablePropName="PersonalProfile" msprop:Generator_RowDeletingName="PersonalProfileRowDeleting" msprop:Generator_RowChangingName="PersonalProfileRowChanging" msprop:Generator_RowEvHandlerName="PersonalProfileRowChangeEventHandler" msprop:Generator_RowDeletedName="PersonalProfileRowDeleted" msprop:Generator_UserTableName="PersonalProfile" msprop:Generator_RowChangedName="PersonalProfileRowChanged" msprop:Generator_RowEvArgName="PersonalProfileRowChangeEvent" msprop:Generator_RowClassName="PersonalProfileRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:string" minOccurs="0" />
@@ -37,7 +37,7 @@
               <xs:element name="IsSuspended" msprop:Generator_ColumnVarNameInTable="columnIsSuspended" msprop:Generator_ColumnPropNameInRow="IsSuspended" msprop:Generator_ColumnPropNameInTable="IsSuspendedColumn" msprop:Generator_UserColumnName="IsSuspended" type="xs:string" minOccurs="0" />
               <xs:element name="SuspendedDesc" msprop:Generator_ColumnVarNameInTable="columnSuspendedDesc" msprop:Generator_ColumnPropNameInRow="SuspendedDesc" msprop:Generator_ColumnPropNameInTable="SuspendedDescColumn" msprop:Generator_UserColumnName="SuspendedDesc" type="xs:string" minOccurs="0" />
               <xs:element name="AcademicSession" msprop:Generator_ColumnVarNameInTable="columnAcademicSession" msprop:Generator_ColumnPropNameInRow="AcademicSession" msprop:Generator_ColumnPropNameInTable="AcademicSessionColumn" msprop:Generator_UserColumnName="AcademicSession" type="xs:string" minOccurs="0" />
-              <xs:element name="FormNo" msprop:Generator_ColumnVarNameInTable="columnFormNo" msprop:Generator_ColumnPropNameInRow="FormNo" msprop:Generator_ColumnPropNameInTable="FormNoColumn" msprop:Generator_UserColumnName="FormNo" type="xs:string" minOccurs="0" />
+              <xs:element name="FormNo" msprop:Generator_ColumnVarNameInTable="columnFormNo" msprop:Generator_ColumnPropNameInRow="FormNo" msprop:Generator_ColumnPropNameInTable="FormNoColumn" msprop:Generator_UserColumnName="FormNo" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

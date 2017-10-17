@@ -133,3 +133,4 @@ D:\.net Preject\GAMCUC\GAMCUC.Web\bin\GAMCUC.DataModel.pdb
 D:\.net Preject\GAMCUC\GAMCUC.Web\obj\Debug\GAMCUC.Web.dll
 D:\.net Preject\GAMCUC\GAMCUC.Web\obj\Debug\GAMCUC.Web.pdb
 D:\.net Preject\GAMCUC\GAMCUC.Web\bin\VIT.DataLogicLayer.dll
+D:\.net Preject\GAMCUC\GAMCUC.Web\bin\DotNetZip.dll

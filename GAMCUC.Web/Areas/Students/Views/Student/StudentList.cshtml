@@ -69,6 +69,17 @@
                                     <div class="btn-group">
                                         @Html.ActionLink("Details", "StudentDetails", "Student", new { id = item.data.Id, area = "Students"},new{ @class = "btn sbold green" })
                                         @Html.ActionLink("ID Card", "StudentIdCardPrint", new { id = item.data.Id }, new { @class = "btn red btn-outline sbold", target = "_blank" })
+                                      
+                                        @if (TempData["isActive"].ToString() == "True" )
+                                        {
+                                        @Html.ActionLink("Inactive", "StudentInactive", new { id = item.data.Id, area = "Students" }, new { @class = "btn sbold red" })
+                                        }
+                                        else
+                                        {
+                                        @Html.ActionLink(" Active  ", "StudentActive", new { id = item.data.Id, area = "Students" }, new { @class = "btn sbold blue" })
+                                        }
+                                        @*<input type="checkbox" name="toggleChk" class="make-switch" onchange="AccountStatusChange();" data-on-text="&nbsp;Enabled&nbsp;&nbsp;" data-off-text="&nbsp;Disabled&nbsp;">*@
+                                        
                                     </div>
                                 </div>
 
@@ -82,3 +93,78 @@
     <!-- END EXAMPLE TABLE PORTLET-->
 
 </div>
+
+@section scripts{
+
+<script type="text/javascript">
+                $(function () {
+                    var url = "";
+                    $("#ConfirmeDialog").dialog({
+                        autoOpen: false,
+                        width: 400,
+                        height: 280,
+                        modal: true,
+                        show: {
+                            effect: "blind",
+                            duration: 1000
+                        },
+                        hide: {
+                            effect: "explode",
+                            duration: 1000
+                        }
+                    });
+                    $("#openDialog").click(function (e) {
+                        url = $(this).attr('href');
+                        $("#ConfirmeDialog").dialog("open");
+                        return false;
+                    });
+                    $("#modalBtn").click(function (e) {
+                        var tex = jQuery.trim($("#pass").val());
+                        if ('@TempData["Password"]' != tex) {
+                            $("#mass").html("Your password is wrong");
+
+                        }
+                        else {
+                            $("#ConfirmeDialog").dialog("close");
+                            window.location.href = url;
+                        }
+                    });
+                });
+</script>
+
+    @*<script>
+
+        function AccountStatusChange() {
+
+            $("[name='toggleChk']").bootstrapSwitch();
+
+            $("input[name='toggleChk']").on('switchChange.bootstrapSwitch', function (event, state) {
+                //console.log(this); // DOM element
+                //console.log(event); // jQuery event
+                //console.log(state); // true | false
+                //alert(state);
+                var std_id = '@TempData["id"]';
+                    $.ajax({
+                        type: "POST",
+                        url: "/Student/StudentInactive",
+                        data: '{status: "Active"}',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function(resbtnimgdvponse) {
+                            alert(response.d);
+                        },
+                        failure: function(response) {
+
+                        }
+                    });
+                    //$("#confirm-delete .close").click();
+
+            
+        });
+        //$('#confirm-delete').modal('toggle');
+
+        };
+
+    </script>*@
+
+}

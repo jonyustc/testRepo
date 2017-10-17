@@ -1,0 +1,54 @@
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "DatabaseBackup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-content">
+    <div class="page-bar">
+        <h2 class="page-title">Database Backup</h2>
+    </div>
+    <br />
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <h3 class="portlet-title inline">
+                Backkup Hirstory
+                <span class="pull-right">@ViewBag.msgdbback</span>
+            </h3>
+            @using (Html.BeginForm("DatabaseBackup", "Account", FormMethod.Post, new { @class = "form-horizontal pull-right", role = "form" }))
+            {
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <input type="submit" class="btn btn-info btn-sm" value="Backup Database" />
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        @foreach (System.Data.DataColumn col in Model.Columns)
+                        {
+                            <th>@col.ColumnName</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (System.Data.DataRow row in Model.Rows)
+                    {
+                        <tr>
+                            @foreach (System.Data.DataColumn col in Model.Columns)
+                            {
+                                <td>@row[col.ColumnName]</td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

@@ -172,7 +172,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\UserController.cs" />
     <Compile Include="Areas\Students\Controllers\PaymentController.cs" />
+    <Compile Include="Areas\Students\Controllers\SettingController.cs" />
     <Compile Include="Areas\Students\Controllers\StudentController.cs" />
     <Compile Include="Areas\Students\StudentsAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -437,6 +439,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Custom.css" />
     <Content Include="Content\jquery-ui.min.css" />
+    <Content Include="Content\print-smester-report.css" />
     <Content Include="Content\print.css" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
@@ -515,6 +518,7 @@
     <Content Include="Areas\Students\Views\Payment\PaymentReportsShow.cshtml" />
     <Content Include="Areas\Students\Views\Payment\StudentPaymentReport.cshtml" />
     <Content Include="Areas\Students\Views\Payment\StudentPaymentReportList.cshtml" />
+    <Content Include="Areas\Administration\Views\User\UserList.cshtml" />
     <None Include="Properties\PublishProfiles\GAMCUC.pubxml" />
     <None Include="Reports\AcademicRecords.xsd">
       <SubType>Designer</SubType>
@@ -665,13 +669,14 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Account\DatabaseBackup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Administration\Controllers\" />
     <Folder Include="Areas\Administration\Models\" />
     <Folder Include="Areas\Students\Models\" />
     <Folder Include="Areas\Students\uploads\" />
+    <Folder Include="Areas\Students\Views\Setting\" />
     <Folder Include="Areas\Students\Views\Shared\" />
     <Folder Include="uploads\" />
   </ItemGroup>

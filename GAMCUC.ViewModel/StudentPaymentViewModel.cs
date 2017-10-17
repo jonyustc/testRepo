@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,6 +46,8 @@ namespace GAMCUC.ViewModel
         public decimal GrandTotal { get; set; }
         public decimal PaidAmount { get; set; }
         public decimal Due { get; set; }
+
+        public decimal Discount { get; set; }
         public DateTime PaymentDate { get; set; }
         public int PaymentMethodId { get; set; }
         public string PaymentMethod { get; set; }
@@ -106,6 +109,8 @@ namespace GAMCUC.ViewModel
         public decimal Discount { get; set; }
         public decimal PaidAmount { get; set; }
         public decimal Due { get; set; }
+
+        [Required(ErrorMessage="Date Field Required")]
         public DateTime PaymentDate { get; set; }
         public int PaymentMethodId { get; set; }
         public int BankId { get; set; }

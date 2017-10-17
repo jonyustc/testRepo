@@ -602,7 +602,7 @@ namespace GAMCUC.Web.Reports {
                         string IsSuspended, 
                         string SuspendedDesc, 
                         string AcademicSession, 
-                        string FormNo) {
+                        int FormNo) {
                 PersonalProfileRow rowPersonalProfileRow = ((PersonalProfileRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
@@ -722,7 +722,7 @@ namespace GAMCUC.Web.Reports {
                 base.Columns.Add(this.columnSuspendedDesc);
                 this.columnAcademicSession = new global::System.Data.DataColumn("AcademicSession", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAcademicSession);
-                this.columnFormNo = new global::System.Data.DataColumn("FormNo", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnFormNo = new global::System.Data.DataColumn("FormNo", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFormNo);
             }
             
@@ -1220,10 +1220,10 @@ namespace GAMCUC.Web.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string FormNo {
+            public int FormNo {
                 get {
                     try {
-                        return ((string)(this[this.tablePersonalProfile.FormNoColumn]));
+                        return ((int)(this[this.tablePersonalProfile.FormNoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'FormNo\' in table \'PersonalProfile\' is DBNull.", e);

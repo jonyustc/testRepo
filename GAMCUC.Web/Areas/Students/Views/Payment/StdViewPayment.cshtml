@@ -32,7 +32,7 @@
                                 Total Amount
                             </th>
                             <th>Paid</th>
-                            <th>Due</th>
+                            @*<th>Due</th>*@
                         </tr>
                     </thead>
 
@@ -62,12 +62,12 @@
                             paid += (int)item.data.PaidAmount;
                                     }
                                 </td>
-                                <td>
+                                @*<td>
                                     @Html.DisplayFor(modelItem => item.data.Due)
                                     @{
                                      due = (int)item.data.Due;
                                     }
-                                </td>
+                                </td>*@
                             </tr>
                         }
                     </tbody>
@@ -79,15 +79,19 @@
                                 <tbody>
                                     <tr class="b-top-none">
                                         <td colspan="2">Total Payable</td>
-                                        <td class="text-left">$ @totalPaid</td>
+                                        <td class="text-left">Tk @totalPaid</td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">Paid Amount</td>
-                                        <td class="text-left">$ @paid</td>
+                                        <td class="text-left">Tk @paid</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">Scholarship</td>
+                                        <td class="text-left">Tk @Model.Select(x => x.Discount).FirstOrDefault()</td>
                                     </tr>
                                     <tr class="h4">
-                                        <td colspan="2">Due (USD)</td>
-                                        <td class="text-left">$ @due</td>
+                                        <td colspan="2">Due (BDT)</td>
+                                        <td class="text-left">Tk @Model.Select(x=>x.Due).FirstOrDefault()</td>
                                     </tr>
                                 </tbody>
                             </table>

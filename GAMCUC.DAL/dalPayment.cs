@@ -55,6 +55,7 @@ namespace GAMCUC.DAL
                                 PaymentDate = p.PaymentDate??DateTime.Now,
                                 GrandTotal = p.GrandTotal ?? 0,
                                 PaidAmount=p.PaidAmount??0,
+                                Discount=p.Discount??0,
                                 Due=p.Due??0
                             };
 

@@ -3,6 +3,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<link href="~/Content/print-smester-report.css" rel="stylesheet" media="print" />
+
 <div class="page-content">
     <div class="page-bar">
         <h2 class="page-title">Payment Reports For Six Months
@@ -11,30 +13,34 @@
     </div>
     <br />
     <!-- BEGIN PAGE TITLE-->
+    <div class="Semester-Report">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet light bordered">
 
-    <div class="row">
-        <div class="col-md-12">
-            <div class="portlet light bordered">
-
-                <div class="portlet-body">
-                    <div class="row">
-                        <h3 class="page-title">
-                            <img src="~/Content/assets/layouts/layout/img/logo.png" alt="Student Image" class="img-thumbnail" width="50px" height="50px" /> GAM Chartered University College<br />
-                            <small><b style="margin-left:22px;margin-bottom:0">Student Payment Statement</b></small>
-                            <span class="pull-right">
-                                <a class="btn btn-lg blue hidden-print margin-bottom-5" onclick="javascript:window.print();">
-                                    Print
-                                    <i class="fa fa-print"></i>
-                                </a>
-                            </span>
-                        </h3>
-                        @Html.Action("StudentDetailsForPayment", "Payment", new { StdId = TempData["stdid"], area = "Students" })
+                    <div class="portlet-body">
+                        <div class="row">
+                            <h3 class="page-title">
+                                <img src="~/Content/assets/layouts/layout/img/logo.png" alt="Student Image" class="img-thumbnail" width="50px" height="50px" /> GAM Chartered University College<br />
+                                <small><b style="margin-left:22px;margin-bottom:0">Student Payment Statement</b></small>
+                                <span class="pull-right">
+                                    <a class="btn btn-lg blue hidden-print margin-bottom-5" onclick="javascript:window.print();">
+                                        Print
+                                        <i class="fa fa-print"></i>
+                                    </a>
+                                </span>
+                            </h3>
+                            @Html.Action("StudentDetailsForPayment", "Payment", new { StdId = TempData["stdid"], area = "Students" })
+                        </div>
+                        <div id="Partial"></div>
+                        <p>Printed By: @ViewBag.User @DateTime.Now</p>
+                        <p class="pull-right font-sm">Developed By: <strong><a href="http://zencon.tech" target="_blank">Zencon Technology Ltd</a></strong></p>
                     </div>
-                    <div id="Partial"></div>
                 </div>
             </div>
         </div>
     </div>
+    
     
 
 

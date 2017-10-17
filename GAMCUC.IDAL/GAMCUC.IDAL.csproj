@@ -42,6 +42,7 @@
     <Compile Include="IAdministrator.cs" />
     <Compile Include="IPayment.cs" />
     <Compile Include="IStudent.cs" />
+    <Compile Include="IUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

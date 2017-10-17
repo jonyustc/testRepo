@@ -129,7 +129,7 @@ label.error {
     position: absolute;
     top: 45px;
     background: #ddd;
-    padding: 2px 45px 2px 5px;
+    padding: 2px 15px 2px 5px;
 }
 
 .invoice-date {
@@ -190,3 +190,11 @@ label.error {
 
 
 /* End Invoice part */
+
+/* Start Semester Report part */
+/*.Semester-Report
+{
+    margin: 0 auto;
+    border: 2px solid;
+    width: 794px;
+}*/

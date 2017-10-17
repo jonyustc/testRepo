@@ -8,7 +8,7 @@ namespace GAMCUC.Web.Controllers
 {
     public class HomeController : Controller
     {
-        [Authorize(Roles="SuperAdmin")]
+        [Authorize]
         public ActionResult Index()
         {
             return View();

@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace GAMCUC.Web.Areas.Students.Controllers
 {
-     [Authorize(Roles = "SuperAdmin")]
+     [Authorize(Roles = "SuperAdmin,Admin")]
     public class StudentController : Controller
     {
         IDAL.IStudent _iStudent = null;
@@ -29,7 +29,9 @@ namespace GAMCUC.Web.Areas.Students.Controllers
 
         public ActionResult StudentList()
         {
+            
             var list = _iStudent.All();
+            TempData["isActive"] = list.Select(x => x.IsActive).FirstOrDefault();
             return View(list);
         }
 
@@ -394,6 +396,25 @@ namespace GAMCUC.Web.Areas.Students.Controllers
             return Json(board, JsonRequestBehavior.AllowGet);
         }
 
+       
+        public ActionResult StudentInactive(Guid id)
+        {
+            var result = _iStudent.getStudentInfo(id);
+
+            _iStudent.Inactive(id);
+            return RedirectToAction("StudentList");
+        }
+
+       
+        public ActionResult StudentActive(Guid id)
+        {
+            var result = _iStudent.getStudentInfo(id);
+
+            _iStudent.Active(id);
+            return RedirectToAction("StudentList");
+        }
+
+
         //Image Helper
         private void GenerateThumbnails(double scaleFactor, Stream sourcePath, string targetPath)
         {
@@ -422,7 +443,7 @@ namespace GAMCUC.Web.Areas.Students.Controllers
         }
 
 
-       
+        
        
 	}
 }

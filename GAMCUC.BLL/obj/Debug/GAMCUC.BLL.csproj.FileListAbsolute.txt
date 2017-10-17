@@ -29,3 +29,4 @@ D:\.net Preject\GAMCUC\GAMCUC.BLL\bin\Debug\EntityFramework.xml
 D:\.net Preject\GAMCUC\GAMCUC.BLL\obj\Debug\GAMCUC.BLL.dll
 D:\.net Preject\GAMCUC\GAMCUC.BLL\obj\Debug\GAMCUC.BLL.pdb
 D:\.net Preject\GAMCUC\GAMCUC.BLL\bin\Debug\VIT.DataLogicLayer.dll
+D:\.net Preject\GAMCUC\GAMCUC.BLL\bin\Debug\DotNetZip.dll

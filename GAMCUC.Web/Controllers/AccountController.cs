@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using GAMCUC.Web.Models;
 using GAMCUC.ViewModel;
+using System.Data;
 
 namespace GAMCUC.Web.Controllers
 {
@@ -65,6 +66,41 @@ namespace GAMCUC.Web.Controllers
             return View(model);
         }
 
+        
+        public ActionResult DatabaseBackup()
+        {
+            DataTable data = iAdmin.GetBackupHistory();
+            
+            return View(data);
+            
+        }
+
+        [HttpPost]  
+        public  ActionResult DatabaseBackup(string user)
+        {
+            string msg = "";
+            try
+            {
+                string FileName = iAdmin.BackupDB();
+                iAdmin.InsertBackupHistory(User.Identity.Name, FileName);
+
+                //iAdmin.GetBackupHistory();
+                msg = "Database Backup Completed successfully.";
+                
+               
+            }
+            catch (Exception ex)
+            {
+                //log.LogErrorWithException("Error",ex);
+                msg=ex.Message;
+            }
+
+            ViewBag.msgdbback = msg;
+
+            // If we got this far, something failed, redisplay form
+            return RedirectToAction("DatabaseBackup");
+        }
+
         //
         // GET: /Account/Register
         [AllowAnonymous]
@@ -73,45 +109,45 @@ namespace GAMCUC.Web.Controllers
             return View();
         }
 
-        //
-        // POST: /Account/Register
-        //[HttpPost]
-        //[AllowAnonymous]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> Register(RegisterViewModel model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var user = new ApplicationUser() { UserName = model.UserName };
-        //        var result = await UserManager.CreateAsync(user, model.Password);
-        //        if (result.Succeeded)
-        //        {
-        //            var currentUser = UserManager.FindByName(user.UserName);
-        //            var roleManager = new RoleManager<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
+        
+         // POST: /Account/Register
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Register(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser() { UserName = model.UserName };
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    var currentUser = UserManager.FindByName(user.UserName);
+                    var roleManager = new RoleManager<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
 
-        //            if (!roleManager.RoleExists("SuperAdmin"))
-        //                roleManager.Create(new IdentityRole("SuperAdmin"));
+                    if (!roleManager.RoleExists("SubAdmin"))
+                        roleManager.Create(new IdentityRole("SubAdmin"));
 
-        //            var roleresult = UserManager.AddToRole(currentUser.Id, "SuperAdmin");
+                    var roleresult = UserManager.AddToRole(currentUser.Id, "SubAdmin");
 
-        //            AdministratorVM administrator = new AdministratorVM();
-        //            administrator.FirstName = model.FirstName;
-        //            administrator.LastName = model.LastName;
-        //            administrator.ApplicationUserId = user.Id;
+                    AdministratorVM administrator = new AdministratorVM();
+                    administrator.FirstName = model.FirstName;
+                    administrator.LastName = model.LastName;
+                    administrator.ApplicationUserId = user.Id;
 
-        //            iAdmin.Create(administrator);
+                    iAdmin.Create(administrator);
 
-        //            return RedirectToAction("Index", "Home");
-        //        }
-        //        else
-        //        {
-        //            AddErrors(result);
-        //        }
-        //    }
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    AddErrors(result);
+                }
+            }
 
-        //    // If we got this far, something failed, redisplay form
-        //    return View(model);
-        //}
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
 
         //
         // POST: /Account/Disassociate

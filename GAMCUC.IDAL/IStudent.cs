@@ -36,5 +36,8 @@ namespace GAMCUC.IDAL
         StudentProfileViewModel getStudentInfo(Guid id);
         List<AcademicRecordsViewModel> getAcademicRecord(Guid id);
         void UpdateStudentProfile(StudentProfileViewModel model);
+
+        void Inactive(Guid id);
+        void Active(Guid id);
     }
 }

@@ -119,5 +119,15 @@ namespace GAMCUC.BLL
         {
             return _iStudent.SearchStudent(stdID, courseId, semesterId, roll);
         }
+
+        public void Inactive(Guid id)
+        {
+            _iStudent.Inactive(id);
+        }
+
+        public void Active(Guid id)
+        {
+            _iStudent.Active(id);
+        }
     }
 }

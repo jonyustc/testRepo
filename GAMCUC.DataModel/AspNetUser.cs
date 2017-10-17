@@ -19,7 +19,7 @@ namespace GAMCUC.DataModel
             this.Administrators = new HashSet<Administrator>();
             this.AspNetUserClaims = new HashSet<AspNetUserClaim>();
             this.AspNetUserLogins = new HashSet<AspNetUserLogin>();
-            this.AspNetRoles = new HashSet<AspNetRole>();
+            this.AspNetUserRoles = new HashSet<AspNetUserRole>();
         }
     
         public string Id { get; set; }
@@ -38,6 +38,6 @@ namespace GAMCUC.DataModel
         public virtual ICollection<Administrator> Administrators { get; set; }
         public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
-        public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
+        public virtual ICollection<AspNetUserRole> AspNetUserRoles { get; set; }
     }
 }

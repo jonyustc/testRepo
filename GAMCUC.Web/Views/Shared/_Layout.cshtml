@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - GAM Chartered College</title>
+    <title>@ViewBag.Title - GAM Chartered University College</title>
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
 
     @Styles.Render("~/Content/mandatory/css")
@@ -73,7 +73,7 @@
                                 <i class="glyphicon glyphicon-signal"></i>
                                 <span class="title">Dashboard</span>
                             </a>
-                            
+
                         </li>
 
                         <li class="nav-item  ">
@@ -117,10 +117,66 @@
                                     </a>
 
                                 </li>
-                                
+
 
                             </ul>
                         </li>
+
+                        @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+                        {
+
+                            <li class="nav-item">
+                                <a href="@Url.Action("Register", "Account",new { area = "" })" class="nav-link nav-toggle">
+                                    <i class="icon-wallet"></i>
+                                    <span class="title">Register</span>
+
+                                </a>
+
+                            </li>
+
+                            <li class="nav-item  ">
+                                <a href="@Url.Action("UserList", "User", new  { area="Administration" })" class="nav-link nav-toggle">
+                                    <i class="icon-user"></i>
+                                    <span class="title">User List</span>
+
+                                </a>
+
+                            </li>
+
+                            <li class="nav-item  ">
+                                <a href="@Url.Action("DatabaseBackup", "Account", new { area = "" })" class="nav-link nav-toggle">
+                                    <i class="icon-user"></i>
+                                    <span class="title">Database Backup</span>
+
+                                </a>
+
+                            </li>
+                            
+                            <li class="nav-item  ">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="glyphicon glyphicon-cog"></i>
+                                <span class="title">Settings</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item  ">
+                                    <a href="@Url.Action("Payment Setting", "Payment", new { area = "Students" })" class="nav-link nav-toggle">
+                                        <span class="title">Fees Setup</span>
+                                    </a>
+
+                                </li>
+                                <li class="nav-item  ">
+                                    <a href="@Url.Action("Bank Setting", "Payment", new { area = "Students" })" class="nav-link nav-toggle">
+                                        <span class="title">Bank Setup</span>
+                                    </a>
+
+                                </li>
+
+
+                            </ul>
+                        </li>
+
+                        }
 
                     </ul>
                 </div>

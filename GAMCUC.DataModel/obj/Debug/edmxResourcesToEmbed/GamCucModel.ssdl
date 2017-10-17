@@ -89,9 +89,11 @@
   </EntityType>
   <EntityType Name="AspNetUserRoles">
     <Key>
+      <PropertyRef Name="Id" />
       <PropertyRef Name="UserId" />
       <PropertyRef Name="RoleId" />
     </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
   </EntityType>

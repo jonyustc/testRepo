@@ -11,6 +11,7 @@
     <EntitySet Name="AspNetRoles" EntityType="GaMCucDbModel.AspNetRole" />
     <EntitySet Name="AspNetUserClaims" EntityType="GaMCucDbModel.AspNetUserClaim" />
     <EntitySet Name="AspNetUserLogins" EntityType="GaMCucDbModel.AspNetUserLogin" />
+    <EntitySet Name="AspNetUserRoles" EntityType="GaMCucDbModel.AspNetUserRole" />
     <EntitySet Name="AspNetUsers" EntityType="GaMCucDbModel.AspNetUser" />
     <EntitySet Name="Banks" EntityType="GaMCucDbModel.Bank" />
     <EntitySet Name="Courses" EntityType="GaMCucDbModel.Course" />
@@ -50,6 +51,10 @@
       <End Role="AspNetUser" EntitySet="AspNetUsers" />
       <End Role="Administrator" EntitySet="Administrators" />
     </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="GaMCucDbModel.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRole" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
     <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="GaMCucDbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
       <End Role="AspNetUser" EntitySet="AspNetUsers" />
       <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
@@ -57,6 +62,10 @@
     <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="GaMCucDbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
       <End Role="AspNetUser" EntitySet="AspNetUsers" />
       <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="GaMCucDbModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRole" EntitySet="AspNetUserRoles" />
     </AssociationSet>
     <AssociationSet Name="FK_InitialPaymentDetails_Course" Association="GaMCucDbModel.FK_InitialPaymentDetails_Course">
       <End Role="Course" EntitySet="Courses" />
@@ -101,10 +110,6 @@
     <AssociationSet Name="FK_StudentOriginalDocuments_Students" Association="GaMCucDbModel.FK_StudentOriginalDocuments_Students">
       <End Role="Student" EntitySet="Students" />
       <End Role="StudentOriginalDocument" EntitySet="StudentOriginalDocuments" />
-    </AssociationSet>
-    <AssociationSet Name="AspNetUserRoles" Association="GaMCucDbModel.AspNetUserRoles">
-      <End Role="AspNetRole" EntitySet="AspNetRoles" />
-      <End Role="AspNetUser" EntitySet="AspNetUsers" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="C__MigrationHistory">
@@ -183,7 +188,7 @@
     </Key>
     <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="AspNetUsers" Relationship="GaMCucDbModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+    <NavigationProperty Name="AspNetUserRoles" Relationship="GaMCucDbModel.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" FromRole="AspNetRole" ToRole="AspNetUserRole" />
   </EntityType>
   <EntityType Name="AspNetUserClaim">
     <Key>
@@ -206,6 +211,18 @@
     <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="AspNetUser" Relationship="GaMCucDbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
   </EntityType>
+  <EntityType Name="AspNetUserRole">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="RoleId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetRole" Relationship="GaMCucDbModel.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" FromRole="AspNetUserRole" ToRole="AspNetRole" />
+    <NavigationProperty Name="AspNetUser" Relationship="GaMCucDbModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" FromRole="AspNetUserRole" ToRole="AspNetUser" />
+  </EntityType>
   <EntityType Name="AspNetUser">
     <Key>
       <PropertyRef Name="Id" />
@@ -225,7 +242,7 @@
     <NavigationProperty Name="Administrators" Relationship="GaMCucDbModel.FK_Administrators_AspNetUsers" FromRole="AspNetUser" ToRole="Administrator" />
     <NavigationProperty Name="AspNetUserClaims" Relationship="GaMCucDbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
     <NavigationProperty Name="AspNetUserLogins" Relationship="GaMCucDbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
-    <NavigationProperty Name="AspNetRoles" Relationship="GaMCucDbModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+    <NavigationProperty Name="AspNetUserRoles" Relationship="GaMCucDbModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserRole" />
   </EntityType>
   <EntityType Name="Bank">
     <Key>
@@ -477,6 +494,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Type="GaMCucDbModel.AspNetRole" Role="AspNetRole" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="GaMCucDbModel.AspNetUserRole" Role="AspNetUserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRole">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRole">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
     <End Type="GaMCucDbModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -501,6 +532,20 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="AspNetUserLogin">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Type="GaMCucDbModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="GaMCucDbModel.AspNetUserRole" Role="AspNetUserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRole">
         <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
@@ -636,9 +681,5 @@
         <PropertyRef Name="StudentId" />
       </Dependent>
     </ReferentialConstraint>
-  </Association>
-  <Association Name="AspNetUserRoles">
-    <End Type="GaMCucDbModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
-    <End Type="GaMCucDbModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
   </Association>
 </Schema>

@@ -12,16 +12,13 @@ namespace GAMCUC.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class AspNetRole
+    public partial class AspNetUserRole
     {
-        public AspNetRole()
-        {
-            this.AspNetUserRoles = new HashSet<AspNetUserRole>();
-        }
+        public int Id { get; set; }
+        public string UserId { get; set; }
+        public string RoleId { get; set; }
     
-        public string Id { get; set; }
-        public string Name { get; set; }
-    
-        public virtual ICollection<AspNetUserRole> AspNetUserRoles { get; set; }
+        public virtual AspNetRole AspNetRole { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

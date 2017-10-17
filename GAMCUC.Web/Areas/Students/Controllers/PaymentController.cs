@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace GAMCUC.Web.Areas.Students.Controllers
 {
-     [Authorize(Roles = "SuperAdmin")]
+     [Authorize(Roles = "SuperAdmin,Admin")]
     public class PaymentController : Controller
     {
         IDAL.IStudent _iStudent = null;
@@ -213,7 +213,9 @@ namespace GAMCUC.Web.Areas.Students.Controllers
 
         public ActionResult StdPaymentDetailsShow(string id = null)
         {
+            
             TempData["std_id"] = id;
+
             return View();
         }
 
@@ -234,6 +236,7 @@ namespace GAMCUC.Web.Areas.Students.Controllers
 
         public ActionResult PaymentReportsShow(Guid id)
         {
+            ViewBag.User = User.Identity.Name;
             TempData["stdid"] = id;
             return View();
         }

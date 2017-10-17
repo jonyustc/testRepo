@@ -72,7 +72,7 @@
                                 </tr>
                                 <tr>
                                     <th>Payment Method</th>
-                                    <td> @Html.DropDownList("PaymentMethodId", ViewBag.PaymentMethodList as IEnumerable<SelectListItem>, "Select", new { @class = "form-control form-filter input-sm" })</td>
+                                    <td> @Html.DropDownList("PaymentMethodId", ViewBag.PaymentMethodList as IEnumerable<SelectListItem>, "Select", new { @class = "form-control form-filter input-sm", required = "Required" })</td>
                                 </tr>
                                 <tr class="bankInfo" style="display:none">
                                     <th>Bank Name</th>
@@ -88,7 +88,7 @@
                                 </tr>
                                 <tr>
                                     <th>Payment Date</th>
-                                    <td>@Html.TextBox("PaymentDate", null, new { @class = "form-control date-picker" })</td>
+                                    <td>@Html.TextBox("PaymentDate", null, new { @class = "form-control date-picker",required="Required" })</td>
                                 </tr>
 
                                 <tr>
@@ -362,4 +362,5 @@
 
 
     </script>
+@Scripts.Render("~/bundles/jqueryval")
 }

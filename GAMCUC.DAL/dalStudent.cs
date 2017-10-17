@@ -29,6 +29,7 @@ namespace GAMCUC.DAL
                                   Id=s.Id,
                                   StdNameEnglish=s.StdNameEnglish,
                                   StdId=s.StdID,
+                                  IsActive=s.IsActive,
                                   CourseName=c.CourseName 
                               };
             return studentList.ToList();
@@ -265,6 +266,26 @@ namespace GAMCUC.DAL
             std.ExamRollNo = model.ExamRollNo;
 
             _context.Entry(std).State = EntityState.Modified;
+            _context.SaveChanges();
+        }
+
+        public void Inactive(Guid id)
+        {
+            var std = _context.Students.Where(x => x.Id == id).FirstOrDefault();
+            std.IsActive = false;
+
+            //_context.Entry(std).State = EntityState.Modified;
+            _context.Entry(std).Property(x => x.IsActive).IsModified = true;
+            _context.SaveChanges();
+        }
+
+        public void Active(Guid id)
+        {
+            var std = _context.Students.Where(x => x.Id == id).FirstOrDefault();
+            std.IsActive = true;
+
+            //_context.Entry(std).State = EntityState.Modified;
+            _context.Entry(std).Property(x => x.IsActive).IsModified = true;
             _context.SaveChanges();
         }
 
