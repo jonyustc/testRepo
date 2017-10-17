@@ -109,7 +109,7 @@ namespace GAMCUC.Web.Areas.Students.Controllers
 
             var s = new PaymentTypeName();
 
-            s.TotalSemesterFees = pTypeList.Where(x => x.Id == 8).Select(x => x.Amount).FirstOrDefault();
+            s.TotalSemesterFees = pTypeList.Where(x => x.Id == 9).Select(x => x.Amount).FirstOrDefault();
            
 
             ViewBag.StudentId = id;
@@ -146,7 +146,7 @@ namespace GAMCUC.Web.Areas.Students.Controllers
                     }
                     else
                     {
-                        s.TotalSemesterFees = pTypeList.Where(l => new[] { 1, 8 }.Contains(l.Id))
+                        s.TotalSemesterFees = pTypeList.Where(l => new[] { 1, 9 }.Contains(l.Id))
                               .Sum(c => c.Amount);
                         ViewBag.TotalSemesterFees = s.TotalSemesterFees;
 
@@ -169,7 +169,7 @@ namespace GAMCUC.Web.Areas.Students.Controllers
                     }
                     else
                     {
-                        s.TotalSemesterFees = pTypeList.Where(x => x.Id == 8).Select(x => x.Amount).FirstOrDefault();
+                        s.TotalSemesterFees = pTypeList.Where(x => x.Id == 9).Select(x => x.Amount).FirstOrDefault();
                         ViewBag.TotalSemesterFees = s.TotalSemesterFees;
 
                     }

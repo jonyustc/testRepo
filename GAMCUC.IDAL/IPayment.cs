@@ -22,5 +22,6 @@ namespace GAMCUC.IDAL
         IList<SemesterMonthVM> GetEvenMonths();
         List<PaymentViewModel> PaymentPrint();
         List<PaymentDetailsViewModel> PaymentListPrint();
+        void UpdateFeeSetup(List<PaymentTypeViewModel> ptvm);
     }
 }

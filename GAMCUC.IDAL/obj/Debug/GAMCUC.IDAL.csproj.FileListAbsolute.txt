@@ -12,3 +12,10 @@ D:\.net Preject\GAMCUC\GAMCUC.IDAL\bin\Debug\GAMCUC.ViewModel.pdb
 D:\.net Preject\GAMCUC\GAMCUC.IDAL\obj\Debug\GAMCUC.IDAL.csprojResolveAssemblyReference.cache
 D:\.net Preject\GAMCUC\GAMCUC.IDAL\obj\Debug\GAMCUC.IDAL.dll
 D:\.net Preject\GAMCUC\GAMCUC.IDAL\obj\Debug\GAMCUC.IDAL.pdb
+D:\Dot.Net Project\GAMUpdated\GAMCUC.IDAL\bin\Debug\GAMCUC.IDAL.dll
+D:\Dot.Net Project\GAMUpdated\GAMCUC.IDAL\bin\Debug\GAMCUC.IDAL.pdb
+D:\Dot.Net Project\GAMUpdated\GAMCUC.IDAL\bin\Debug\GAMCUC.ViewModel.dll
+D:\Dot.Net Project\GAMUpdated\GAMCUC.IDAL\bin\Debug\GAMCUC.ViewModel.pdb
+D:\Dot.Net Project\GAMUpdated\GAMCUC.IDAL\obj\Debug\GAMCUC.IDAL.csprojResolveAssemblyReference.cache
+D:\Dot.Net Project\GAMUpdated\GAMCUC.IDAL\obj\Debug\GAMCUC.IDAL.dll
+D:\Dot.Net Project\GAMUpdated\GAMCUC.IDAL\obj\Debug\GAMCUC.IDAL.pdb

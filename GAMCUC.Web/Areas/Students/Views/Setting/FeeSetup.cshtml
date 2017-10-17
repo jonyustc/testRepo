@@ -1,0 +1,60 @@
+﻿@model List<GAMCUC.ViewModel.PaymentTypeViewModel>
+@{
+    ViewBag.Title = "FeeSetup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-content">
+    <!-- BEGIN PAGE HEADER-->
+    <!-- BEGIN PAGE BAR -->
+    <div class="page-bar">
+        <h2>Fees Setup</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light bordered">
+
+                <div class="portlet-body form">
+
+                    @using (Html.BeginForm("FeeSetup", "Setting", new { area = "Students" }, FormMethod.Post))
+                    {
+
+                        <div class="form-horizontal">
+                            <input type="hidden" name="StudentId" value="@ViewBag.StudentId" />
+
+                            <table class="table table-bordered">
+
+                                @for (int i = 0; i < Model.Count; i++)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.CheckBoxFor(m => m[i].IsChecked, new { id = "chk_" + Model[i].Id })
+                                            @Html.Label(Model[i].PaymentType)
+                                            @Html.HiddenFor(m => m[i].PaymentType)
+                                            @Html.HiddenFor(m => m[i].Id)
+                                        </td>
+                                        <td>
+                                            <div class="form-inline">
+                                                @Html.TextBoxFor(m => m[i].Amount, null, new { @class = "form-control", id = "txt_" + Model[i].Id })
+                                                
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+
+                                <tr>
+                                    <td colspan="2" style="padding-left:40%"><input type="submit" value="Save" id="btnStdPayment" class="btn btn-success" /></td>
+                                </tr>
+                            </table>
+
+
+
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -75,5 +75,10 @@ namespace GAMCUC.BLL
         {
             return _iPayment.PaymentListPrint();
         }
+
+        public void UpdateFeeSetup(List<PaymentTypeViewModel> ptvm)
+        {
+            _iPayment.UpdateFeeSetup(ptvm);
+        }
     }
 }

@@ -32,7 +32,7 @@ namespace GAMCUC.DAL
             return DatabaseManager.GetInstance().ExecuteStoredProcedureDataTable("GetPaymentDetails", altParams);
         }
 
-        public DataTable GetStdPaymentList(int courseId,int semesterId)
+        public DataTable GetStdPaymentList(int courseId, int semesterId)
         {
             ArrayList altParams = new ArrayList();
             altParams.Add(new SqlParameter("@courseId", courseId));
@@ -48,15 +48,15 @@ namespace GAMCUC.DAL
                             select new PaymentViewModel
                             {
                                 Id = p.Id,
-                                AutoId=p.AutoId,
+                                AutoId = p.AutoId,
                                 StudentId = v.Id,
                                 StudentName = v.StdNameEnglish,
                                 InvoiceNo = p.InvoiceNo,
-                                PaymentDate = p.PaymentDate??DateTime.Now,
+                                PaymentDate = p.PaymentDate ?? DateTime.Now,
                                 GrandTotal = p.GrandTotal ?? 0,
-                                PaidAmount=p.PaidAmount??0,
-                                Discount=p.Discount??0,
-                                Due=p.Due??0
+                                PaidAmount = p.PaidAmount ?? 0,
+                                Discount = p.Discount ?? 0,
+                                Due = p.Due ?? 0
                             };
 
             return salesList.ToList();
@@ -86,18 +86,19 @@ namespace GAMCUC.DAL
                 payment.CheckNo = null;
                 payment.CheckDate = null;
             }
-           
+
             _context.Payments.Add(payment);
 
-            var stdSemester= from std in _context.Students.ToList()
-                join smt in _context.Semesters.ToList() on std.SemesterId equals smt.Id
-                where std.Id == model.StudentId
-                             select new { SemesterId = std.SemesterId };
+            var stdSemester = from std in _context.Students.ToList()
+                              join smt in _context.Semesters.ToList() on std.SemesterId equals smt.Id
+                              where std.Id == model.StudentId
+                              select new { SemesterId = std.SemesterId };
+
             foreach (var item in ptvm)
             {
                 if ((item.Amount > 0 && item.IsChecked == true))
                 {
-                    if(item.Id==3)
+                    if (item.Id == 3)
                     {
                         foreach (var pMonth in noMonth)
                         {
@@ -119,19 +120,39 @@ namespace GAMCUC.DAL
                     }
 
                 }
-               
-            }
-           
-                _context.SaveChanges();
 
-                return payment.Id;
-            
+            }
+
+            _context.SaveChanges();
+
+            return payment.Id;
+
+
+        }
+
+        public void UpdateFeeSetup(List<PaymentTypeViewModel> ptvm)
+        {
+            foreach (var item in ptvm)
+            {
+                if ((item.Amount > 0 && item.IsChecked == true))
+                {
+
+                    var pd = _context.PaymentTypes.Where(x => x.Id == item.Id).FirstOrDefault();
+                    pd.Amount = item.Amount;
+                    _context.Entry(pd).Property(x => x.Amount).IsModified = true;
+
+
+                }
+
+            }
+
+            _context.SaveChanges();
 
         }
 
         public PaymentViewModel invoiceInsertedData(Guid id)
         {
-           List<PaymentViewModel> list=new List<PaymentViewModel>();
+            List<PaymentViewModel> list = new List<PaymentViewModel>();
             var query = from s in _context.Payments.ToList()
                         join sd in _context.PaymentDetails.ToList() on s.Id equals sd.PaymentsId
                         join stdInfo in _context.Students.ToList() on s.StudentId equals stdInfo.Id
@@ -143,49 +164,49 @@ namespace GAMCUC.DAL
                         {
                             InvoiceNo = s.InvoiceNo,
                             StudentName = s.Student.StdNameEnglish,
-                            PaymentDate = s.PaymentDate??DateTime.Now,
+                            PaymentDate = s.PaymentDate ?? DateTime.Now,
                             Id = s.Id,
-                            StdID=stdInfo.StdID,
-                            CourseName=crs.CourseName,
-                            SemesterName=smtr.SemesterName,
-                            Session=sn.Session,
-                            GrandTotal = s.GrandTotal??0,
-                            PaidAmount = s.PaidAmount??0,
-                            Due = s.Due??0,
-                            PaymentMethod=s.PaymentMethod.MethodName,
+                            StdID = stdInfo.StdID,
+                            CourseName = crs.CourseName,
+                            SemesterName = smtr.SemesterName,
+                            Session = sn.Session,
+                            GrandTotal = s.GrandTotal ?? 0,
+                            PaidAmount = s.PaidAmount ?? 0,
+                            Due = s.Due ?? 0,
+                            PaymentMethod = s.PaymentMethod.MethodName,
                             PaymentDetailsViewModel = (from ss in _context.PaymentDetails
-                                           join p in _context.PaymentTypes on ss.PaymentTypeID equals p.Id
-                                           join pM in _context.Months on ss.PayMonth equals pM.Id into gMp
+                                                       join p in _context.PaymentTypes on ss.PaymentTypeID equals p.Id
+                                                       join pM in _context.Months on ss.PayMonth equals pM.Id into gMp
                                                        from pM in gMp.DefaultIfEmpty()
                                                        where ss.PaymentsId == id
-                                           select new PaymentDetailsViewModel()
-                                           {
-                                               PaymentTypeName =p.PaymentType1,
-                                               Id = ss.Id,
-                                               PayAmount =ss.PayAmount?? 0,
-                                               PayMonth=p.Id.Equals(3) ? pM.MonthName : ""
-                                           }).ToList()
+                                                       select new PaymentDetailsViewModel()
+                                                       {
+                                                           PaymentTypeName = p.PaymentType1,
+                                                           Id = ss.Id,
+                                                           PayAmount = ss.PayAmount ?? 0,
+                                                           PayMonth = p.Id.Equals(3) ? pM.MonthName : ""
+                                                       }).ToList()
                         };
 
-            list=query.ToList();
+            list = query.ToList();
             return query.FirstOrDefault();
         }
 
         public List<PaymentViewModel> PaymentPrint()
         {
             var payList = (from s in _context.Payments.ToList()
-                         join sd in _context.PaymentDetails.ToList() on s.Id equals sd.PaymentsId
-                         select new PaymentViewModel
-                         {
-                             InvoiceNo = s.InvoiceNo,
-                             StudentName = s.Student.StdNameEnglish,
-                             PaymentDate = s.PaymentDate??DateTime.Now,
-                             Id = s.Id,
-                             GrandTotal = s.GrandTotal ?? 0,
-                             PaidAmount = s.PaidAmount ?? 0,
-                             Due = s.Due??0,
-                             PaymentMethod = s.PaymentMethod.MethodName
-                         }).ToList();
+                           join sd in _context.PaymentDetails.ToList() on s.Id equals sd.PaymentsId
+                           select new PaymentViewModel
+                           {
+                               InvoiceNo = s.InvoiceNo,
+                               StudentName = s.Student.StdNameEnglish,
+                               PaymentDate = s.PaymentDate ?? DateTime.Now,
+                               Id = s.Id,
+                               GrandTotal = s.GrandTotal ?? 0,
+                               PaidAmount = s.PaidAmount ?? 0,
+                               Due = s.Due ?? 0,
+                               PaymentMethod = s.PaymentMethod.MethodName
+                           }).ToList();
 
 
             return payList.ToList();
@@ -201,7 +222,7 @@ namespace GAMCUC.DAL
                          {
                              PaymentTypeName = p.PaymentType1,
                              Id = ss.Id,
-                             studentId=ss.PaymentsId??Guid.Empty,
+                             studentId = ss.PaymentsId ?? Guid.Empty,
                              PayAmount = ss.PayAmount ?? 0,
                              PayMonth = p.Id.Equals(3) ? pM.MonthName : ""
                          }).ToList();
@@ -217,7 +238,7 @@ namespace GAMCUC.DAL
                        {
                            Id = p.Id,
                            PaymentType = p.PaymentType1,
-                           Amount = p.Amount??0
+                           Amount = p.Amount ?? 0
                        };
 
             return list.ToList();

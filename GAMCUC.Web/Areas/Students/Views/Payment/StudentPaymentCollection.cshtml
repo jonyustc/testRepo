@@ -134,8 +134,8 @@
         var gSumTotal = 0;
         $(function () {
             $('.multiselect').prop('disabled', true);
-            $("#txt_1,#txt_3,#MonthlyFeesToPay,#txt_2,#txt_4,#txt_5,#txt_6,#Discount,#PaidAmount").attr('readonly', true);
-            $("#txt_1,#MonthlyFeesToPay,#SemesterFeesToPay,#txt_3,#txt_2,#txt_4,#txt_5,#txt_6,#Discount,#PaidAmount").keypress(function (event) {
+            $("#txt_1,#txt_3,#MonthlyFeesToPay,#txt_2,#txt_4,#txt_5,#txt_6,#txt_8,#PaidAmount").attr('readonly', true);
+            $("#txt_1,#MonthlyFeesToPay,#SemesterFeesToPay,#txt_3,#txt_2,#txt_4,#txt_5,#txt_6,#txt_8,#PaidAmount").keypress(function (event) {
 
                 if (event.which == 8 || event.keyCode == 37 || event.keyCode == 39 || event.keyCode == 46)
                     return true;
@@ -170,6 +170,7 @@
 
             $("#txt_2").val();
         });
+
         $('#chk_4').change(function () {
             $("#txt_4").attr('readonly', false);
             //$("#ExamFees").prop("disabled", !$(this).is(':checked'));
@@ -185,17 +186,17 @@
             $("#txt_6").val();
         });
 
-        $('#isDiscount').change(function () {
+        $('#chk_8').change(function () {
 
-            $("#Discount").attr('readonly', false);
-            $("#Discount").val(0);
+            $("#txt_8").attr('readonly', false);
+            $("#txt_8").val(0);
         });
 
 
 
 
         var totalSemesterFee = parseFloat($("#TotalSemesterFees").val());
-        $("#chk_1,#noMonth,#chk_2,#chk_3,#chk_4,#chk_5,#chk_6,#isDiscount,#PaidAmount,#Due").change(function () {
+        $("#chk_1,#noMonth,#chk_2,#chk_3,#chk_4,#chk_5,#chk_6,#chk_8,#PaidAmount,#Due").change(function () {
             var admission = 0;
             var monthly = 0;
             var semester = 0;
@@ -234,8 +235,8 @@
             }
 
 
-            if ($("#isDiscount").is(":checked")) {
-                discount = parseFloat($("#Discount").val());
+            if ($("#chk_8").is(":checked")) {
+                discount = parseFloat($("#txt_8").val());
             }
 
 
@@ -271,7 +272,7 @@
 
         });
 
-        $("#txt_4,#txt_5,#txt_6,#PaidAmount,#Discount").keyup(function () {
+        $("#txt_4,#txt_5,#txt_6,#PaidAmount,#txt_8").keyup(function () {
 
             var admission = 0;
             var monthly = 0;
@@ -310,8 +311,8 @@
                 late = parseFloat($("#txt_6").val());
 
 
-            if ($("#isDiscount").is(":checked")) {
-                discount = parseFloat($("#Discount").val());
+            if ($("#chk_8").is(":checked")) {
+                discount = parseFloat($("#txt_8").val());
             }
 
 
