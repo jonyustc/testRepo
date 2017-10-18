@@ -20,19 +20,32 @@ namespace GAMCUC.DAL
             _context = new GaMCucDbEntities();
         }
 
-        public List<StudentAdmissionViewModel> All()
+        public List<StudentAdmissionViewModel> All(int courseId, int semesterId,bool status)
         {
-            var studentList = from s in _context.Students.ToList()
-                              join c in _context.Courses.ToList() on s.CourseId equals c.Id
-                              select new StudentAdmissionViewModel 
-                              {
-                                  Id=s.Id,
-                                  StdNameEnglish=s.StdNameEnglish,
-                                  StdId=s.StdID,
-                                  IsActive=s.IsActive,
-                                  CourseName=c.CourseName 
-                              };
-            return studentList.ToList();
+            if ((courseId != 0) && (semesterId != 0))
+            {
+                List<StudentAdmissionViewModel> list = new List<StudentAdmissionViewModel>();
+                var students = from pr in _context.Students.ToList()
+                               join c in _context.Courses.ToList() on pr.CourseId equals c.Id
+                               join s in _context.Semesters.ToList() on pr.SemesterId equals s.Id
+                               where (pr.CourseId.Equals(courseId) && pr.SemesterId.Equals(semesterId) && pr.IsActive.Equals(status))
+                               select new StudentAdmissionViewModel
+                               {
+                                   Id = pr.Id,
+                                   StdId = pr.StdID,
+                                   CourseName = pr.Course.CourseName,
+                                   StdNameEnglish = pr.StdNameEnglish,
+                                   StdFatherNameEnglish = pr.StdFatherNameEnglish,
+                                   StdMotherNameEnglish = pr.StdMotherNameEnglish,
+                                   IsActive = pr.IsActive,
+                                   Email = pr.Email
+                               };
+                list = students.ToList();
+                return students.ToList();
+            }
+
+            return null;
+
         }
 
         public StudentDetailsViewModel StudentDetails(Guid id)
@@ -297,7 +310,7 @@ namespace GAMCUC.DAL
                 var students = from pr in _context.Students.ToList()
                                join c in _context.Courses.ToList() on pr.CourseId equals c.Id
                                join s in _context.Semesters.ToList() on pr.SemesterId equals s.Id
-                               where (pr.CourseId.Equals(courseId) && pr.SemesterId.Equals(semesterId))
+                               where (pr.CourseId.Equals(courseId) && pr.SemesterId.Equals(semesterId) && pr.IsActive==true)
                                select new StudentListForPayment
                                {
                                    Id = pr.Id,
@@ -371,7 +384,7 @@ namespace GAMCUC.DAL
                 std.AdmissionDate = DateTime.Now;
                 std.DateOfBirth = model.DateOfBirth;
                 std.EntryDate = DateTime.Now;
-                //std.FormNo = model.FormNo;
+                std.FormNo = _context.Students.Select(s => s.FormNo).Max() + 1;
                 std.Gender = model.Gender;
                 std.IsActive = true;
                 std.IsSuspended = model.IsSuspended;

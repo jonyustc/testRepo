@@ -35,7 +35,17 @@
                                     <tr>
                                         <td>
                                             @Html.CheckBoxFor(m => m[i].IsChecked, new { id = "chk_" + Model[i].Id })
-                                            @Html.Label(Model[i].PaymentType)
+                                            
+
+                                            @if (Model[i].Id == 8)
+                                            {
+                                                @Html.Label("Scholarship")
+                                            }
+                                            else
+                                            {
+                                                @Html.Label(Model[i].PaymentType)
+                                            }
+    
                                             @Html.HiddenFor(m => m[i].PaymentType)
                                             @Html.HiddenFor(m => m[i].Id)
                                         </td>
@@ -58,10 +68,10 @@
                                         @Html.TextBox("TotalSemesterFees", (int)ViewBag.TotalSemesterFees, new { @class = "form-control Numeric" })
                                     </td>
                                 </tr>
-                                <tr id="scholarship">
+                                @*<tr id="scholarship">
                                     <th><input type="checkbox" value="8" name="ids" id="isDiscount" class="check" />Scholarship</th>
                                     <td> @Html.TextBox("Discount", 0, new { @class = "form-control Numeric" })</td>
-                                </tr>
+                                </tr>*@
                                 <tr id="cashDiv">
                                     <th>Total Payment</th>
                                     <td> @Html.TextBox("PaidAmount", 0, new { @class = "form-control Numeric" })</td>

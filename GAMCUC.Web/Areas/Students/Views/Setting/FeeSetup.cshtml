@@ -58,3 +58,55 @@
     </div>
 </div>
 
+@section scripts
+{
+    <script>
+
+        $(function () {
+            $("#txt_1,#txt_3,#txt_2,#txt_4,#txt_5,#txt_6,#txt_8,#txt_9").attr('readonly', true);
+
+            $('#chk_1').change(function () {
+
+                $("#txt_1").attr('readonly', false);
+            });
+
+            $('#chk_2').change(function () {
+
+                $("#txt_2").attr('readonly', false);
+            });
+
+            $('#chk_3').change(function () {
+
+                $("#txt_3").attr('readonly', false);
+            });
+
+            $('#chk_4').change(function () {
+
+                $("#txt_4").attr('readonly', false);
+            });
+
+            $('#chk_5').change(function () {
+
+                $("#txt_5").attr('readonly', false);
+            });
+
+            $('#chk_6').change(function () {
+
+                $("#txt_6").attr('readonly', false);
+            });
+
+            $('#chk_7').change(function () {
+
+                $("#txt_7").attr('readonly', false);
+            });
+
+            $('#chk_9').change(function () {
+
+                $("#txt_9").attr('readonly', false);
+            });
+
+        });
+
+    </script>
+
+}

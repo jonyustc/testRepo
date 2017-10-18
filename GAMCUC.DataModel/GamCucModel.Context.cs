@@ -37,6 +37,8 @@ namespace GAMCUC.DataModel
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUserRole> AspNetUserRoles { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<Audit> Audits { get; set; }
+        public virtual DbSet<BackupHistory> BackupHistories { get; set; }
         public virtual DbSet<Bank> Banks { get; set; }
         public virtual DbSet<Course> Courses { get; set; }
         public virtual DbSet<Guardian> Guardians { get; set; }

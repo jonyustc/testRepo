@@ -119,6 +119,26 @@
           <Property Name="AccessFailedCount" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
         </EntityType>
+        <EntityType Name="Audit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModuleName" Type="varchar" MaxLength="50" />
+          <Property Name="Action" Type="varchar" MaxLength="50" />
+          <Property Name="Log" Type="varchar(max)" />
+          <Property Name="user" Type="varchar" MaxLength="256" />
+          <Property Name="actiondate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BackupHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BackupBy" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="FileName" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="BackupDate" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Bank">
           <Key>
             <PropertyRef Name="Id" />
@@ -546,6 +566,8 @@
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Audit" EntityType="Self.Audit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BackupHistory" EntityType="Self.BackupHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Guardians" EntityType="Self.Guardians" Schema="dbo" store:Type="Tables" />
@@ -662,6 +684,8 @@
           <EntitySet Name="AspNetUserLogins" EntityType="GaMCucDbModel.AspNetUserLogin" />
           <EntitySet Name="AspNetUserRoles" EntityType="GaMCucDbModel.AspNetUserRole" />
           <EntitySet Name="AspNetUsers" EntityType="GaMCucDbModel.AspNetUser" />
+          <EntitySet Name="Audits" EntityType="GaMCucDbModel.Audit" />
+          <EntitySet Name="BackupHistories" EntityType="GaMCucDbModel.BackupHistory" />
           <EntitySet Name="Banks" EntityType="GaMCucDbModel.Bank" />
           <EntitySet Name="Courses" EntityType="GaMCucDbModel.Course" />
           <EntitySet Name="Guardians" EntityType="GaMCucDbModel.Guardian" />
@@ -892,6 +916,26 @@
           <NavigationProperty Name="AspNetUserClaims" Relationship="GaMCucDbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="GaMCucDbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
           <NavigationProperty Name="AspNetUserRoles" Relationship="GaMCucDbModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserRole" />
+        </EntityType>
+        <EntityType Name="Audit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModuleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Action" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Log" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="user" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="actiondate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="BackupHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BackupBy" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="BackupDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="Bank">
           <Key>
@@ -1455,6 +1499,28 @@
                 <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Audits">
+            <EntityTypeMapping TypeName="GaMCucDbModel.Audit">
+              <MappingFragment StoreEntitySet="Audit">
+                <ScalarProperty Name="actiondate" ColumnName="actiondate" />
+                <ScalarProperty Name="user" ColumnName="user" />
+                <ScalarProperty Name="Log" ColumnName="Log" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BackupHistories">
+            <EntityTypeMapping TypeName="GaMCucDbModel.BackupHistory">
+              <MappingFragment StoreEntitySet="BackupHistory">
+                <ScalarProperty Name="BackupDate" ColumnName="BackupDate" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="BackupBy" ColumnName="BackupBy" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

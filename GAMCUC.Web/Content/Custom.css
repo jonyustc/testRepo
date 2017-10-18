@@ -148,6 +148,8 @@ label.error {
 
 .invoice table > tbody > tr > td, .invoice .table > thead > tr > th {
     padding: 1px 8px;
+    font-weight: 600;
+    font-size: 12px;
 }
 
 .authorize-student {

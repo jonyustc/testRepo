@@ -122,6 +122,28 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Audits">
+      <EntityTypeMapping TypeName="GaMCucDbModel.Audit">
+        <MappingFragment StoreEntitySet="Audit">
+          <ScalarProperty Name="actiondate" ColumnName="actiondate" />
+          <ScalarProperty Name="user" ColumnName="user" />
+          <ScalarProperty Name="Log" ColumnName="Log" />
+          <ScalarProperty Name="Action" ColumnName="Action" />
+          <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BackupHistories">
+      <EntityTypeMapping TypeName="GaMCucDbModel.BackupHistory">
+        <MappingFragment StoreEntitySet="BackupHistory">
+          <ScalarProperty Name="BackupDate" ColumnName="BackupDate" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="BackupBy" ColumnName="BackupBy" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Banks">
       <EntityTypeMapping TypeName="GaMCucDbModel.Bank">
         <MappingFragment StoreEntitySet="Bank">

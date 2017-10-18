@@ -24,7 +24,7 @@ namespace GAMCUC.IDAL
             GuardianViewModel gardian,
             InitialPaymentDetailViewModel officeFrom, int[] OriginalDocumentId);
 
-        List<StudentAdmissionViewModel> All();
+        List<StudentAdmissionViewModel> All(int courseId, int semesterId,bool status);
 
         StudentDetailsViewModel StudentDetails(Guid id);
         List<StudentDetailsViewModel> StudentDetailsPrint();

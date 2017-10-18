@@ -407,6 +407,7 @@
     <Content Include="Content\assets\global\scripts\app.min.js" />
     <Content Include="Content\assets\global\scripts\datatable.js" />
     <Content Include="Content\assets\global\scripts\datatable.min.js" />
+    <Content Include="Content\assets\images\favicon.ico" />
     <Content Include="Content\assets\images\placeholder-small.png" />
     <Content Include="Content\assets\layouts\global\scripts\cookie-consent.js" />
     <Content Include="Content\assets\layouts\global\scripts\cookie-consent.min.js" />
@@ -520,6 +521,10 @@
     <Content Include="Areas\Students\Views\Payment\StudentPaymentReportList.cshtml" />
     <Content Include="Areas\Administration\Views\User\UserList.cshtml" />
     <Content Include="Areas\Students\Views\Setting\FeeSetup.cshtml" />
+    <Content Include="Areas\Students\Views\Setting\AddNewBank.cshtml" />
+    <Content Include="Areas\Students\Views\Setting\BankList.cshtml" />
+    <Content Include="Areas\Students\Views\Setting\BankEdit.cshtml" />
+    <Content Include="Areas\Students\Views\Student\ShowStudentList.cshtml" />
     <None Include="Properties\PublishProfiles\GAMCUC.pubxml" />
     <None Include="Reports\AcademicRecords.xsd">
       <SubType>Designer</SubType>

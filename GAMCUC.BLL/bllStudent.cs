@@ -65,9 +65,9 @@ namespace GAMCUC.BLL
             return _iStudent.Add(model, records, gardian, officeFrom, OriginalDocumentId);
         }
 
-        public List<StudentAdmissionViewModel> All()
+        public List<StudentAdmissionViewModel> All(int courseId, int semesterId,bool status)
         {
-            return _iStudent.All();
+            return _iStudent.All(courseId,semesterId,status);
         }
 
         public StudentDetailsViewModel StudentDetails(Guid id)

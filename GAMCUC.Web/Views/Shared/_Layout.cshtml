@@ -17,7 +17,7 @@
     @Styles.Render("~/Content/page-style/css")
     @Styles.Render("~/Content/layout/css")
     <link href="~/Content/Custom.css" rel="stylesheet" />
-    <link href="~/images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/Content/assets/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />  
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
@@ -166,8 +166,8 @@
 
                                 </li>
                                 <li class="nav-item  ">
-                                    <a href="@Url.Action("Bank Setting", "Payment", new { area = "Students" })" class="nav-link nav-toggle">
-                                        <span class="title">Bank Setup</span>
+                                    <a href="@Url.Action("BankList", "Setting", new { area = "Students" })" class="nav-link nav-toggle">
+                                        <span class="title">Bank List</span>
                                     </a>
 
                                 </li>

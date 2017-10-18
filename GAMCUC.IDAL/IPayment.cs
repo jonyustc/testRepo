@@ -23,5 +23,6 @@ namespace GAMCUC.IDAL
         List<PaymentViewModel> PaymentPrint();
         List<PaymentDetailsViewModel> PaymentListPrint();
         void UpdateFeeSetup(List<PaymentTypeViewModel> ptvm);
+        void AddBank(BankVM model);
     }
 }

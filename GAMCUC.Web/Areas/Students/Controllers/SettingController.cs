@@ -42,5 +42,42 @@ namespace GAMCUC.Web.Areas.Students.Controllers
             return View("FeeSetup", pTypeList);
             
         }
+
+        public ActionResult BankList()
+        {
+            var list = _iPayment.GetBankList();
+            return View(list);
+        }
+
+        public ActionResult AddNewBank()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddNewBank(BankVM model)
+        {
+            _iPayment.AddBank(model);
+            return RedirectToAction("BankList");
+        }
+
+        public ActionResult BankEdit(int id)
+        {
+            var bank = from s in _iPayment.GetBankList().ToList()
+                       where s.Id == id
+                       select new BankVM 
+                       {
+                         BankName=s.BankName,
+                         Branch=s.Branch
+                       };
+            return View(bank.FirstOrDefault());
+        }
+
+        [HttpPost]
+        public ActionResult BankEdit(BankVM model)
+        {
+            _iPayment.AddBank(model);
+            return RedirectToAction("BankList");
+        }
 	}
 }

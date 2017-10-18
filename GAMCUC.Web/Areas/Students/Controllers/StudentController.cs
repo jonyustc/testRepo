@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace GAMCUC.Web.Areas.Students.Controllers
 {
-     [Authorize(Roles = "SuperAdmin,Admin")]
+     [Authorize(Roles = "SuperAdmin,Admin,SubAdmin")]
     public class StudentController : Controller
     {
         IDAL.IStudent _iStudent = null;
@@ -29,9 +29,16 @@ namespace GAMCUC.Web.Areas.Students.Controllers
 
         public ActionResult StudentList()
         {
+            ViewBag.CourseList = new SelectList(_iStudent.GetCourseList(), "Id", "CourseName");
+            ViewBag.Semester = new SelectList(_iStudent.GetSemesterList(), "Id", "SemesterName");
+            return View();
             
-            var list = _iStudent.All();
-            TempData["isActive"] = list.Select(x => x.IsActive).FirstOrDefault();
+        }
+
+         [HttpPost]
+        public ActionResult ShowStudentList(int courseId, int semesterId, bool IsActive)
+        {
+            var list = _iStudent.All(courseId, semesterId, IsActive);
             return View(list);
         }
 

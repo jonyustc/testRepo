@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace GAMCUC.Web.Areas.Students.Controllers
 {
-     [Authorize(Roles = "SuperAdmin,Admin")]
+     [Authorize(Roles = "SuperAdmin,Admin,SubAdmin")]
     public class PaymentController : Controller
     {
         IDAL.IStudent _iStudent = null;

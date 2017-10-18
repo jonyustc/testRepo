@@ -83,6 +83,12 @@
     <Compile Include="AspNetUserRole.cs">
       <DependentUpon>GamCucModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Audit.cs">
+      <DependentUpon>GamCucModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BackupHistory.cs">
+      <DependentUpon>GamCucModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Bank.cs">
       <DependentUpon>GamCucModel.tt</DependentUpon>
     </Compile>

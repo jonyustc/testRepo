@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Data.SqlClient;
@@ -166,6 +167,7 @@ namespace GAMCUC.DAL
                             StudentName = s.Student.StdNameEnglish,
                             PaymentDate = s.PaymentDate ?? DateTime.Now,
                             Id = s.Id,
+                            
                             StdID = stdInfo.StdID,
                             CourseName = crs.CourseName,
                             SemesterName = smtr.SemesterName,
@@ -183,6 +185,7 @@ namespace GAMCUC.DAL
                                                        {
                                                            PaymentTypeName = p.PaymentType1,
                                                            Id = ss.Id,
+                                                           PaymentTypeID=p.Id,
                                                            PayAmount = ss.PayAmount ?? 0,
                                                            PayMonth = p.Id.Equals(3) ? pM.MonthName : ""
                                                        }).ToList()
@@ -307,11 +310,33 @@ namespace GAMCUC.DAL
                 List.Add(new BankVM()
                 {
                     Id = item.Id,
-                    BankName = item.BankName
+                    BankName = item.BankName,
+                    Branch=item.Branch
 
                 });
             }
             return List;
+        }
+
+        public void AddBank(BankVM model)
+        {
+            if(model.Id == 0)
+            {
+                Bank b = new Bank();
+                b.BankName = model.BankName;
+                b.Branch = model.Branch;
+                _context.Banks.Add(b);
+            }
+            else
+            {
+                var bank = _context.Banks.Where(x => x.Id == model.Id).FirstOrDefault();
+                bank.BankName = model.BankName;
+                bank.Branch = model.Branch;
+                _context.Entry(bank).State = EntityState.Modified;
+            }
+
+
+            _context.SaveChanges();
         }
 
         private static Random random = new Random();

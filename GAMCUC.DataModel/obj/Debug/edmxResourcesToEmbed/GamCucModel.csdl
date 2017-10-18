@@ -13,6 +13,8 @@
     <EntitySet Name="AspNetUserLogins" EntityType="GaMCucDbModel.AspNetUserLogin" />
     <EntitySet Name="AspNetUserRoles" EntityType="GaMCucDbModel.AspNetUserRole" />
     <EntitySet Name="AspNetUsers" EntityType="GaMCucDbModel.AspNetUser" />
+    <EntitySet Name="Audits" EntityType="GaMCucDbModel.Audit" />
+    <EntitySet Name="BackupHistories" EntityType="GaMCucDbModel.BackupHistory" />
     <EntitySet Name="Banks" EntityType="GaMCucDbModel.Bank" />
     <EntitySet Name="Courses" EntityType="GaMCucDbModel.Course" />
     <EntitySet Name="Guardians" EntityType="GaMCucDbModel.Guardian" />
@@ -243,6 +245,26 @@
     <NavigationProperty Name="AspNetUserClaims" Relationship="GaMCucDbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
     <NavigationProperty Name="AspNetUserLogins" Relationship="GaMCucDbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
     <NavigationProperty Name="AspNetUserRoles" Relationship="GaMCucDbModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserRole" />
+  </EntityType>
+  <EntityType Name="Audit">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ModuleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Action" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Log" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="user" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="actiondate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="BackupHistory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BackupBy" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="FileName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="BackupDate" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
   <EntityType Name="Bank">
     <Key>

@@ -80,5 +80,10 @@ namespace GAMCUC.BLL
         {
             _iPayment.UpdateFeeSetup(ptvm);
         }
+
+        public void AddBank(BankVM model)
+        {
+            _iPayment.AddBank(model);
+        }
     }
 }

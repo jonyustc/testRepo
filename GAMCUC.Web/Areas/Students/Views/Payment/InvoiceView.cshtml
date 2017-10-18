@@ -36,7 +36,7 @@
             </div>
 
             <div class="col-xs-3">
-                <p class="invoice-date">Date: @Model.PaymentDate.ToShortDateString()</p>
+                <p class="invoice-date">Date: @Model.PaymentDate.ToString("dd/MM/yyyy")</p>
             </div>
 
         </div>
@@ -77,7 +77,16 @@
                         {
                             <tr>
                                 <td>@t</td>
-                                <td><strong>@sales.PaymentTypeName</strong></td>
+                                
+                                    @if(sales.PaymentTypeID==8)
+                                    {
+                                       <td>Scholarship</td>
+                                    }
+                                    else
+                                    {
+                                        <td>@sales.PaymentTypeName</td>
+                                    }
+                               
                                 <td>@sales.PayMonth</td>
                                 <td>@sales.PayAmount</td>
                             </tr>
