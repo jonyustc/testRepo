@@ -68,7 +68,7 @@ namespace GAMCUC.DAL
                     zip.Save(String.Format("{0}{1}", filepath, archiveName));
                 }
 
-                File.Delete(String.Format("{0}{1}", filepath, FileName));
+               // File.Delete(String.Format("{0}{1}", filepath, FileName));
 
             }
             catch (Exception ex)

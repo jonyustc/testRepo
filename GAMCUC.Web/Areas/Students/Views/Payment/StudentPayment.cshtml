@@ -23,49 +23,56 @@
     </h1>
     <div class="row">
         <div class="col-md-12">
-            <div class="portlet light bordered">
-
+            <div class="portlet box green">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-gift"></i>Search Student
+                    </div>
+                </div>
                 <div class="portlet-body form">
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div  class="form-horizontal" id="form">
-                                <div class="form-group">
-                                    <div class="col-sm-6">
-                                        <label class="control-label">
-                                            Course <span class="required" aria-required="true">*</span>
-                                        </label>
-                                        @Html.DropDownList("CourseId", ViewBag.CourseList as IEnumerable<SelectListItem>, "Select", new { @class = "form-control form-filter input-sm" })
-                                    </div>
+                    <div class="form-horizontal" id="form">
+                        <div class="form-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="col-sm-6">
+                                            <label class="control-label">
+                                                Course <span class="required" aria-required="true">*</span>
+                                            </label>
+                                            @Html.DropDownList("CourseId", ViewBag.CourseList as IEnumerable<SelectListItem>, "Select", new { @class = "form-control form-filter input-sm" })
+                                        </div>
 
-                                    <div class="col-sm-6">
-                                        <label class="control-label"> Semester <span class="required" aria-required="true">*</span></label>
-                                        @Html.DropDownList("SemesterId", ViewBag.Semester as IEnumerable<SelectListItem>, "Select", new { @class = "form-control form-filter input-sm" })
+                                        <div class="col-sm-6">
+                                            <label class="control-label"> Semester <span class="required" aria-required="true">*</span></label>
+                                            @Html.DropDownList("SemesterId", ViewBag.Semester as IEnumerable<SelectListItem>, "Select", new { @class = "form-control form-filter input-sm" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <button type="submit" id="btnSearchList" name="search" value="search_filter" class="btn btn-primary pull-right btn-sm checkbox-toggle"><i class="fa fa-search"></i> Search</button>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <button type="submit" id="btnSearchList" name="search" value="search_filter" class="btn btn-primary pull-right btn-sm checkbox-toggle"><i class="fa fa-search"></i> Search</button>
-                                    </div>
-                                </div>
+                                @*<div class="col-md-6">
+                <form role="form" action="#" method="post" class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label class="control-label">Search by Keyword</label>
+                            <input name="search_text" class="form-control" placeholder="Search by Name, Roll No, Email Account, Phone No, Address etc.." type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <button type="submit" name="search" value="search_full" class="btn btn-primary btn-sm pull-right checkbox-toggle"><i class="fa fa-search"></i> Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>*@
                             </div>
                         </div>
-                        @*<div class="col-md-6">
-                            <form role="form" action="#" method="post" class="form-horizontal">
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <label class="control-label">Search by Keyword</label>
-                                        <input name="search_text" class="form-control" placeholder="Search by Name, Roll No, Email Account, Phone No, Address etc.." type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <button type="submit" name="search" value="search_full" class="btn btn-primary btn-sm pull-right checkbox-toggle"><i class="fa fa-search"></i> Search</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>*@
                     </div>
+
 
                 </div>
             </div>
@@ -86,7 +93,7 @@
                 var semester = $('#SemesterId').val();
                 $.ajax({
                     type: "POST",
-                    data: { CourseId: course, SemesterId: semester},
+                    data: { CourseId: course, SemesterId: semester },
                     url: '@Url.Action("SearchStudentPaymentList", "Payment", new { area="Students" })',
                     success: function (result) {
                         $('#partial').html(result);

@@ -1,0 +1,67 @@
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "InvoiceTotal";
+    Layout = null;
+}
+
+<div class="invoice-summary">
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-8">
+
+            <table class="table h5 text-dark">
+                <tbody>
+                @foreach (System.Data.DataRow row in Model.Rows)
+                {
+    
+                
+                    <tr class="b-top-none">
+                        <td class="text-left">Total Amount </td>
+                        <td>Tk @row[8]</td>
+                    
+                    </tr>
+                    <tr>
+                        <td class="text-left">Paid Amount </td>
+                        <td>
+                            Tk @row[7]
+                        </td>
+
+                    </tr>
+                    <tr>
+
+                        <td class="text-left">Scholarship</td>
+                        <td>
+                            Tk @row[9]
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">Due (BDT) </td>
+                        <td>Tk @row[10]</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+@*<table class="table table-bordered">
+   
+    <tbody>
+        @foreach (System.Data.DataRow row in Model.Rows)
+        {
+            <tr>
+               
+                <td>@row[7]</td>
+                <td>@row[8]</td>
+                <td>@row[9]</td>
+                <td>@row[10]</td>
+            </tr>
+        }
+
+       
+    </tbody>
+</table>*@
+
+
+

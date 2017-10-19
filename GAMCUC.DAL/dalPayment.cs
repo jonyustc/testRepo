@@ -43,6 +43,7 @@ namespace GAMCUC.DAL
 
         public List<PaymentViewModel> PaymentList(string id)
         {
+            var list = new List<PaymentViewModel>();
             var salesList = from p in _context.Payments.ToList()
                             join v in _context.Students.ToList() on p.StudentId equals v.Id
                             where p.StudentId.Equals(new Guid(id))
@@ -56,11 +57,11 @@ namespace GAMCUC.DAL
                                 PaymentDate = p.PaymentDate ?? DateTime.Now,
                                 GrandTotal = p.GrandTotal ?? 0,
                                 PaidAmount = p.PaidAmount ?? 0,
-                                Discount = p.Discount ?? 0,
+                                Discount =  _context.PaymentDetails.Where(x=>x.PaymentsId==p.Id && x.PaymentTypeID==8).Select(x=>x.PayAmount??0).FirstOrDefault(),
                                 Due = p.Due ?? 0
                             };
-
-            return salesList.ToList();
+            list = salesList.ToList();
+            return list;
         }
 
         public Guid AddPayment(PaymentTypeName model, List<PaymentTypeViewModel> ptvm, int[] noMonth)

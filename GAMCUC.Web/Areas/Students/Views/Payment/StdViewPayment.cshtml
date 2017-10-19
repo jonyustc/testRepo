@@ -28,9 +28,6 @@
                             <th>
                                 Date
                             </th>
-                            <th>
-                                Total Amount
-                            </th>
                             <th>Paid</th>
                             @*<th>Due</th>*@
                         </tr>
@@ -51,12 +48,6 @@
                                     @item.data.PaymentDate.ToShortDateString()
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.data.GrandTotal)
-                                    @{
-                            totalPaid = (int)item.data.GrandTotal;
-                                    }
-                                </td>
-                                <td>
                                     @Html.DisplayFor(modelItem => item.data.PaidAmount)
                                     @{
                             paid += (int)item.data.PaidAmount;
@@ -72,35 +63,8 @@
                         }
                     </tbody>
                 </table>
-                <div class="invoice-summary">
-                    <div class="row">
-                        <div class="col-sm-4 col-sm-offset-8">
-                            <table class="table h5 text-dark">
-                                <tbody>
-                                    <tr class="b-top-none">
-                                        <td colspan="2">Total Payable</td>
-                                        <td class="text-left">Tk @totalPaid</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">Paid Amount</td>
-                                        <td class="text-left">Tk @paid</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">Scholarship</td>
-                                        <td class="text-left">Tk @Model.Select(x => x.Discount).FirstOrDefault()</td>
-                                    </tr>
-                                    <tr class="h4">
-                                        <td colspan="2">Due (BDT)</td>
-                                        <td class="text-left">Tk @Model.Select(x=>x.Due).FirstOrDefault()</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
 </div>
-
-

@@ -215,7 +215,7 @@ namespace GAMCUC.Web.Areas.Students.Controllers
         {
             
             TempData["std_id"] = id;
-
+            TempData["stdid"] = id;
             return View();
         }
 
@@ -229,6 +229,7 @@ namespace GAMCUC.Web.Areas.Students.Controllers
         public ActionResult StdViewPayment(string stdId)
         {
             ViewBag.stdId = stdId;
+            TempData["stdid"] = stdId;
             var pay = _iPayment.PaymentList(stdId);
             return View(pay);
         }
@@ -244,8 +245,18 @@ namespace GAMCUC.Web.Areas.Students.Controllers
         public ActionResult PaymentReports(Guid id)
         {
             DataTable data = _iPayment.GetPaymentReport(id);
-
+         
             ViewBag.userdetails = data; 
+            return View(data);
+        }
+
+        public ActionResult InvoiceTotal(Guid id)
+        {
+            DataView dv = _iPayment.GetPaymentReport(id).DefaultView;
+            dv.RowFilter = "Months='Total'"; 
+            DataTable data = dv.ToTable();
+          //  data.Rows.Cast<System.Data.DataRow>().Take(1);
+            ViewBag.userdetails = data;
             return View(data);
         }
     }

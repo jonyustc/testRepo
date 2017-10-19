@@ -525,6 +525,7 @@
     <Content Include="Areas\Students\Views\Setting\BankList.cshtml" />
     <Content Include="Areas\Students\Views\Setting\BankEdit.cshtml" />
     <Content Include="Areas\Students\Views\Student\ShowStudentList.cshtml" />
+    <Content Include="Areas\Students\Views\Payment\InvoiceTotal.cshtml" />
     <None Include="Properties\PublishProfiles\GAMCUC.pubxml" />
     <None Include="Reports\AcademicRecords.xsd">
       <SubType>Designer</SubType>

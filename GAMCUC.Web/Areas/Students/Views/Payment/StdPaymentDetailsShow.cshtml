@@ -26,7 +26,7 @@
         </div>
     </div>
     <div id="Partial"></div>
-    
+    <div id="Partial2"></div>
 
 </div>
 
@@ -48,6 +48,17 @@
                     $('#Partial').html(result);
                 }
             });
+
+        $('#Partial2').html("");
+        var std_id = '@TempData["stdid"]';
+        $.ajax({
+            type: "POST",
+            data: { id: std_id },
+            url: '@Url.Action("InvoiceTotal", "Payment", new { area = "Students" })',
+            success: function (result) {
+                $('#Partial2').html(result);
+            }
+        });
 
     });
 
