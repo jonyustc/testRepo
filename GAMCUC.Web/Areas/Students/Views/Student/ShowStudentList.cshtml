@@ -56,10 +56,16 @@
                             <div class="btn-group">
                                 @Html.ActionLink("Details", "StudentDetails", "Student", new { id = item.data.Id, area = "Students" }, new { @class = "btn sbold green" })
                                 @Html.ActionLink("ID Card", "StudentIdCardPrint", new { id = item.data.Id }, new { @class = "btn red btn-outline sbold", target = "_blank" })
+                                @*<input type="checkbox" class="make-switch" data-on-text="&nbsp;Enabled&nbsp;&nbsp;" data-off-text="&nbsp;Disabled&nbsp;">*@
                             </div>
-
+                            
                         </td>
                         <td>
+                           
+                            <input type="checkbox" class="make-switch" @(Convert.ToBoolean(item.data.IsActive) == true ? "checked='checked'" : string.Empty) data-student-id="@item.data.Id" data-on-text="Enabled" data-off-text="Disabled">
+
+                        </td>
+                        @*<td>
                             @if (item.data.IsActive == true)
                                 {
                                 @Html.ActionLink("Active", "StudentInactive", new { id = item.data.Id, area = "Students" }, new { @class = "btn sbold blue" })
@@ -68,7 +74,7 @@
                                 {
                                 @Html.ActionLink("Inactive  ", "StudentActive", new { id = item.data.Id, area = "Students" }, new { @class = "btn sbold red" })
                                 }
-                        </td>
+                        </td>*@
                     </tr>
                     }
                     </tbody>
@@ -81,7 +87,56 @@
 </div>
 
 
-
+@Scripts.Render("~/bundles/core/js")
 @Scripts.Render("~/bundles/page-plugin/js")
+@Scripts.Render("~/bundles/global/js")
 @Scripts.Render("~/bundles/page-scripts/js")
 
+<script>
+
+    $(document).ready(function () {
+
+        $('.make-switch').on('switchChange.bootstrapSwitch', function (e, state) {
+            var url = "";
+            var cMsg = "";
+            if (state == true)
+            {
+                url = "/Students/Student/StudentActive/" + $(this).attr('data-student-id');
+                cMsg = "Are your sure you want active student?";
+            }
+            else {
+                url = "/Students/Student/StudentInactive/" + $(this).attr('data-student-id');
+                cMsg = "Are your sure you want Inactive student?";
+            }
+
+            if (confirm(cMsg)) {
+                $.ajax({
+                    url: url,
+                    dataType: 'json',
+                    type: "POST",
+                    data: {  },
+
+                    success: function (response) {
+                        if (state == true)
+                        {
+                            toastr.success("Student Successfully Activeted");
+                        }
+                        else
+                            toastr.success("Student Successfully Deactiveted");
+                        window.setTimeout(function () {
+                            window.location = response.url;
+                        }, 1000);
+                    }
+                });
+            }
+            else {
+                if (state != false) { $(this).bootstrapSwitch('state', false, true); }
+                if (state != true) { $(this).bootstrapSwitch('state', true, true); }
+                return false;
+            }
+
+        });
+
+    });
+
+</script>

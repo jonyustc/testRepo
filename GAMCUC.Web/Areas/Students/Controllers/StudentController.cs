@@ -403,22 +403,24 @@ namespace GAMCUC.Web.Areas.Students.Controllers
             return Json(board, JsonRequestBehavior.AllowGet);
         }
 
-       
+
         public ActionResult StudentInactive(Guid id)
         {
             var result = _iStudent.getStudentInfo(id);
 
             _iStudent.Inactive(id);
-            return RedirectToAction("StudentList");
+            return Json(new { result = "Redirect", url = Url.Action("StudentList", "Student", new { area = "Students" }) });
+            //return RedirectToAction("StudentList", "Student", new { area="Students" });
         }
 
-       
+
         public ActionResult StudentActive(Guid id)
         {
             var result = _iStudent.getStudentInfo(id);
 
             _iStudent.Active(id);
-            return RedirectToAction("StudentList");
+            return Json(new { result = "Redirect", url = Url.Action("StudentList", "Student", new { area = "Students" }) });
+            //return RedirectToAction("StudentList", "Student", new { area = "Students" });
         }
 
 
