@@ -155,23 +155,27 @@ label.error {
 .authorize-student {
     text-align: center;
     border-top: 1px solid #000;
-    margin-top: 60px;
+    margin-top: 40px;
     font-weight: bold;
     float: left;
     width: 25%;
+     font-size:12px;
+    line-height:12px;
     margin-left: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 .authorize {
     text-align: center;
     border-top: 1px solid #000;
-    margin-top: 60px;
+    margin-top: 40px;
     font-weight: bold;
     float: right;
     width: 30%;
+    font-size:12px;
+    line-height:12px;
     margin-right: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 19px;
 }
 
 .invoice .invoice-block {
@@ -186,10 +190,16 @@ label.error {
     position: absolute;
     font-size: 12px;
     left: 10px;
-    top: 160px;
+    top: 135px;
 }
-
-
+.in-words {
+    border: 2px solid;
+    border-left: 0;
+    border-right: 0;
+    text-align: left;
+    padding: 0;
+    margin: 0px;
+}
 
 /* End Invoice part */
 

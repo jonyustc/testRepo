@@ -64,7 +64,7 @@ namespace GAMCUC.Web.Areas.Students.Controllers
                                   PermanentAddress = s.PermanentAddress,
                                   PresentAddress = s.PresentAddress,
                                   Picture = s.Picture,
-                                  DateOfBirth = s.DateOfBirth,
+                                  DateOfBirth = s.DateOfBirth.ToShortDateString(),
                                   Phone = s.Phone,
                                   Email = s.Email,
                                   Religion = s.Religion,
@@ -83,7 +83,7 @@ namespace GAMCUC.Web.Areas.Students.Controllers
                               ExamName = s.ExamName,
                               GroupName = s.GroupName,
                               BoardName = s.BoardName,
-                              YearOfPassing = s.YearOfPassing,
+                              YearOfPassing = s.YearOfPassing.ToString(),
                               RollOfExam = s.RollOfExam,
                               Grade = s.Grade
                           };

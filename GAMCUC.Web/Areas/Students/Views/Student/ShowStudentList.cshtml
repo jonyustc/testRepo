@@ -52,17 +52,16 @@
                             @Html.DisplayFor(modelItem => item.data.CourseName)
                         </td>
                         <td>
-
-                            <div class="btn-group">
+                            
                                 @Html.ActionLink("Details", "StudentDetails", "Student", new { id = item.data.Id, area = "Students" }, new { @class = "btn sbold green" })
                                 @Html.ActionLink("ID Card", "StudentIdCardPrint", new { id = item.data.Id }, new { @class = "btn red btn-outline sbold", target = "_blank" })
                                 @*<input type="checkbox" class="make-switch" data-on-text="&nbsp;Enabled&nbsp;&nbsp;" data-off-text="&nbsp;Disabled&nbsp;">*@
-                            </div>
+                            
                             
                         </td>
                         <td>
                            
-                            <input type="checkbox" class="make-switch" @(Convert.ToBoolean(item.data.IsActive) == true ? "checked='checked'" : string.Empty) data-student-id="@item.data.Id" data-on-text="Enabled" data-off-text="Disabled">
+                            <input type="checkbox" class="make-switch btn" @(Convert.ToBoolean(item.data.IsActive) == true ? "checked='checked'" : string.Empty) data-student-id="@item.data.Id" data-on-text="Enabled" data-off-text="Disabled">
 
                         </td>
                         @*<td>
@@ -114,6 +113,67 @@
                     url: url,
                     dataType: 'json',
                     type: "POST",
+                    data: {},
+
+                    success: function (response) {
+                        if (state == true) {
+                            toastr.success("Student Successfully Activeted");
+                        }
+                        else
+                            toastr.success("Student Successfully Deactiveted");
+                        window.setTimeout(function () {
+                            window.location = response.url;
+                        }, 1000);
+                    }
+                });
+            }
+            else {
+                if (state != false) { $(this).bootstrapSwitch('state', false, true); }
+                if (state != true) { $(this).bootstrapSwitch('state', true, true); }
+                return false;
+            }
+
+        });
+
+
+    });
+
+</script>
+
+@*bootbox.confirm(cMsg, function (result) {
+    if (result) {
+
+    $.ajax({
+    url: url,
+    dataType: 'json',
+    type: "POST",
+    data: {},
+
+    success: function (response) {
+    if (state == true) {
+    toastr.success("Student Successfully Activeted");
+    }
+    else
+    toastr.success("Student Successfully Deactiveted");
+    window.setTimeout(function () {
+    window.location = response.url;
+    }, 1000);
+    }
+    });
+    }
+    else {
+    if (state != false) { $(this).bootstrapSwitch('state', false, true); }
+    if (state != true) { $(this).bootstrapSwitch('state', true, true); }
+    return false;
+    }
+    });*@
+
+
+@*if (confirm(cMsg)) {
+                $.ajax({
+                    url: url,
+                    dataType: 'json',
+                    type: "POST",
                     data: {  },
 
                     success: function (response) {
@@ -133,10 +193,4 @@
                 if (state != false) { $(this).bootstrapSwitch('state', false, true); }
                 if (state != true) { $(this).bootstrapSwitch('state', true, true); }
                 return false;
-            }
-
-        });
-
-    });
-
-</script>
+            }*@

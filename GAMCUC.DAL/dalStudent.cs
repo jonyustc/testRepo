@@ -116,6 +116,8 @@ namespace GAMCUC.DAL
                             StdID = pr.StdID,
                             SemesterName = pr.Semester.SemesterName,
                             Email = pr.Email,
+                            Religion=pr.Religion,
+                            Nationality=pr.Nationality,
                             Phone = pr.Phone,
                             Gender = pr.Gender,
                             DateOfBirth = pr.DateOfBirth??DateTime.Now,
