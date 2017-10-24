@@ -6,31 +6,7 @@
         <Connections>
           <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="DefaultConnection" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DefaultConnection (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.DefaultConnection.ConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
-        <Tables>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vw_GetStudentPaymentListTableAdapter" GeneratorDataComponentClassName="vw_GetStudentPaymentListTableAdapter" Name="vw_GetStudentPaymentList" UserDataComponentName="vw_GetStudentPaymentListTableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="DefaultConnection (Web.config)" DbObjectName="GaMCucDb.dbo.vw_GetStudentPaymentList" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT StdID, Name, [Monthly Fee], [Semester Fee], Payment, Scholarship, Total, Due FROM dbo.vw_GetStudentPaymentList</CommandText>
-                    <Parameters />
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="StdID" DataSetColumn="StdID" />
-              <Mapping SourceColumn="Name" DataSetColumn="Name" />
-              <Mapping SourceColumn="Monthly Fee" DataSetColumn="Monthly Fee" />
-              <Mapping SourceColumn="Semester Fee" DataSetColumn="Semester Fee" />
-              <Mapping SourceColumn="Payment" DataSetColumn="Payment" />
-              <Mapping SourceColumn="Scholarship" DataSetColumn="Scholarship" />
-              <Mapping SourceColumn="Total" DataSetColumn="Total" />
-              <Mapping SourceColumn="Due" DataSetColumn="Due" />
-            </Mappings>
-            <Sources />
-          </TableAdapter>
-        </Tables>
+        <Tables />
         <Sources />
       </DataSource>
     </xs:appinfo>
@@ -38,23 +14,21 @@
   <xs:element name="DueReports" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DueReports" msprop:Generator_UserDSName="DueReports">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="vw_GetStudentPaymentList" msprop:Generator_TableClassName="vw_GetStudentPaymentListDataTable" msprop:Generator_TableVarName="tablevw_GetStudentPaymentList" msprop:Generator_TablePropName="vw_GetStudentPaymentList" msprop:Generator_RowDeletingName="vw_GetStudentPaymentListRowDeleting" msprop:Generator_RowChangingName="vw_GetStudentPaymentListRowChanging" msprop:Generator_RowEvHandlerName="vw_GetStudentPaymentListRowChangeEventHandler" msprop:Generator_RowDeletedName="vw_GetStudentPaymentListRowDeleted" msprop:Generator_UserTableName="vw_GetStudentPaymentList" msprop:Generator_RowChangedName="vw_GetStudentPaymentListRowChanged" msprop:Generator_RowEvArgName="vw_GetStudentPaymentListRowChangeEvent" msprop:Generator_RowClassName="vw_GetStudentPaymentListRow">
+        <xs:element name="DueList" msprop:Generator_TableClassName="DueListDataTable" msprop:Generator_TableVarName="tableDueList" msprop:Generator_RowChangedName="DueListRowChanged" msprop:Generator_TablePropName="DueList" msprop:Generator_RowDeletingName="DueListRowDeleting" msprop:Generator_RowChangingName="DueListRowChanging" msprop:Generator_RowEvHandlerName="DueListRowChangeEventHandler" msprop:Generator_RowDeletedName="DueListRowDeleted" msprop:Generator_RowClassName="DueListRow" msprop:Generator_UserTableName="DueList" msprop:Generator_RowEvArgName="DueListRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="StdID" msprop:Generator_ColumnVarNameInTable="columnStdID" msprop:Generator_ColumnPropNameInRow="StdID" msprop:Generator_ColumnPropNameInTable="StdIDColumn" msprop:Generator_UserColumnName="StdID" type="xs:int" />
-              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="20" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Monthly_x0020_Fee" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnMonthly_Fee" msprop:Generator_ColumnPropNameInRow="Monthly_Fee" msprop:Generator_ColumnPropNameInTable="Monthly_FeeColumn" msprop:Generator_UserColumnName="Monthly Fee" type="xs:int" minOccurs="0" />
-              <xs:element name="Semester_x0020_Fee" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSemester_Fee" msprop:Generator_ColumnPropNameInRow="Semester_Fee" msprop:Generator_ColumnPropNameInTable="Semester_FeeColumn" msprop:Generator_UserColumnName="Semester Fee" type="xs:int" minOccurs="0" />
-              <xs:element name="Payment" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPayment" msprop:Generator_ColumnPropNameInRow="Payment" msprop:Generator_ColumnPropNameInTable="PaymentColumn" msprop:Generator_UserColumnName="Payment" type="xs:int" minOccurs="0" />
-              <xs:element name="Scholarship" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnScholarship" msprop:Generator_ColumnPropNameInRow="Scholarship" msprop:Generator_ColumnPropNameInTable="ScholarshipColumn" msprop:Generator_UserColumnName="Scholarship" type="xs:int" minOccurs="0" />
-              <xs:element name="Total" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:int" minOccurs="0" />
-              <xs:element name="Due" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDue" msprop:Generator_ColumnPropNameInRow="Due" msprop:Generator_ColumnPropNameInTable="DueColumn" msprop:Generator_UserColumnName="Due" type="xs:int" minOccurs="0" />
+              <xs:element name="StdID" msprop:Generator_ColumnVarNameInTable="columnStdID" msprop:Generator_ColumnPropNameInRow="StdID" msprop:Generator_ColumnPropNameInTable="StdIDColumn" msprop:Generator_UserColumnName="StdID" type="xs:string" minOccurs="0" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" minOccurs="0" />
+              <xs:element name="Semester_x0020_Fees" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSemester_Fees" msprop:Generator_ColumnPropNameInRow="Semester_Fees" msprop:Generator_ColumnPropNameInTable="Semester_FeesColumn" msprop:Generator_UserColumnName="Semester Fees" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Monthly_x0020_Fees" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnMonthly_Fees" msprop:Generator_ColumnPropNameInRow="Monthly_Fees" msprop:Generator_ColumnPropNameInTable="Monthly_FeesColumn" msprop:Generator_UserColumnName="Monthly Fees" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Exam_x0020_Fees" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnExam_Fees" msprop:Generator_ColumnPropNameInRow="Exam_Fees" msprop:Generator_ColumnPropNameInTable="Exam_FeesColumn" msprop:Generator_UserColumnName="Exam Fees" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Books_x0020__x0026__x0020_Others" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="_columnBooks___Others" msprop:Generator_ColumnPropNameInRow="_Books___Others" msprop:Generator_ColumnPropNameInTable="_Books___OthersColumn" msprop:Generator_UserColumnName="Books &amp; Others" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Late_x0020_Fees" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnLate_Fees" msprop:Generator_ColumnPropNameInRow="Late_Fees" msprop:Generator_ColumnPropNameInTable="Late_FeesColumn" msprop:Generator_UserColumnName="Late Fees" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Payment" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPayment" msprop:Generator_ColumnPropNameInRow="Payment" msprop:Generator_ColumnPropNameInTable="PaymentColumn" msprop:Generator_UserColumnName="Payment" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Total" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Scholarship" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnScholarship" msprop:Generator_ColumnPropNameInRow="Scholarship" msprop:Generator_ColumnPropNameInTable="ScholarshipColumn" msprop:Generator_UserColumnName="Scholarship" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Due" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDue" msprop:Generator_ColumnPropNameInRow="Due" msprop:Generator_ColumnPropNameInTable="DueColumn" msprop:Generator_UserColumnName="Due" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Admission_x0020_Fees" msprop:Generator_ColumnVarNameInTable="columnAdmission_Fees" msprop:Generator_ColumnPropNameInRow="Admission_Fees" msprop:Generator_ColumnPropNameInTable="Admission_FeesColumn" msprop:Generator_UserColumnName="Admission Fees" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

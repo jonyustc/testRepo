@@ -27,4 +27,3 @@ D:\.net Preject\GAMCUC\GAMCUC.DataModel\bin\Debug\EntityFramework.xml
 D:\.net Preject\GAMCUC\GAMCUC.DataModel\bin\Debug\EntityFramework.SqlServer.xml
 D:\.net Preject\GAMCUC\GAMCUC.DataModel\obj\Debug\GAMCUC.DataModel.dll
 D:\.net Preject\GAMCUC\GAMCUC.DataModel\obj\Debug\GAMCUC.DataModel.pdb
-D:\.net Preject\GAMCUC\GAMCUC.DataModel\obj\Debug\GAMCUC.DataModel.csprojResolveAssemblyReference.cache

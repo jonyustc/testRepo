@@ -18,6 +18,7 @@ namespace GAMCUC.IDAL
         List<PaymentViewModel> PaymentList(string id);
         DataTable GetPaymentReport(Guid ID);
         DataTable GetStdPaymentList(int courseId, int semesterId);
+        DataTable GetStdPaymentDueList(int courseId, int semesterId);
         IList<SemesterMonthVM> GetOddMonths();
         IList<SemesterMonthVM> GetEvenMonths();
         List<PaymentViewModel> PaymentPrint();

@@ -139,7 +139,7 @@ namespace GAMCUC.Web.Areas.Students.Controllers
                 if(item.SemesterId == 1)
                 {
 
-                    if (due > 0)
+                    if (due >= 0)
                     {
                         s.TotalSemesterFees = due;
                         ViewBag.TotalSemesterFees = s.TotalSemesterFees;
@@ -162,7 +162,7 @@ namespace GAMCUC.Web.Areas.Students.Controllers
                                    where e.Id !=1
                                    select e).ToList();
 
-                    if (due > 0)
+                    if (due >=0)
                     {
                         s.TotalSemesterFees = due;
                         ViewBag.TotalSemesterFees = s.TotalSemesterFees;

@@ -38,6 +38,14 @@ namespace GAMCUC.DAL
             ArrayList altParams = new ArrayList();
             altParams.Add(new SqlParameter("@courseId", courseId));
             altParams.Add(new SqlParameter("@semesterId", semesterId));
+            return DatabaseManager.GetInstance().ExecuteStoredProcedureDataTable("GetStdPaymentDueList", altParams);
+        }
+
+        public DataTable GetStdPaymentDueList(int courseId, int semesterId)
+        {
+            ArrayList altParams = new ArrayList();
+            altParams.Add(new SqlParameter("@courseId", courseId));
+            altParams.Add(new SqlParameter("@semesterId", semesterId));
             return DatabaseManager.GetInstance().ExecuteStoredProcedureDataTable("GetStudentPaymentList", altParams);
         }
 

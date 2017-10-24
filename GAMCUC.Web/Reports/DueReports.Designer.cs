@@ -24,7 +24,7 @@ namespace GAMCUC.Web.Reports {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class DueReports : global::System.Data.DataSet {
         
-        private vw_GetStudentPaymentListDataTable tablevw_GetStudentPaymentList;
+        private DueListDataTable tableDueList;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -54,8 +54,8 @@ namespace GAMCUC.Web.Reports {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["vw_GetStudentPaymentList"] != null)) {
-                    base.Tables.Add(new vw_GetStudentPaymentListDataTable(ds.Tables["vw_GetStudentPaymentList"]));
+                if ((ds.Tables["DueList"] != null)) {
+                    base.Tables.Add(new DueListDataTable(ds.Tables["DueList"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace GAMCUC.Web.Reports {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public vw_GetStudentPaymentListDataTable vw_GetStudentPaymentList {
+        public DueListDataTable DueList {
             get {
-                return this.tablevw_GetStudentPaymentList;
+                return this.tableDueList;
             }
         }
         
@@ -152,8 +152,8 @@ namespace GAMCUC.Web.Reports {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["vw_GetStudentPaymentList"] != null)) {
-                    base.Tables.Add(new vw_GetStudentPaymentListDataTable(ds.Tables["vw_GetStudentPaymentList"]));
+                if ((ds.Tables["DueList"] != null)) {
+                    base.Tables.Add(new DueListDataTable(ds.Tables["DueList"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace GAMCUC.Web.Reports {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tablevw_GetStudentPaymentList = ((vw_GetStudentPaymentListDataTable)(base.Tables["vw_GetStudentPaymentList"]));
+            this.tableDueList = ((DueListDataTable)(base.Tables["DueList"]));
             if ((initTable == true)) {
-                if ((this.tablevw_GetStudentPaymentList != null)) {
-                    this.tablevw_GetStudentPaymentList.InitVars();
+                if ((this.tableDueList != null)) {
+                    this.tableDueList.InitVars();
                 }
             }
         }
@@ -204,13 +204,13 @@ namespace GAMCUC.Web.Reports {
             this.Namespace = "http://tempuri.org/DueReports.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tablevw_GetStudentPaymentList = new vw_GetStudentPaymentListDataTable();
-            base.Tables.Add(this.tablevw_GetStudentPaymentList);
+            this.tableDueList = new DueListDataTable();
+            base.Tables.Add(this.tableDueList);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializevw_GetStudentPaymentList() {
+        private bool ShouldSerializeDueList() {
             return false;
         }
         
@@ -270,35 +270,43 @@ namespace GAMCUC.Web.Reports {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void vw_GetStudentPaymentListRowChangeEventHandler(object sender, vw_GetStudentPaymentListRowChangeEvent e);
+        public delegate void DueListRowChangeEventHandler(object sender, DueListRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class vw_GetStudentPaymentListDataTable : global::System.Data.TypedTableBase<vw_GetStudentPaymentListRow> {
+        public partial class DueListDataTable : global::System.Data.TypedTableBase<DueListRow> {
             
             private global::System.Data.DataColumn columnStdID;
             
             private global::System.Data.DataColumn columnName;
             
-            private global::System.Data.DataColumn columnMonthly_Fee;
+            private global::System.Data.DataColumn columnSemester_Fees;
             
-            private global::System.Data.DataColumn columnSemester_Fee;
+            private global::System.Data.DataColumn columnMonthly_Fees;
+            
+            private global::System.Data.DataColumn columnExam_Fees;
+            
+            private global::System.Data.DataColumn _columnBooks___Others;
+            
+            private global::System.Data.DataColumn columnLate_Fees;
             
             private global::System.Data.DataColumn columnPayment;
             
-            private global::System.Data.DataColumn columnScholarship;
-            
             private global::System.Data.DataColumn columnTotal;
+            
+            private global::System.Data.DataColumn columnScholarship;
             
             private global::System.Data.DataColumn columnDue;
             
+            private global::System.Data.DataColumn columnAdmission_Fees;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public vw_GetStudentPaymentListDataTable() {
-                this.TableName = "vw_GetStudentPaymentList";
+            public DueListDataTable() {
+                this.TableName = "DueList";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -306,7 +314,7 @@ namespace GAMCUC.Web.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal vw_GetStudentPaymentListDataTable(global::System.Data.DataTable table) {
+            internal DueListDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -323,7 +331,7 @@ namespace GAMCUC.Web.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected vw_GetStudentPaymentListDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected DueListDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -346,17 +354,41 @@ namespace GAMCUC.Web.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Monthly_FeeColumn {
+            public global::System.Data.DataColumn Semester_FeesColumn {
                 get {
-                    return this.columnMonthly_Fee;
+                    return this.columnSemester_Fees;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Semester_FeeColumn {
+            public global::System.Data.DataColumn Monthly_FeesColumn {
                 get {
-                    return this.columnSemester_Fee;
+                    return this.columnMonthly_Fees;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Exam_FeesColumn {
+                get {
+                    return this.columnExam_Fees;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn _Books___OthersColumn {
+                get {
+                    return this._columnBooks___Others;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Late_FeesColumn {
+                get {
+                    return this.columnLate_Fees;
                 }
             }
             
@@ -370,14 +402,6 @@ namespace GAMCUC.Web.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ScholarshipColumn {
-                get {
-                    return this.columnScholarship;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn TotalColumn {
                 get {
                     return this.columnTotal;
@@ -386,9 +410,25 @@ namespace GAMCUC.Web.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ScholarshipColumn {
+                get {
+                    return this.columnScholarship;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn DueColumn {
                 get {
                     return this.columnDue;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Admission_FeesColumn {
+                get {
+                    return this.columnAdmission_Fees;
                 }
             }
             
@@ -403,52 +443,56 @@ namespace GAMCUC.Web.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public vw_GetStudentPaymentListRow this[int index] {
+            public DueListRow this[int index] {
                 get {
-                    return ((vw_GetStudentPaymentListRow)(this.Rows[index]));
+                    return ((DueListRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event vw_GetStudentPaymentListRowChangeEventHandler vw_GetStudentPaymentListRowChanging;
+            public event DueListRowChangeEventHandler DueListRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event vw_GetStudentPaymentListRowChangeEventHandler vw_GetStudentPaymentListRowChanged;
+            public event DueListRowChangeEventHandler DueListRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event vw_GetStudentPaymentListRowChangeEventHandler vw_GetStudentPaymentListRowDeleting;
+            public event DueListRowChangeEventHandler DueListRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event vw_GetStudentPaymentListRowChangeEventHandler vw_GetStudentPaymentListRowDeleted;
+            public event DueListRowChangeEventHandler DueListRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Addvw_GetStudentPaymentListRow(vw_GetStudentPaymentListRow row) {
+            public void AddDueListRow(DueListRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public vw_GetStudentPaymentListRow Addvw_GetStudentPaymentListRow(int StdID, string Name, int Monthly_Fee, int Semester_Fee, int Payment, int Scholarship, int Total, int Due) {
-                vw_GetStudentPaymentListRow rowvw_GetStudentPaymentListRow = ((vw_GetStudentPaymentListRow)(this.NewRow()));
+            public DueListRow AddDueListRow(string StdID, string Name, decimal Semester_Fees, decimal Monthly_Fees, decimal Exam_Fees, decimal _Books___Others, decimal Late_Fees, decimal Payment, decimal Total, decimal Scholarship, decimal Due, decimal Admission_Fees) {
+                DueListRow rowDueListRow = ((DueListRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         StdID,
                         Name,
-                        Monthly_Fee,
-                        Semester_Fee,
+                        Semester_Fees,
+                        Monthly_Fees,
+                        Exam_Fees,
+                        _Books___Others,
+                        Late_Fees,
                         Payment,
-                        Scholarship,
                         Total,
-                        Due};
-                rowvw_GetStudentPaymentListRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowvw_GetStudentPaymentListRow);
-                return rowvw_GetStudentPaymentListRow;
+                        Scholarship,
+                        Due,
+                        Admission_Fees};
+                rowDueListRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDueListRow);
+                return rowDueListRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                vw_GetStudentPaymentListDataTable cln = ((vw_GetStudentPaymentListDataTable)(base.Clone()));
+                DueListDataTable cln = ((DueListDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -456,7 +500,7 @@ namespace GAMCUC.Web.Reports {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new vw_GetStudentPaymentListDataTable();
+                return new DueListDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -464,67 +508,82 @@ namespace GAMCUC.Web.Reports {
             internal void InitVars() {
                 this.columnStdID = base.Columns["StdID"];
                 this.columnName = base.Columns["Name"];
-                this.columnMonthly_Fee = base.Columns["Monthly Fee"];
-                this.columnSemester_Fee = base.Columns["Semester Fee"];
+                this.columnSemester_Fees = base.Columns["Semester Fees"];
+                this.columnMonthly_Fees = base.Columns["Monthly Fees"];
+                this.columnExam_Fees = base.Columns["Exam Fees"];
+                this._columnBooks___Others = base.Columns["Books & Others"];
+                this.columnLate_Fees = base.Columns["Late Fees"];
                 this.columnPayment = base.Columns["Payment"];
-                this.columnScholarship = base.Columns["Scholarship"];
                 this.columnTotal = base.Columns["Total"];
+                this.columnScholarship = base.Columns["Scholarship"];
                 this.columnDue = base.Columns["Due"];
+                this.columnAdmission_Fees = base.Columns["Admission Fees"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnStdID = new global::System.Data.DataColumn("StdID", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnStdID = new global::System.Data.DataColumn("StdID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStdID);
                 this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnName);
-                this.columnMonthly_Fee = new global::System.Data.DataColumn("Monthly Fee", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMonthly_Fee);
-                this.columnSemester_Fee = new global::System.Data.DataColumn("Semester Fee", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSemester_Fee);
-                this.columnPayment = new global::System.Data.DataColumn("Payment", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnSemester_Fees = new global::System.Data.DataColumn("Semester Fees", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSemester_Fees);
+                this.columnMonthly_Fees = new global::System.Data.DataColumn("Monthly Fees", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMonthly_Fees);
+                this.columnExam_Fees = new global::System.Data.DataColumn("Exam Fees", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnExam_Fees);
+                this._columnBooks___Others = new global::System.Data.DataColumn("Books & Others", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this._columnBooks___Others.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnBooks___Others");
+                this._columnBooks___Others.ExtendedProperties.Add("Generator_UserColumnName", "Books & Others");
+                base.Columns.Add(this._columnBooks___Others);
+                this.columnLate_Fees = new global::System.Data.DataColumn("Late Fees", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLate_Fees);
+                this.columnPayment = new global::System.Data.DataColumn("Payment", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPayment);
-                this.columnScholarship = new global::System.Data.DataColumn("Scholarship", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnScholarship);
-                this.columnTotal = new global::System.Data.DataColumn("Total", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnTotal = new global::System.Data.DataColumn("Total", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotal);
-                this.columnDue = new global::System.Data.DataColumn("Due", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnScholarship = new global::System.Data.DataColumn("Scholarship", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnScholarship);
+                this.columnDue = new global::System.Data.DataColumn("Due", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDue);
-                this.columnStdID.AllowDBNull = false;
-                this.columnName.MaxLength = 20;
-                this.columnMonthly_Fee.ReadOnly = true;
-                this.columnSemester_Fee.ReadOnly = true;
+                this.columnAdmission_Fees = new global::System.Data.DataColumn("Admission Fees", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAdmission_Fees);
+                this.columnSemester_Fees.ReadOnly = true;
+                this.columnMonthly_Fees.ReadOnly = true;
+                this.columnExam_Fees.ReadOnly = true;
+                this._columnBooks___Others.ReadOnly = true;
+                this.columnLate_Fees.ReadOnly = true;
                 this.columnPayment.ReadOnly = true;
-                this.columnScholarship.ReadOnly = true;
                 this.columnTotal.ReadOnly = true;
+                this.columnScholarship.ReadOnly = true;
                 this.columnDue.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public vw_GetStudentPaymentListRow Newvw_GetStudentPaymentListRow() {
-                return ((vw_GetStudentPaymentListRow)(this.NewRow()));
+            public DueListRow NewDueListRow() {
+                return ((DueListRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new vw_GetStudentPaymentListRow(builder);
+                return new DueListRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(vw_GetStudentPaymentListRow);
+                return typeof(DueListRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.vw_GetStudentPaymentListRowChanged != null)) {
-                    this.vw_GetStudentPaymentListRowChanged(this, new vw_GetStudentPaymentListRowChangeEvent(((vw_GetStudentPaymentListRow)(e.Row)), e.Action));
+                if ((this.DueListRowChanged != null)) {
+                    this.DueListRowChanged(this, new DueListRowChangeEvent(((DueListRow)(e.Row)), e.Action));
                 }
             }
             
@@ -532,8 +591,8 @@ namespace GAMCUC.Web.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.vw_GetStudentPaymentListRowChanging != null)) {
-                    this.vw_GetStudentPaymentListRowChanging(this, new vw_GetStudentPaymentListRowChangeEvent(((vw_GetStudentPaymentListRow)(e.Row)), e.Action));
+                if ((this.DueListRowChanging != null)) {
+                    this.DueListRowChanging(this, new DueListRowChangeEvent(((DueListRow)(e.Row)), e.Action));
                 }
             }
             
@@ -541,8 +600,8 @@ namespace GAMCUC.Web.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.vw_GetStudentPaymentListRowDeleted != null)) {
-                    this.vw_GetStudentPaymentListRowDeleted(this, new vw_GetStudentPaymentListRowChangeEvent(((vw_GetStudentPaymentListRow)(e.Row)), e.Action));
+                if ((this.DueListRowDeleted != null)) {
+                    this.DueListRowDeleted(this, new DueListRowChangeEvent(((DueListRow)(e.Row)), e.Action));
                 }
             }
             
@@ -550,14 +609,14 @@ namespace GAMCUC.Web.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.vw_GetStudentPaymentListRowDeleting != null)) {
-                    this.vw_GetStudentPaymentListRowDeleting(this, new vw_GetStudentPaymentListRowChangeEvent(((vw_GetStudentPaymentListRow)(e.Row)), e.Action));
+                if ((this.DueListRowDeleting != null)) {
+                    this.DueListRowDeleting(this, new DueListRowChangeEvent(((DueListRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Removevw_GetStudentPaymentListRow(vw_GetStudentPaymentListRow row) {
+            public void RemoveDueListRow(DueListRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -584,7 +643,7 @@ namespace GAMCUC.Web.Reports {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "vw_GetStudentPaymentListDataTable";
+                attribute2.FixedValue = "DueListDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -628,25 +687,30 @@ namespace GAMCUC.Web.Reports {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class vw_GetStudentPaymentListRow : global::System.Data.DataRow {
+        public partial class DueListRow : global::System.Data.DataRow {
             
-            private vw_GetStudentPaymentListDataTable tablevw_GetStudentPaymentList;
+            private DueListDataTable tableDueList;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal vw_GetStudentPaymentListRow(global::System.Data.DataRowBuilder rb) : 
+            internal DueListRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tablevw_GetStudentPaymentList = ((vw_GetStudentPaymentListDataTable)(this.Table));
+                this.tableDueList = ((DueListDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int StdID {
+            public string StdID {
                 get {
-                    return ((int)(this[this.tablevw_GetStudentPaymentList.StdIDColumn]));
+                    try {
+                        return ((string)(this[this.tableDueList.StdIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'StdID\' in table \'DueList\' is DBNull.", e);
+                    }
                 }
                 set {
-                    this[this.tablevw_GetStudentPaymentList.StdIDColumn] = value;
+                    this[this.tableDueList.StdIDColumn] = value;
                 }
             }
             
@@ -655,198 +719,319 @@ namespace GAMCUC.Web.Reports {
             public string Name {
                 get {
                     try {
-                        return ((string)(this[this.tablevw_GetStudentPaymentList.NameColumn]));
+                        return ((string)(this[this.tableDueList.NameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Name\' in table \'vw_GetStudentPaymentList\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Name\' in table \'DueList\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablevw_GetStudentPaymentList.NameColumn] = value;
+                    this[this.tableDueList.NameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Monthly_Fee {
+            public decimal Semester_Fees {
                 get {
                     try {
-                        return ((int)(this[this.tablevw_GetStudentPaymentList.Monthly_FeeColumn]));
+                        return ((decimal)(this[this.tableDueList.Semester_FeesColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Monthly Fee\' in table \'vw_GetStudentPaymentList\' is DBNull." +
-                                "", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Semester Fees\' in table \'DueList\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablevw_GetStudentPaymentList.Monthly_FeeColumn] = value;
+                    this[this.tableDueList.Semester_FeesColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Semester_Fee {
+            public decimal Monthly_Fees {
                 get {
                     try {
-                        return ((int)(this[this.tablevw_GetStudentPaymentList.Semester_FeeColumn]));
+                        return ((decimal)(this[this.tableDueList.Monthly_FeesColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Semester Fee\' in table \'vw_GetStudentPaymentList\' is DBNull" +
-                                ".", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Monthly Fees\' in table \'DueList\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablevw_GetStudentPaymentList.Semester_FeeColumn] = value;
+                    this[this.tableDueList.Monthly_FeesColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Payment {
+            public decimal Exam_Fees {
                 get {
                     try {
-                        return ((int)(this[this.tablevw_GetStudentPaymentList.PaymentColumn]));
+                        return ((decimal)(this[this.tableDueList.Exam_FeesColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Payment\' in table \'vw_GetStudentPaymentList\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Exam Fees\' in table \'DueList\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablevw_GetStudentPaymentList.PaymentColumn] = value;
+                    this[this.tableDueList.Exam_FeesColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Scholarship {
+            public decimal _Books___Others {
                 get {
                     try {
-                        return ((int)(this[this.tablevw_GetStudentPaymentList.ScholarshipColumn]));
+                        return ((decimal)(this[this.tableDueList._Books___OthersColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Scholarship\' in table \'vw_GetStudentPaymentList\' is DBNull." +
-                                "", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Books & Others\' in table \'DueList\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablevw_GetStudentPaymentList.ScholarshipColumn] = value;
+                    this[this.tableDueList._Books___OthersColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Total {
+            public decimal Late_Fees {
                 get {
                     try {
-                        return ((int)(this[this.tablevw_GetStudentPaymentList.TotalColumn]));
+                        return ((decimal)(this[this.tableDueList.Late_FeesColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Total\' in table \'vw_GetStudentPaymentList\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Late Fees\' in table \'DueList\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablevw_GetStudentPaymentList.TotalColumn] = value;
+                    this[this.tableDueList.Late_FeesColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Due {
+            public decimal Payment {
                 get {
                     try {
-                        return ((int)(this[this.tablevw_GetStudentPaymentList.DueColumn]));
+                        return ((decimal)(this[this.tableDueList.PaymentColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Due\' in table \'vw_GetStudentPaymentList\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Payment\' in table \'DueList\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablevw_GetStudentPaymentList.DueColumn] = value;
+                    this[this.tableDueList.PaymentColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal Total {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableDueList.TotalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Total\' in table \'DueList\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDueList.TotalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal Scholarship {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableDueList.ScholarshipColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Scholarship\' in table \'DueList\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDueList.ScholarshipColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal Due {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableDueList.DueColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Due\' in table \'DueList\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDueList.DueColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal Admission_Fees {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableDueList.Admission_FeesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Admission Fees\' in table \'DueList\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDueList.Admission_FeesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsStdIDNull() {
+                return this.IsNull(this.tableDueList.StdIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetStdIDNull() {
+                this[this.tableDueList.StdIDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsNameNull() {
-                return this.IsNull(this.tablevw_GetStudentPaymentList.NameColumn);
+                return this.IsNull(this.tableDueList.NameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetNameNull() {
-                this[this.tablevw_GetStudentPaymentList.NameColumn] = global::System.Convert.DBNull;
+                this[this.tableDueList.NameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsMonthly_FeeNull() {
-                return this.IsNull(this.tablevw_GetStudentPaymentList.Monthly_FeeColumn);
+            public bool IsSemester_FeesNull() {
+                return this.IsNull(this.tableDueList.Semester_FeesColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetMonthly_FeeNull() {
-                this[this.tablevw_GetStudentPaymentList.Monthly_FeeColumn] = global::System.Convert.DBNull;
+            public void SetSemester_FeesNull() {
+                this[this.tableDueList.Semester_FeesColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSemester_FeeNull() {
-                return this.IsNull(this.tablevw_GetStudentPaymentList.Semester_FeeColumn);
+            public bool IsMonthly_FeesNull() {
+                return this.IsNull(this.tableDueList.Monthly_FeesColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSemester_FeeNull() {
-                this[this.tablevw_GetStudentPaymentList.Semester_FeeColumn] = global::System.Convert.DBNull;
+            public void SetMonthly_FeesNull() {
+                this[this.tableDueList.Monthly_FeesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsExam_FeesNull() {
+                return this.IsNull(this.tableDueList.Exam_FeesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetExam_FeesNull() {
+                this[this.tableDueList.Exam_FeesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is_Books___OthersNull() {
+                return this.IsNull(this.tableDueList._Books___OthersColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set_Books___OthersNull() {
+                this[this.tableDueList._Books___OthersColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsLate_FeesNull() {
+                return this.IsNull(this.tableDueList.Late_FeesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetLate_FeesNull() {
+                this[this.tableDueList.Late_FeesColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsPaymentNull() {
-                return this.IsNull(this.tablevw_GetStudentPaymentList.PaymentColumn);
+                return this.IsNull(this.tableDueList.PaymentColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetPaymentNull() {
-                this[this.tablevw_GetStudentPaymentList.PaymentColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsScholarshipNull() {
-                return this.IsNull(this.tablevw_GetStudentPaymentList.ScholarshipColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetScholarshipNull() {
-                this[this.tablevw_GetStudentPaymentList.ScholarshipColumn] = global::System.Convert.DBNull;
+                this[this.tableDueList.PaymentColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsTotalNull() {
-                return this.IsNull(this.tablevw_GetStudentPaymentList.TotalColumn);
+                return this.IsNull(this.tableDueList.TotalColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTotalNull() {
-                this[this.tablevw_GetStudentPaymentList.TotalColumn] = global::System.Convert.DBNull;
+                this[this.tableDueList.TotalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsScholarshipNull() {
+                return this.IsNull(this.tableDueList.ScholarshipColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetScholarshipNull() {
+                this[this.tableDueList.ScholarshipColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsDueNull() {
-                return this.IsNull(this.tablevw_GetStudentPaymentList.DueColumn);
+                return this.IsNull(this.tableDueList.DueColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDueNull() {
-                this[this.tablevw_GetStudentPaymentList.DueColumn] = global::System.Convert.DBNull;
+                this[this.tableDueList.DueColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAdmission_FeesNull() {
+                return this.IsNull(this.tableDueList.Admission_FeesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAdmission_FeesNull() {
+                this[this.tableDueList.Admission_FeesColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -854,22 +1039,22 @@ namespace GAMCUC.Web.Reports {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class vw_GetStudentPaymentListRowChangeEvent : global::System.EventArgs {
+        public class DueListRowChangeEvent : global::System.EventArgs {
             
-            private vw_GetStudentPaymentListRow eventRow;
+            private DueListRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public vw_GetStudentPaymentListRowChangeEvent(vw_GetStudentPaymentListRow row, global::System.Data.DataRowAction action) {
+            public DueListRowChangeEvent(DueListRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public vw_GetStudentPaymentListRow Row {
+            public DueListRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -880,545 +1065,6 @@ namespace GAMCUC.Web.Reports {
             public global::System.Data.DataRowAction Action {
                 get {
                     return this.eventAction;
-                }
-            }
-        }
-    }
-}
-namespace GAMCUC.Web.Reports.DueReportsTableAdapters {
-    
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class vw_GetStudentPaymentListTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
-        private global::System.Data.SqlClient.SqlConnection _connection;
-        
-        private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
-        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public vw_GetStudentPaymentListTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "vw_GetStudentPaymentList";
-            tableMapping.ColumnMappings.Add("StdID", "StdID");
-            tableMapping.ColumnMappings.Add("Name", "Name");
-            tableMapping.ColumnMappings.Add("Monthly Fee", "Monthly Fee");
-            tableMapping.ColumnMappings.Add("Semester Fee", "Semester Fee");
-            tableMapping.ColumnMappings.Add("Payment", "Payment");
-            tableMapping.ColumnMappings.Add("Scholarship", "Scholarship");
-            tableMapping.ColumnMappings.Add("Total", "Total");
-            tableMapping.ColumnMappings.Add("Due", "Due");
-            this._adapter.TableMappings.Add(tableMapping);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
-            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT StdID, Name, [Monthly Fee], [Semester Fee], Payment, Scholarship, Total, D" +
-                "ue FROM dbo.vw_GetStudentPaymentList";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DueReports.vw_GetStudentPaymentListDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DueReports.vw_GetStudentPaymentListDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            DueReports.vw_GetStudentPaymentListDataTable dataTable = new DueReports.vw_GetStudentPaymentListDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-    }
-    
-    /// <summary>
-    ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerDesigner, Microsoft.VSD" +
-        "esigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapterManager")]
-    public partial class TableAdapterManager : global::System.ComponentModel.Component {
-        
-        private UpdateOrderOption _updateOrder;
-        
-        private bool _backupDataSetBeforeUpdate;
-        
-        private global::System.Data.IDbConnection _connection;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public UpdateOrderOption UpdateOrder {
-            get {
-                return this._updateOrder;
-            }
-            set {
-                this._updateOrder = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public bool BackupDataSetBeforeUpdate {
-            get {
-                return this._backupDataSetBeforeUpdate;
-            }
-            set {
-                this._backupDataSetBeforeUpdate = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        public global::System.Data.IDbConnection Connection {
-            get {
-                if ((this._connection != null)) {
-                    return this._connection;
-                }
-                return null;
-            }
-            set {
-                this._connection = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        public int TableAdapterInstanceCount {
-            get {
-                int count = 0;
-                return count;
-            }
-        }
-        
-        /// <summary>
-        ///Update rows in top-down order.
-        ///</summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateUpdatedRows(DueReports dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
-            int result = 0;
-            return result;
-        }
-        
-        /// <summary>
-        ///Insert rows in top-down order.
-        ///</summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateInsertedRows(DueReports dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
-            int result = 0;
-            return result;
-        }
-        
-        /// <summary>
-        ///Delete rows in bottom-up order.
-        ///</summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateDeletedRows(DueReports dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
-            int result = 0;
-            return result;
-        }
-        
-        /// <summary>
-        ///Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
-        ///</summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private global::System.Data.DataRow[] GetRealUpdatedRows(global::System.Data.DataRow[] updatedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
-            if (((updatedRows == null) 
-                        || (updatedRows.Length < 1))) {
-                return updatedRows;
-            }
-            if (((allAddedRows == null) 
-                        || (allAddedRows.Count < 1))) {
-                return updatedRows;
-            }
-            global::System.Collections.Generic.List<global::System.Data.DataRow> realUpdatedRows = new global::System.Collections.Generic.List<global::System.Data.DataRow>();
-            for (int i = 0; (i < updatedRows.Length); i = (i + 1)) {
-                global::System.Data.DataRow row = updatedRows[i];
-                if ((allAddedRows.Contains(row) == false)) {
-                    realUpdatedRows.Add(row);
-                }
-            }
-            return realUpdatedRows.ToArray();
-        }
-        
-        /// <summary>
-        ///Update all changes to the dataset.
-        ///</summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public virtual int UpdateAll(DueReports dataSet) {
-            if ((dataSet == null)) {
-                throw new global::System.ArgumentNullException("dataSet");
-            }
-            if ((dataSet.HasChanges() == false)) {
-                return 0;
-            }
-            global::System.Data.IDbConnection workConnection = this.Connection;
-            if ((workConnection == null)) {
-                throw new global::System.ApplicationException("TableAdapterManager contains no connection information. Set each TableAdapterMana" +
-                        "ger TableAdapter property to a valid TableAdapter instance.");
-            }
-            bool workConnOpened = false;
-            if (((workConnection.State & global::System.Data.ConnectionState.Broken) 
-                        == global::System.Data.ConnectionState.Broken)) {
-                workConnection.Close();
-            }
-            if ((workConnection.State == global::System.Data.ConnectionState.Closed)) {
-                workConnection.Open();
-                workConnOpened = true;
-            }
-            global::System.Data.IDbTransaction workTransaction = workConnection.BeginTransaction();
-            if ((workTransaction == null)) {
-                throw new global::System.ApplicationException("The transaction cannot begin. The current data connection does not support transa" +
-                        "ctions or the current state is not allowing the transaction to begin.");
-            }
-            global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows = new global::System.Collections.Generic.List<global::System.Data.DataRow>();
-            global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows = new global::System.Collections.Generic.List<global::System.Data.DataRow>();
-            global::System.Collections.Generic.List<global::System.Data.Common.DataAdapter> adaptersWithAcceptChangesDuringUpdate = new global::System.Collections.Generic.List<global::System.Data.Common.DataAdapter>();
-            global::System.Collections.Generic.Dictionary<object, global::System.Data.IDbConnection> revertConnections = new global::System.Collections.Generic.Dictionary<object, global::System.Data.IDbConnection>();
-            int result = 0;
-            global::System.Data.DataSet backupDataSet = null;
-            if (this.BackupDataSetBeforeUpdate) {
-                backupDataSet = new global::System.Data.DataSet();
-                backupDataSet.Merge(dataSet);
-            }
-            try {
-                // ---- Prepare for update -----------
-                //
-                // 
-                //---- Perform updates -----------
-                //
-                if ((this.UpdateOrder == UpdateOrderOption.UpdateInsertDelete)) {
-                    result = (result + this.UpdateUpdatedRows(dataSet, allChangedRows, allAddedRows));
-                    result = (result + this.UpdateInsertedRows(dataSet, allAddedRows));
-                }
-                else {
-                    result = (result + this.UpdateInsertedRows(dataSet, allAddedRows));
-                    result = (result + this.UpdateUpdatedRows(dataSet, allChangedRows, allAddedRows));
-                }
-                result = (result + this.UpdateDeletedRows(dataSet, allChangedRows));
-                // 
-                //---- Commit updates -----------
-                //
-                workTransaction.Commit();
-                if ((0 < allAddedRows.Count)) {
-                    global::System.Data.DataRow[] rows = new System.Data.DataRow[allAddedRows.Count];
-                    allAddedRows.CopyTo(rows);
-                    for (int i = 0; (i < rows.Length); i = (i + 1)) {
-                        global::System.Data.DataRow row = rows[i];
-                        row.AcceptChanges();
-                    }
-                }
-                if ((0 < allChangedRows.Count)) {
-                    global::System.Data.DataRow[] rows = new System.Data.DataRow[allChangedRows.Count];
-                    allChangedRows.CopyTo(rows);
-                    for (int i = 0; (i < rows.Length); i = (i + 1)) {
-                        global::System.Data.DataRow row = rows[i];
-                        row.AcceptChanges();
-                    }
-                }
-            }
-            catch (global::System.Exception ex) {
-                workTransaction.Rollback();
-                // ---- Restore the dataset -----------
-                if (this.BackupDataSetBeforeUpdate) {
-                    global::System.Diagnostics.Debug.Assert((backupDataSet != null));
-                    dataSet.Clear();
-                    dataSet.Merge(backupDataSet);
-                }
-                else {
-                    if ((0 < allAddedRows.Count)) {
-                        global::System.Data.DataRow[] rows = new System.Data.DataRow[allAddedRows.Count];
-                        allAddedRows.CopyTo(rows);
-                        for (int i = 0; (i < rows.Length); i = (i + 1)) {
-                            global::System.Data.DataRow row = rows[i];
-                            row.AcceptChanges();
-                            row.SetAdded();
-                        }
-                    }
-                }
-                throw ex;
-            }
-            finally {
-                if (workConnOpened) {
-                    workConnection.Close();
-                }
-                if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
-                    global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];
-                    adaptersWithAcceptChangesDuringUpdate.CopyTo(adapters);
-                    for (int i = 0; (i < adapters.Length); i = (i + 1)) {
-                        global::System.Data.Common.DataAdapter adapter = adapters[i];
-                        adapter.AcceptChangesDuringUpdate = true;
-                    }
-                }
-            }
-            return result;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected virtual void SortSelfReferenceRows(global::System.Data.DataRow[] rows, global::System.Data.DataRelation relation, bool childFirst) {
-            global::System.Array.Sort<global::System.Data.DataRow>(rows, new SelfReferenceComparer(relation, childFirst));
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected virtual bool MatchTableAdapterConnection(global::System.Data.IDbConnection inputConnection) {
-            if ((this._connection != null)) {
-                return true;
-            }
-            if (((this.Connection == null) 
-                        || (inputConnection == null))) {
-                return true;
-            }
-            if (string.Equals(this.Connection.ConnectionString, inputConnection.ConnectionString, global::System.StringComparison.Ordinal)) {
-                return true;
-            }
-            return false;
-        }
-        
-        /// <summary>
-        ///Update Order Option
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public enum UpdateOrderOption {
-            
-            InsertUpdateDelete = 0,
-            
-            UpdateInsertDelete = 1,
-        }
-        
-        /// <summary>
-        ///Used to sort self-referenced table's rows
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private class SelfReferenceComparer : object, global::System.Collections.Generic.IComparer<global::System.Data.DataRow> {
-            
-            private global::System.Data.DataRelation _relation;
-            
-            private int _childFirst;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal SelfReferenceComparer(global::System.Data.DataRelation relation, bool childFirst) {
-                this._relation = relation;
-                if (childFirst) {
-                    this._childFirst = -1;
-                }
-                else {
-                    this._childFirst = 1;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private global::System.Data.DataRow GetRoot(global::System.Data.DataRow row, out int distance) {
-                global::System.Diagnostics.Debug.Assert((row != null));
-                global::System.Data.DataRow root = row;
-                distance = 0;
-
-                global::System.Collections.Generic.IDictionary<global::System.Data.DataRow, global::System.Data.DataRow> traversedRows = new global::System.Collections.Generic.Dictionary<global::System.Data.DataRow, global::System.Data.DataRow>();
-                traversedRows[row] = row;
-
-                global::System.Data.DataRow parent = row.GetParentRow(this._relation, global::System.Data.DataRowVersion.Default);
-                for (
-                ; ((parent != null) 
-                            && (traversedRows.ContainsKey(parent) == false)); 
-                ) {
-                    distance = (distance + 1);
-                    root = parent;
-                    traversedRows[parent] = parent;
-                    parent = parent.GetParentRow(this._relation, global::System.Data.DataRowVersion.Default);
-                }
-
-                if ((distance == 0)) {
-                    traversedRows.Clear();
-                    traversedRows[row] = row;
-                    parent = row.GetParentRow(this._relation, global::System.Data.DataRowVersion.Original);
-                    for (
-                    ; ((parent != null) 
-                                && (traversedRows.ContainsKey(parent) == false)); 
-                    ) {
-                        distance = (distance + 1);
-                        root = parent;
-                        traversedRows[parent] = parent;
-                        parent = parent.GetParentRow(this._relation, global::System.Data.DataRowVersion.Original);
-                    }
-                }
-
-                return root;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Compare(global::System.Data.DataRow row1, global::System.Data.DataRow row2) {
-                if (object.ReferenceEquals(row1, row2)) {
-                    return 0;
-                }
-                if ((row1 == null)) {
-                    return -1;
-                }
-                if ((row2 == null)) {
-                    return 1;
-                }
-
-                int distance1 = 0;
-                global::System.Data.DataRow root1 = this.GetRoot(row1, out distance1);
-
-                int distance2 = 0;
-                global::System.Data.DataRow root2 = this.GetRoot(row2, out distance2);
-
-                if (object.ReferenceEquals(root1, root2)) {
-                    return (this._childFirst * distance1.CompareTo(distance2));
-                }
-                else {
-                    global::System.Diagnostics.Debug.Assert(((root1.Table != null) 
-                                    && (root2.Table != null)));
-                    if ((root1.Table.Rows.IndexOf(root1) < root2.Table.Rows.IndexOf(root2))) {
-                        return -1;
-                    }
-                    else {
-                        return 1;
-                    }
                 }
             }
         }
