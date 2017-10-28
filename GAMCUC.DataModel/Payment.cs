@@ -32,9 +32,11 @@ namespace GAMCUC.DataModel
         public Nullable<int> BankId { get; set; }
         public string CheckNo { get; set; }
         public Nullable<System.DateTime> CheckDate { get; set; }
+        public Nullable<int> SemesterId { get; set; }
     
         public virtual ICollection<PaymentDetail> PaymentDetails { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }
+        public virtual Semester Semester { get; set; }
         public virtual Student Student { get; set; }
     }
 }

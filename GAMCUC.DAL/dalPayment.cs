@@ -33,15 +33,16 @@ namespace GAMCUC.DAL
             return DatabaseManager.GetInstance().ExecuteStoredProcedureDataTable("GetPaymentDetails", altParams);
         }
 
-        public DataTable GetStdPaymentList(int courseId, int semesterId)
+        public DataTable GetStdPaymentList(int courseId, int semesterId,Guid session)
         {
             ArrayList altParams = new ArrayList();
             altParams.Add(new SqlParameter("@courseId", courseId));
             altParams.Add(new SqlParameter("@semesterId", semesterId));
+            altParams.Add(new SqlParameter("@sessionId", session));
             return DatabaseManager.GetInstance().ExecuteStoredProcedureDataTable("GetStdPaymentDueList", altParams);
         }
 
-        public DataTable GetStdPaymentDueList(int courseId, int semesterId)
+        public DataTable GetStdPaymentDueList(int courseId, int semesterId,Guid session)
         {
             ArrayList altParams = new ArrayList();
             altParams.Add(new SqlParameter("@courseId", courseId));
@@ -52,9 +53,11 @@ namespace GAMCUC.DAL
         public List<PaymentViewModel> PaymentList(string id)
         {
             var list = new List<PaymentViewModel>();
+            var semId = _context.StudentSemesterMappings.Where(x => x.StudentId.Equals(new Guid(id)) && x.IsActive==true).Select(x => x.SemesterId).FirstOrDefault();
             var salesList = from p in _context.Payments.ToList()
                             join v in _context.Students.ToList() on p.StudentId equals v.Id
-                            where p.StudentId.Equals(new Guid(id))
+                            join stdMap in _context.StudentSemesterMappings.ToList() on p.StudentId equals stdMap.StudentId
+                            where (p.StudentId.Equals(new Guid(id)) && p.SemesterId.Equals(semId))
                             select new PaymentViewModel
                             {
                                 Id = p.Id,
@@ -84,6 +87,7 @@ namespace GAMCUC.DAL
             payment.Due = model.Due;
             payment.PaymentDate = model.PaymentDate;
             payment.PaymentMethodId = model.PaymentMethodId;
+            payment.SemesterId = model.SemesterId;
             if (model.PaymentMethodId == 2)
             {
                 payment.BankId = model.BankId;

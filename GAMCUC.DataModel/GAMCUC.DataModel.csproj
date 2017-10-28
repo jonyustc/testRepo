@@ -150,6 +150,9 @@
     <Compile Include="StudentOriginalDocument.cs">
       <DependentUpon>GamCucModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="StudentSemesterMapping.cs">
+      <DependentUpon>GamCucModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="GamCucModel.edmx">

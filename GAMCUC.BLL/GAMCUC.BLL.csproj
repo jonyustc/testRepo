@@ -42,6 +42,7 @@
     <Compile Include="bllAdministrator.cs" />
     <Compile Include="bllPayment.cs" />
     <Compile Include="bllStudent.cs" />
+    <Compile Include="bllStudentPromotion.cs" />
     <Compile Include="bllUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

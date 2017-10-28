@@ -29,6 +29,7 @@
     <EntitySet Name="Semesters" EntityType="GaMCucDbModel.Semester" />
     <EntitySet Name="StudentOriginalDocuments" EntityType="GaMCucDbModel.StudentOriginalDocument" />
     <EntitySet Name="Students" EntityType="GaMCucDbModel.Student" />
+    <EntitySet Name="StudentSemesterMappings" EntityType="GaMCucDbModel.StudentSemesterMapping" />
     <AssociationSet Name="FK_AcademicRecords_AcrBoard" Association="GaMCucDbModel.FK_AcademicRecords_AcrBoard">
       <End Role="AcrBoard" EntitySet="AcrBoards" />
       <End Role="AcademicRecord" EntitySet="AcademicRecords" />
@@ -101,6 +102,10 @@
       <End Role="PaymentMethod" EntitySet="PaymentMethods" />
       <End Role="Payment" EntitySet="Payments" />
     </AssociationSet>
+    <AssociationSet Name="FK_Payments_Semester" Association="GaMCucDbModel.FK_Payments_Semester">
+      <End Role="Semester" EntitySet="Semesters" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
     <AssociationSet Name="FK_Payments_Students" Association="GaMCucDbModel.FK_Payments_Students">
       <End Role="Student" EntitySet="Students" />
       <End Role="Payment" EntitySet="Payments" />
@@ -109,9 +114,17 @@
       <End Role="Semester" EntitySet="Semesters" />
       <End Role="Student" EntitySet="Students" />
     </AssociationSet>
+    <AssociationSet Name="FK_StudentSemesterMapping_Semester" Association="GaMCucDbModel.FK_StudentSemesterMapping_Semester">
+      <End Role="Semester" EntitySet="Semesters" />
+      <End Role="StudentSemesterMapping" EntitySet="StudentSemesterMappings" />
+    </AssociationSet>
     <AssociationSet Name="FK_StudentOriginalDocuments_Students" Association="GaMCucDbModel.FK_StudentOriginalDocuments_Students">
       <End Role="Student" EntitySet="Students" />
       <End Role="StudentOriginalDocument" EntitySet="StudentOriginalDocuments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentSemesterMapping_Students" Association="GaMCucDbModel.FK_StudentSemesterMapping_Students">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="StudentSemesterMapping" EntitySet="StudentSemesterMappings" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="C__MigrationHistory">
@@ -361,8 +374,10 @@
     <Property Name="BankId" Type="Int32" />
     <Property Name="CheckNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CheckDate" Type="DateTime" Precision="3" />
+    <Property Name="SemesterId" Type="Int32" />
     <NavigationProperty Name="PaymentDetails" Relationship="GaMCucDbModel.FK_PaymentDetails_Payments" FromRole="Payment" ToRole="PaymentDetail" />
     <NavigationProperty Name="PaymentMethod" Relationship="GaMCucDbModel.FK_Payments_PaymentMethod" FromRole="Payment" ToRole="PaymentMethod" />
+    <NavigationProperty Name="Semester" Relationship="GaMCucDbModel.FK_Payments_Semester" FromRole="Payment" ToRole="Semester" />
     <NavigationProperty Name="Student" Relationship="GaMCucDbModel.FK_Payments_Students" FromRole="Payment" ToRole="Student" />
   </EntityType>
   <EntityType Name="PaymentSchedule">
@@ -389,7 +404,9 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="SemesterName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Payments" Relationship="GaMCucDbModel.FK_Payments_Semester" FromRole="Semester" ToRole="Payment" />
     <NavigationProperty Name="Students" Relationship="GaMCucDbModel.FK_Students_Semester" FromRole="Semester" ToRole="Student" />
+    <NavigationProperty Name="StudentSemesterMappings" Relationship="GaMCucDbModel.FK_StudentSemesterMapping_Semester" FromRole="Semester" ToRole="StudentSemesterMapping" />
   </EntityType>
   <EntityType Name="StudentOriginalDocument">
     <Key>
@@ -443,6 +460,20 @@
     <NavigationProperty Name="Payments" Relationship="GaMCucDbModel.FK_Payments_Students" FromRole="Student" ToRole="Payment" />
     <NavigationProperty Name="Semester" Relationship="GaMCucDbModel.FK_Students_Semester" FromRole="Student" ToRole="Semester" />
     <NavigationProperty Name="StudentOriginalDocuments" Relationship="GaMCucDbModel.FK_StudentOriginalDocuments_Students" FromRole="Student" ToRole="StudentOriginalDocument" />
+    <NavigationProperty Name="StudentSemesterMappings" Relationship="GaMCucDbModel.FK_StudentSemesterMapping_Students" FromRole="Student" ToRole="StudentSemesterMapping" />
+  </EntityType>
+  <EntityType Name="StudentSemesterMapping">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="StudentId" />
+      <PropertyRef Name="SemesterId" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentId" Type="Guid" Nullable="false" />
+    <Property Name="SemesterId" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <NavigationProperty Name="Semester" Relationship="GaMCucDbModel.FK_StudentSemesterMapping_Semester" FromRole="StudentSemesterMapping" ToRole="Semester" />
+    <NavigationProperty Name="Student" Relationship="GaMCucDbModel.FK_StudentSemesterMapping_Students" FromRole="StudentSemesterMapping" ToRole="Student" />
   </EntityType>
   <Association Name="FK_AcademicRecords_AcrBoard">
     <End Type="GaMCucDbModel.AcrBoard" Role="AcrBoard" Multiplicity="0..1" />
@@ -668,6 +699,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Payments_Semester">
+    <End Type="GaMCucDbModel.Semester" Role="Semester" Multiplicity="0..1" />
+    <End Type="GaMCucDbModel.Payment" Role="Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Semester">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="SemesterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Payments_Students">
     <End Type="GaMCucDbModel.Student" Role="Student" Multiplicity="0..1" />
     <End Type="GaMCucDbModel.Payment" Role="Payment" Multiplicity="*" />
@@ -692,6 +735,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_StudentSemesterMapping_Semester">
+    <End Type="GaMCucDbModel.Semester" Role="Semester" Multiplicity="1" />
+    <End Type="GaMCucDbModel.StudentSemesterMapping" Role="StudentSemesterMapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Semester">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentSemesterMapping">
+        <PropertyRef Name="SemesterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_StudentOriginalDocuments_Students">
     <End Type="GaMCucDbModel.Student" Role="Student" Multiplicity="1" />
     <End Type="GaMCucDbModel.StudentOriginalDocument" Role="StudentOriginalDocument" Multiplicity="*" />
@@ -700,6 +755,18 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="StudentOriginalDocument">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentSemesterMapping_Students">
+    <End Type="GaMCucDbModel.Student" Role="Student" Multiplicity="1" />
+    <End Type="GaMCucDbModel.StudentSemesterMapping" Role="StudentSemesterMapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentSemesterMapping">
         <PropertyRef Name="StudentId" />
       </Dependent>
     </ReferentialConstraint>

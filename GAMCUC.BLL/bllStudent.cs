@@ -65,9 +65,14 @@ namespace GAMCUC.BLL
             return _iStudent.Add(model, records, gardian, officeFrom, OriginalDocumentId);
         }
 
-        public List<StudentAdmissionViewModel> All(int courseId, int semesterId,bool status)
+        public List<StudentAdmissionViewModel> All(int courseId, int semesterId,bool status,Guid session)
         {
-            return _iStudent.All(courseId,semesterId,status);
+            return _iStudent.All(courseId,semesterId,status,session);
+        }
+
+        public List<StudentPromotionViewModel> StdListSearchForPromotion(int courseId, int semesterId,Guid session)
+        {
+            return _iStudent.StdListSearchForPromotion(courseId, semesterId,session);
         }
 
         public StudentDetailsViewModel StudentDetails(Guid id)
@@ -115,9 +120,9 @@ namespace GAMCUC.BLL
             _iStudent.UpdateStudentProfile(model);
         }
 
-        public List<StudentListForPayment> SearchStudent(string stdID, int? courseId, int? semesterId, string roll)
+        public List<StudentListForPayment> SearchStudent(string stdID, int? courseId, int? semesterId, string roll,Guid session)
         {
-            return _iStudent.SearchStudent(stdID, courseId, semesterId, roll);
+            return _iStudent.SearchStudent(stdID, courseId, semesterId, roll,session);
         }
 
         public void Inactive(Guid id)

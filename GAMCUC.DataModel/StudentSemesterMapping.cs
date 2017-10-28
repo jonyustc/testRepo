@@ -12,20 +12,14 @@ namespace GAMCUC.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class Semester
+    public partial class StudentSemesterMapping
     {
-        public Semester()
-        {
-            this.Payments = new HashSet<Payment>();
-            this.Students = new HashSet<Student>();
-            this.StudentSemesterMappings = new HashSet<StudentSemesterMapping>();
-        }
-    
         public int Id { get; set; }
-        public string SemesterName { get; set; }
+        public System.Guid StudentId { get; set; }
+        public int SemesterId { get; set; }
+        public Nullable<bool> IsActive { get; set; }
     
-        public virtual ICollection<Payment> Payments { get; set; }
-        public virtual ICollection<Student> Students { get; set; }
-        public virtual ICollection<StudentSemesterMapping> StudentSemesterMappings { get; set; }
+        public virtual Semester Semester { get; set; }
+        public virtual Student Student { get; set; }
     }
 }

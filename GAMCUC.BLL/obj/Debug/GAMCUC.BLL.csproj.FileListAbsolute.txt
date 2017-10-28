@@ -38,8 +38,8 @@ D:\.net Preject\GAMCUC\GAMCUC.BLL\bin\Debug\GAMCUC.IDAL.dll
 D:\.net Preject\GAMCUC\GAMCUC.BLL\bin\Debug\GAMCUC.ViewModel.dll
 D:\.net Preject\GAMCUC\GAMCUC.BLL\bin\Debug\GAMCUC.DataModel.dll
 D:\.net Preject\GAMCUC\GAMCUC.BLL\bin\Debug\EntityFramework.dll
-D:\.net Preject\GAMCUC\GAMCUC.BLL\bin\Debug\VIT.DataLogicLayer.dll
 D:\.net Preject\GAMCUC\GAMCUC.BLL\bin\Debug\DotNetZip.dll
+D:\.net Preject\GAMCUC\GAMCUC.BLL\bin\Debug\VIT.DataLogicLayer.dll
 D:\.net Preject\GAMCUC\GAMCUC.BLL\bin\Debug\GAMCUC.DAL.pdb
 D:\.net Preject\GAMCUC\GAMCUC.BLL\bin\Debug\GAMCUC.IDAL.pdb
 D:\.net Preject\GAMCUC\GAMCUC.BLL\bin\Debug\GAMCUC.ViewModel.pdb

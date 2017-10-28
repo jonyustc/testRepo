@@ -52,14 +52,14 @@ namespace GAMCUC.BLL
             return _iPayment.GetPaymentReport(ID);
         }
 
-        public DataTable GetStdPaymentList(int courseId,int semesterId)
+        public DataTable GetStdPaymentList(int courseId,int semesterId,Guid session)
         {
-            return _iPayment.GetStdPaymentList(courseId, semesterId);
+            return _iPayment.GetStdPaymentList(courseId, semesterId,session);
         }
 
-        public DataTable GetStdPaymentDueList(int courseId, int semesterId)
+        public DataTable GetStdPaymentDueList(int courseId, int semesterId,Guid session)
         {
-            return _iPayment.GetStdPaymentDueList(courseId, semesterId);
+            return _iPayment.GetStdPaymentDueList(courseId, semesterId,session);
         }
 
         public IList<SemesterMonthVM> GetOddMonths()

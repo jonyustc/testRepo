@@ -50,6 +50,7 @@
     <Compile Include="AdministratorVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StudentPaymentViewModel.cs" />
+    <Compile Include="StudentPromotionViewModel.cs" />
     <Compile Include="StudentViewModel.cs" />
     <Compile Include="UserViewModel.cs" />
   </ItemGroup>

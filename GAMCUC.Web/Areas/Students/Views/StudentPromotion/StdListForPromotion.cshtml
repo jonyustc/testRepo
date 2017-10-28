@@ -1,0 +1,74 @@
+﻿@model List<GAMCUC.ViewModel.StudentPromotionViewModel>
+@{
+    ViewBag.Title = "Search Student Promotion List";
+    Layout = null;
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light bordered">
+            @using (Html.BeginForm("Promotion", "StudentPromotion", FormMethod.Post))
+            {
+                <div class="portlet-title">
+                    <div class="caption">
+
+                        <div class="form-inline" role="form">
+                            <div class="form-group">
+                                <label for="exampleInputEmail2">Promotion Semester</label>
+
+                                @Html.DropDownList("PSemesterId", ViewBag.Semester as IEnumerable<SelectListItem>, "Select", new { @class = "form-control form-filter input-sm" })
+                               
+                            </div>
+
+                            <button type="submit" class="btn btn-default">Promotion</button>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="portlet-body form">
+
+                    <table class="table table-striped table-bordered table-hover" id="datatable_reviews">
+                        <thead>
+                            <tr role="row" class="heading">
+                               
+                                <th>StdID</th>
+                                <th> Student Name</th>
+                                <th>Father Name</th>
+                                <th>Action</th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+
+                            @for (int i = 0; i < Model.Count; i++)
+                        {
+                        <tr>
+                            
+                            <td style="text-align:center">
+                                @Html.DisplayFor(model => model[i].StdID)
+                                @Html.HiddenFor(model => model[i].StudentId)
+                               @Html.HiddenFor(model => model[i].SemesterId)
+                                @Html.HiddenFor(model => model[i].IsActive)
+                            </td>
+                            <td style="text-align:center">
+                                @Html.DisplayFor(model => model[i].StudentName)
+                            </td>
+                            <td style="text-align:center">
+                                @Html.DisplayFor(model => model[i].FatherName)
+                            </td>
+                            <td>
+                                @Html.CheckBoxFor(m => m[i].IsPromotion, new { id = "pro_" + Model[i].Id }) 
+                            </td>
+                        </tr>
+                        }
+
+                        </tbody>
+                    </table>
+
+                </div>
+            }
+        </div>
+    </div>
+</div>

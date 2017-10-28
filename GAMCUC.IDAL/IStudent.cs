@@ -24,7 +24,9 @@ namespace GAMCUC.IDAL
             GuardianViewModel gardian,
             InitialPaymentDetailViewModel officeFrom, int[] OriginalDocumentId);
 
-        List<StudentAdmissionViewModel> All(int courseId, int semesterId,bool status);
+        List<StudentAdmissionViewModel> All(int courseId, int semesterId,bool status,Guid session);
+
+        List<StudentPromotionViewModel> StdListSearchForPromotion(int courseId, int semesterId,Guid session);
 
         StudentDetailsViewModel StudentDetails(Guid id);
         List<StudentDetailsViewModel> StudentDetailsPrint();
@@ -32,7 +34,7 @@ namespace GAMCUC.IDAL
         List<GuardianViewModel> GuardianInfoPrint();
         List<InitialPaymentDetailViewModel> InitialPaymentPrint();
         List<StudentOriginalDocumentVM> OrgDocPrint();
-        List<StudentListForPayment> SearchStudent(string stdID, int? courseId, int? semesterId, string roll);
+        List<StudentListForPayment> SearchStudent(string stdID, int? courseId, int? semesterId, string roll,Guid session);
         StudentProfileViewModel getStudentInfo(Guid id);
         List<AcademicRecordsViewModel> getAcademicRecord(Guid id);
         void UpdateStudentProfile(StudentProfileViewModel model);

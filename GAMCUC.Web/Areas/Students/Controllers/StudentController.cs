@@ -31,14 +31,15 @@ namespace GAMCUC.Web.Areas.Students.Controllers
         {
             ViewBag.CourseList = new SelectList(_iStudent.GetCourseList(), "Id", "CourseName");
             ViewBag.Semester = new SelectList(_iStudent.GetSemesterList(), "Id", "SemesterName");
+            ViewBag.Session = new SelectList(_iStudent.GetAcSessionList(), "Id", "Session");
             return View();
             
         }
 
          [HttpPost]
-        public ActionResult ShowStudentList(int courseId, int semesterId, bool IsActive)
+        public ActionResult ShowStudentList(int courseId, int semesterId, bool IsActive,Guid session)
         {
-            var list = _iStudent.All(courseId, semesterId, IsActive);
+            var list = _iStudent.All(courseId, semesterId, IsActive,session);
             return View(list);
         }
 

@@ -32,21 +32,27 @@
                 <div class="portlet-body form">
                     <div class="form-body">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-horizontal" id="form">
                                     <div class="form-group">
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-3">
                                             <label class="control-label">
                                                 Course <span class="required" aria-required="true">*</span>
                                             </label>
                                             @Html.DropDownList("CourseId", ViewBag.CourseList as IEnumerable<SelectListItem>, "Select", new { @class = "form-control form-filter input-sm" })
                                         </div>
 
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-3">
                                             <label class="control-label"> Semester <span class="required" aria-required="true">*</span></label>
                                             @Html.DropDownList("SemesterId", ViewBag.Semester as IEnumerable<SelectListItem>, "Select", new { @class = "form-control form-filter input-sm" })
                                         </div>
-                                        <div class="col-sm-4">
+
+                                        <div class="col-sm-3">
+                                            <label class="control-label"> Session <span class="required" aria-required="true">*</span></label>
+                                            @Html.DropDownList("AcademicSessionId", ViewBag.Session as IEnumerable<SelectListItem>, "Select", new { @class = "form-control form-filter input-sm" })
+                                        </div>
+
+                                        <div class="col-sm-3">
                                             <label class="control-label"> Status <span class="required" aria-required="true">*</span></label>
                                             @*@Html.DropDownList("IsActive", ViewBag.Semester as IEnumerable<SelectListItem>, "Select", new { @class = "form-control form-filter input-sm" })*@
                                             @Html.DropDownList("IsActive", new List<SelectListItem>
@@ -65,21 +71,7 @@
                                     </div>
                                 </div>
                             </div>
-                            @*<div class="col-md-6">
-                <form role="form" action="#" method="post" class="form-horizontal">
-                    <div class="form-group">
-                        <div class="col-sm-12">
-                            <label class="control-label">Search by Keyword</label>
-                            <input name="search_text" class="form-control" placeholder="Search by Name, Roll No, Email Account, Phone No, Address etc.." type="text">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-12">
-                            <button type="submit" name="search" value="search_full" class="btn btn-primary btn-sm pull-right checkbox-toggle"><i class="fa fa-search"></i> Search</button>
-                        </div>
-                    </div>
-                </form>
-            </div>*@
+                   
                         </div>
                     </div>
                     
@@ -102,9 +94,10 @@
                 var course = $('#CourseId').val();
                 var semester = $('#SemesterId').val();
                 var status = $('#IsActive').val();
+                var Session = $('#AcademicSessionId').val();
                 $.ajax({
                     type: "POST",
-                    data: { CourseId: course, SemesterId: semester, IsActive: status },
+                    data: { CourseId: course, SemesterId: semester, session: Session, IsActive: status},
                     url: '@Url.Action("ShowStudentList", "Student", new { area = "Students" })',
                     success: function (result) {
                         $('#partial').html(result);

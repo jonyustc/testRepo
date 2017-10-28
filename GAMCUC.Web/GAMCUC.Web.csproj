@@ -176,6 +176,7 @@
     <Compile Include="Areas\Students\Controllers\PaymentController.cs" />
     <Compile Include="Areas\Students\Controllers\SettingController.cs" />
     <Compile Include="Areas\Students\Controllers\StudentController.cs" />
+    <Compile Include="Areas\Students\Controllers\StudentPromotionController.cs" />
     <Compile Include="Areas\Students\StudentsAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -526,6 +527,8 @@
     <Content Include="Areas\Students\Views\Setting\BankEdit.cshtml" />
     <Content Include="Areas\Students\Views\Student\ShowStudentList.cshtml" />
     <Content Include="Areas\Students\Views\Payment\InvoiceTotal.cshtml" />
+    <Content Include="Areas\Students\Views\StudentPromotion\StdPromotion.cshtml" />
+    <Content Include="Areas\Students\Views\StudentPromotion\StdListForPromotion.cshtml" />
     <None Include="Properties\PublishProfiles\GAMCUC.pubxml" />
     <None Include="Reports\AcademicRecords.xsd">
       <SubType>Designer</SubType>

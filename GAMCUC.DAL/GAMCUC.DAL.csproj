@@ -56,6 +56,7 @@
     <Compile Include="dalAdministrator.cs" />
     <Compile Include="dalPayment.cs" />
     <Compile Include="dalStudent.cs" />
+    <Compile Include="dalStudentPromotion.cs" />
     <Compile Include="dalUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

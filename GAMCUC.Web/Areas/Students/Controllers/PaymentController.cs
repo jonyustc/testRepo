@@ -27,13 +27,14 @@ namespace GAMCUC.Web.Areas.Students.Controllers
         {
             ViewBag.CourseList = new SelectList(_iStudent.GetCourseList(), "Id", "CourseName");
             ViewBag.Semester = new SelectList(_iStudent.GetSemesterList(), "Id", "SemesterName");
+            ViewBag.Session = new SelectList(_iStudent.GetAcSessionList(), "Id", "Session");
             return View();
         }
 
         [HttpPost]
-        public ActionResult SearchStudentPaymentList(string stdID, int? courseId, int? semesterId, string roll)
+        public ActionResult SearchStudentPaymentList(string stdID, int? courseId, int? semesterId, string roll,Guid session)
         {
-            var list = _iStudent.SearchStudent(stdID, courseId, semesterId, roll);
+            var list = _iStudent.SearchStudent(stdID, courseId, semesterId, roll,session);
             return View(list);
         }
 
@@ -42,24 +43,26 @@ namespace GAMCUC.Web.Areas.Students.Controllers
         {
             ViewBag.CourseList = new SelectList(_iStudent.GetCourseList(), "Id", "CourseName");
             ViewBag.Semester = new SelectList(_iStudent.GetSemesterList(), "Id", "SemesterName");
+            ViewBag.Session = new SelectList(_iStudent.GetAcSessionList(), "Id", "Session");
             return View();
         }
 
-        public ActionResult StudentPaymentReportList(int courseId, int semesterId)
+        public ActionResult StudentPaymentReportList(int courseId, int semesterId,Guid session)
         {
-            DataTable list = _iPayment.GetStdPaymentList(courseId, semesterId);
+            DataTable list = _iPayment.GetStdPaymentList(courseId, semesterId,session);
             ViewBag.cId = courseId;
             ViewBag.sId = semesterId;
+            ViewBag.session = session;
             return View(list);
         }
 
-        public ActionResult StudentDuePrint(int courseId, int semesterId)
+        public ActionResult StudentDuePrint(int courseId, int semesterId,Guid session)
         {
-            DataTable dueRecords = _iPayment.GetStdPaymentList(courseId, semesterId);
+            DataTable dueRecords = _iPayment.GetStdPaymentList(courseId, semesterId,session);
 
             string stdCourse = _iStudent.GetCourseList().Where(x => x.Id.Equals(courseId)).Select(x => x.CourseName).SingleOrDefault();
             string stdSemester = _iStudent.GetSemesterList().Where(x => x.Id.Equals(semesterId)).Select(x => x.SemesterName).SingleOrDefault();
-            string stdSession = _iStudent.GetAcSessionList().Where(x => x.IsActive==true).Select(x => x.Session).SingleOrDefault();
+            string stdSession = _iStudent.GetAcSessionList().Where(x => x.Id.Equals(session)).Select(x => x.Session).SingleOrDefault();
             int stdSemesterId = _iStudent.GetSemesterList().Where(x => x.Id.Equals(semesterId)).Select(x => x.Id).SingleOrDefault();
 
             string stdSessionYear = "";
@@ -124,71 +127,52 @@ namespace GAMCUC.Web.Areas.Students.Controllers
                              .Select(x => x.Due)
                              .ToList()
                              .FirstOrDefault();
-          
-            
-
-     
 
 
+            DataView dv = _iPayment.GetPaymentReport(new Guid(id)).DefaultView;
 
-            var stdSemsterInfo = from std in _iStudent.SearchStudent(id, null, null, null)
+            if(dv.RowFilter!="")
+            {
+                dv.RowFilter = "Months='Total'";
+                
+            }
+            else
+            {
+                dv.RowFilter = "";
+            }
+
+            DataTable data = dv.ToTable();
+            foreach (System.Data.DataRow row in data.Rows)
+            {
+                ViewBag.TotalSemesterFees = row[10];
+            }
+
+
+            #region due
+
+
+
+            var stdSemsterInfo = from std in _iStudent.SearchStudent(id, null, null, null,Guid.Empty)
                                  select new { SemesterId = std.SemesterId };
 
             foreach (var item in stdSemsterInfo)
             {
-                if(item.SemesterId == 1)
+                
+
+                if (item.SemesterId % 2 == 0)
                 {
-
-                    if (due >= 0)
-                    {
-                        s.TotalSemesterFees = due;
-                        ViewBag.TotalSemesterFees = s.TotalSemesterFees;
-                    }
-                    else
-                    {
-                        s.TotalSemesterFees = pTypeList.Where(l => new[] { 1, 9 }.Contains(l.Id))
-                              .Sum(c => c.Amount);
-                        ViewBag.TotalSemesterFees = s.TotalSemesterFees;
-
-                    }
-
-
-                  
-                }
-
-                if(item.SemesterId > 1)
-                {
-                    pTypeList =(from e in _iPayment.getAllPaymentType().ToList() 
-                                   where e.Id !=1
-                                   select e).ToList();
-
-                    if (due >=0)
-                    {
-                        s.TotalSemesterFees = due;
-                        ViewBag.TotalSemesterFees = s.TotalSemesterFees;
-                    }
-                    else
-                    {
-                        s.TotalSemesterFees = pTypeList.Where(x => x.Id == 9).Select(x => x.Amount).FirstOrDefault();
-                        ViewBag.TotalSemesterFees = s.TotalSemesterFees;
-
-                    }
-
-                    
-                }
-
-                if(item.SemesterId % 2 == 0)
-                {
-                    
+                    ViewBag.SemesterId = item.SemesterId;
                     ViewBag.SemesterList = new SelectList(_iPayment.GetEvenMonths().ToList(), "Id", "MonthName");
-                   
+
                 }
                 else
                 {
+                    ViewBag.SemesterId = item.SemesterId;
                     ViewBag.SemesterList = new SelectList(_iPayment.GetOddMonths().ToList(), "Id", "MonthName");
-                   
+
                 }
             }
+            #endregion due
 
             return View(pTypeList);
         }

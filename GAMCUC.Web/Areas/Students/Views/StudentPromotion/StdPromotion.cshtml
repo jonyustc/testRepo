@@ -1,6 +1,6 @@
 ﻿@model GAMCUC.ViewModel.StudentListForPayment
 @{
-    ViewBag.Title = "StudentPaymentReport";
+    ViewBag.Title = "Student Promotion";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -13,17 +13,17 @@
                 <i class="fa fa-circle"></i>
             </li>
             <li>
-                <span>Payment Report</span>
+                <span>Promotion</span>
             </li>
         </ul>
 
     </div>
     <h1 class="page-title">
-        Student Payment Report
+        Student Promotion
     </h1>
     <div class="row">
         <div class="col-md-12">
-            <div class="portlet box purple">
+            <div class="portlet box green">
                 <div class="portlet-title">
                     <div class="caption">
                         <i class="fa fa-gift"></i>Search Student
@@ -31,10 +31,10 @@
                 </div>
                 <div class="portlet-body form">
 
-                    <div class="form-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-horizontal" id="form">
+                    <div class="form-horizontal" id="form">
+                        <div class="form-body">
+                            <div class="row">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <div class="col-sm-4">
                                             <label class="control-label">
@@ -58,10 +58,11 @@
                                         </div>
                                     </div>
                                 </div>
+                                
                             </div>
-
                         </div>
                     </div>
+
 
                 </div>
             </div>
@@ -83,8 +84,8 @@
                 var Session = $('#AcademicSessionId').val();
                 $.ajax({
                     type: "POST",
-                    data: { CourseId: course, SemesterId: semester,session:Session},
-                    url: '@Url.Action("StudentPaymentReportList", "Payment", new { area = "Students" })',
+                    data: { CourseId: course, SemesterId: semester,session:Session },
+                    url: '@Url.Action("StdListForPromotion", "StudentPromotion", new { area = "Students" })',
                     success: function (result) {
                         $('#partial').html(result);
                     }
@@ -95,4 +96,7 @@
     </script>
 
 }
+
+
+
 

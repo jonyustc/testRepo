@@ -224,6 +224,7 @@
     <EntitySetMapping Name="Payments">
       <EntityTypeMapping TypeName="GaMCucDbModel.Payment">
         <MappingFragment StoreEntitySet="Payments">
+          <ScalarProperty Name="SemesterId" ColumnName="SemesterId" />
           <ScalarProperty Name="CheckDate" ColumnName="CheckDate" />
           <ScalarProperty Name="CheckNo" ColumnName="CheckNo" />
           <ScalarProperty Name="BankId" ColumnName="BankId" />
@@ -306,6 +307,16 @@
           <ScalarProperty Name="StdNameEnglish" ColumnName="StdNameEnglish" />
           <ScalarProperty Name="StdNameBangla" ColumnName="StdNameBangla" />
           <ScalarProperty Name="StdID" ColumnName="StdID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentSemesterMappings">
+      <EntityTypeMapping TypeName="GaMCucDbModel.StudentSemesterMapping">
+        <MappingFragment StoreEntitySet="StudentSemesterMapping">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="SemesterId" ColumnName="SemesterId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

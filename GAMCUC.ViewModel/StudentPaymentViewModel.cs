@@ -113,6 +113,8 @@ namespace GAMCUC.ViewModel
         [Required(ErrorMessage="Date Field Required")]
         public DateTime PaymentDate { get; set; }
         public int PaymentMethodId { get; set; }
+
+        public int SemesterId { get; set; }
         public int BankId { get; set; }
         public string CheckNo { get; set; }
         public DateTime CheckDate { get; set; }

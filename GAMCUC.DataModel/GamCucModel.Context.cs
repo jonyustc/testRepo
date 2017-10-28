@@ -53,5 +53,6 @@ namespace GAMCUC.DataModel
         public virtual DbSet<Semester> Semesters { get; set; }
         public virtual DbSet<StudentOriginalDocument> StudentOriginalDocuments { get; set; }
         public virtual DbSet<Student> Students { get; set; }
+        public virtual DbSet<StudentSemesterMapping> StudentSemesterMappings { get; set; }
     }
 }

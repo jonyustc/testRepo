@@ -220,6 +220,7 @@
     <Property Name="BankId" Type="int" />
     <Property Name="CheckNo" Type="nvarchar" MaxLength="50" />
     <Property Name="CheckDate" Type="datetime" />
+    <Property Name="SemesterId" Type="int" />
   </EntityType>
   <EntityType Name="PaymentSchedule">
     <Key>
@@ -287,6 +288,17 @@
     <Property Name="AcademicSessionId" Type="uniqueidentifier" />
     <Property Name="CourseId" Type="int" />
     <Property Name="SemesterId" Type="int" />
+  </EntityType>
+  <EntityType Name="StudentSemesterMapping">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="StudentId" />
+      <PropertyRef Name="SemesterId" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SemesterId" Type="int" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
   </EntityType>
   <Association Name="FK_AcademicRecords_AcrBoard">
     <End Role="AcrBoard" Type="Self.AcrBoard" Multiplicity="0..1" />
@@ -476,6 +488,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Payments_Semester">
+    <End Role="Semester" Type="Self.Semester" Multiplicity="0..1" />
+    <End Role="Payments" Type="Self.Payments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Semester">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Payments">
+        <PropertyRef Name="SemesterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Payments_Students">
     <End Role="Students" Type="Self.Students" Multiplicity="0..1" />
     <End Role="Payments" Type="Self.Payments" Multiplicity="*" />
@@ -548,6 +572,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_StudentSemesterMapping_Semester">
+    <End Role="Semester" Type="Self.Semester" Multiplicity="1" />
+    <End Role="StudentSemesterMapping" Type="Self.StudentSemesterMapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Semester">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentSemesterMapping">
+        <PropertyRef Name="SemesterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentSemesterMapping_Students">
+    <End Role="Students" Type="Self.Students" Multiplicity="1" />
+    <End Role="StudentSemesterMapping" Type="Self.StudentSemesterMapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentSemesterMapping">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="GaMCucDbModelStoreContainer">
     <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AcademicRecords" EntityType="Self.AcademicRecords" Schema="dbo" store:Type="Tables" />
@@ -577,6 +625,7 @@
     <EntitySet Name="Semester" EntityType="Self.Semester" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StudentOriginalDocuments" EntityType="Self.StudentOriginalDocuments" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentSemesterMapping" EntityType="Self.StudentSemesterMapping" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_AcademicRecords_AcrBoard" Association="Self.FK_AcademicRecords_AcrBoard">
       <End Role="AcrBoard" EntitySet="AcrBoard" />
       <End Role="AcademicRecords" EntitySet="AcademicRecords" />
@@ -637,6 +686,10 @@
       <End Role="PaymentMethod" EntitySet="PaymentMethod" />
       <End Role="Payments" EntitySet="Payments" />
     </AssociationSet>
+    <AssociationSet Name="FK_Payments_Semester" Association="Self.FK_Payments_Semester">
+      <End Role="Semester" EntitySet="Semester" />
+      <End Role="Payments" EntitySet="Payments" />
+    </AssociationSet>
     <AssociationSet Name="FK_Payments_Students" Association="Self.FK_Payments_Students">
       <End Role="Students" EntitySet="Students" />
       <End Role="Payments" EntitySet="Payments" />
@@ -660,6 +713,14 @@
     <AssociationSet Name="FK_Students_Semester" Association="Self.FK_Students_Semester">
       <End Role="Semester" EntitySet="Semester" />
       <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentSemesterMapping_Semester" Association="Self.FK_StudentSemesterMapping_Semester">
+      <End Role="Semester" EntitySet="Semester" />
+      <End Role="StudentSemesterMapping" EntitySet="StudentSemesterMapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentSemesterMapping_Students" Association="Self.FK_StudentSemesterMapping_Students">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="StudentSemesterMapping" EntitySet="StudentSemesterMapping" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

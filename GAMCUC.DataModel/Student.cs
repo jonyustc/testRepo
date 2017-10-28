@@ -21,6 +21,7 @@ namespace GAMCUC.DataModel
             this.InitialPaymentDetails = new HashSet<InitialPaymentDetail>();
             this.Payments = new HashSet<Payment>();
             this.StudentOriginalDocuments = new HashSet<StudentOriginalDocument>();
+            this.StudentSemesterMappings = new HashSet<StudentSemesterMapping>();
         }
     
         public System.Guid Id { get; set; }
@@ -60,5 +61,6 @@ namespace GAMCUC.DataModel
         public virtual ICollection<Payment> Payments { get; set; }
         public virtual Semester Semester { get; set; }
         public virtual ICollection<StudentOriginalDocument> StudentOriginalDocuments { get; set; }
+        public virtual ICollection<StudentSemesterMapping> StudentSemesterMappings { get; set; }
     }
 }

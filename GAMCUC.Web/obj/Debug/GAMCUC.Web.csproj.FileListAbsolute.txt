@@ -169,8 +169,8 @@ D:\.net Preject\GAMCUC\GAMCUC.Web\bin\System.Web.WebPages.Razor.dll
 D:\.net Preject\GAMCUC\GAMCUC.Web\bin\WebGrease.dll
 D:\.net Preject\GAMCUC\GAMCUC.Web\bin\GAMCUC.DAL.dll
 D:\.net Preject\GAMCUC\GAMCUC.Web\bin\GAMCUC.DataModel.dll
-D:\.net Preject\GAMCUC\GAMCUC.Web\bin\VIT.DataLogicLayer.dll
 D:\.net Preject\GAMCUC\GAMCUC.Web\bin\DotNetZip.dll
+D:\.net Preject\GAMCUC\GAMCUC.Web\bin\VIT.DataLogicLayer.dll
 D:\.net Preject\GAMCUC\GAMCUC.Web\bin\GAMCUC.BLL.pdb
 D:\.net Preject\GAMCUC\GAMCUC.Web\bin\GAMCUC.IDAL.pdb
 D:\.net Preject\GAMCUC\GAMCUC.Web\bin\GAMCUC.ViewModel.pdb
